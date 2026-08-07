@@ -1,190 +1,165 @@
-/* ===========================
-   TYPING EFFECT
-=========================== */
+// ==============================
+// PORTFOLIO JAVASCRIPT
+// Bablu Kumar Portfolio
+// ==============================
 
-const typing = document.getElementById("typing");
+// Mobile Menu
 
-const words = [
-    "Frontend Developer",
-    "Web Designer",
-    "JavaScript Developer",
-    "UI/UX Enthusiast"
-];
+const menuBtn = document.querySelector(".menu-btn");
+const navbar = document.querySelector(".navbar");
 
-let wordIndex = 0;
-let charIndex = 0;
-let deleting = false;
+menuBtn.addEventListener("click", () => {
+    navbar.classList.toggle("active");
+});
 
-function typeEffect() {
+// Close menu after clicking a link
 
-    const currentWord = words[wordIndex];
-
-    if (!deleting) {
-
-        typing.textContent = currentWord.substring(0, charIndex++);
-
-        if (charIndex > currentWord.length) {
-
-            deleting = true;
-
-            setTimeout(typeEffect, 1500);
-
-            return;
-        }
-
-    } else {
-
-        typing.textContent = currentWord.substring(0, charIndex--);
-
-        if (charIndex < 0) {
-
-            deleting = false;
-
-            wordIndex++;
-
-            if (wordIndex >= words.length) {
-
-                wordIndex = 0;
-
-            }
-
-        }
-
-    }
-
-    setTimeout(typeEffect, deleting ? 50 : 120);
-
-}
-
-typeEffect();
-
-
-
-/* ===========================
-   ACTIVE MENU
-=========================== */
-
-const navLinks = document.querySelectorAll("nav a");
-
-navLinks.forEach(link => {
+document.querySelectorAll(".navbar a").forEach(link => {
 
     link.addEventListener("click", () => {
 
-        navLinks.forEach(item => item.classList.remove("active"));
-
-        link.classList.add("active");
+        navbar.classList.remove("active");
 
     });
 
 });
-/* ===========================
-   THEME TOGGLE
-=========================== */
 
-const themeBtn = document.querySelector(".theme-btn");
+// ==============================
+// Active Navbar on Scroll
+// ==============================
 
-themeBtn.addEventListener("click", () => {
-
-    document.body.classList.toggle("light-theme");
-
-    if(document.body.classList.contains("light-theme")){
-
-        themeBtn.classList.remove("fa-moon");
-        themeBtn.classList.add("fa-sun");
-
-    }else{
-
-        themeBtn.classList.remove("fa-sun");
-        themeBtn.classList.add("fa-moon");
-
-    }
-
-});
-
-
-/* ===========================
-   HEADER SHADOW
-=========================== */
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".navbar a");
 
 window.addEventListener("scroll", () => {
 
-    const header = document.querySelector("header");
+    let current = "";
 
-    if(window.scrollY > 80){
+    sections.forEach(section => {
 
-        header.style.boxShadow = "0 5px 25px rgba(0,212,255,.25)";
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.clientHeight;
 
-    }else{
+        if (pageYOffset >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+
+    });
+
+});
+
+// ==============================
+// Header Shadow
+// ==============================
+
+const header = document.querySelector(".header");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 50) {
+
+        header.style.boxShadow = "0 10px 25px rgba(0,0,0,.4)";
+
+    } else {
 
         header.style.boxShadow = "none";
 
     }
 
 });
+// ==============================
+// SCROLL TO TOP BUTTON
+// ==============================
 
+const topBtn = document.querySelector(".top-btn");
 
-/* ===========================
-   SCROLL REVEAL ANIMATION
-=========================== */
+window.addEventListener("scroll", () => {
 
-const revealElements = document.querySelectorAll(
-".about,.skills,.services,.projects,.education,.certificates,.contact"
-);
+    if (window.scrollY > 300) {
+        topBtn.style.display = "flex";
+    } else {
+        topBtn.style.display = "none";
+    }
 
-function revealSection(){
+});
 
-    revealElements.forEach((section)=>{
+// ==============================
+// CONTACT FORM VALIDATION
+// ==============================
 
-        const windowHeight = window.innerHeight;
+const form = document.getElementById("contact-form");
 
-        const top = section.getBoundingClientRect().top;
+form.addEventListener("submit", function(e){
 
-        if(top < windowHeight - 120){
+    e.preventDefault();
 
-            section.style.opacity = "1";
-            section.style.transform = "translateY(0px)";
+    const name = form.querySelector("input[type='text']").value.trim();
+    const email = form.querySelector("input[type='email']").value.trim();
+    const message = form.querySelector("textarea").value.trim();
 
+    if(name === ""){
+        alert("Please enter your name.");
+        return;
+    }
+
+    if(email === ""){
+        alert("Please enter your email.");
+        return;
+    }
+
+    if(!email.includes("@")){
+        alert("Please enter a valid email.");
+        return;
+    }
+
+    if(message === ""){
+        alert("Please write your message.");
+        return;
+    }
+
+    alert("Thank you! Your message has been submitted successfully.");
+
+    form.reset();
+
+});
+
+// ==============================
+// SMOOTH FADE-IN ANIMATION
+// ==============================
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach((entry)=>{
+
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
         }
 
     });
 
-}
-
-revealElements.forEach(section=>{
-
-    section.style.opacity="0";
-    section.style.transform="translateY(80px)";
-    section.style.transition="all .8s ease";
-
+},{
+    threshold:0.2
 });
 
-window.addEventListener("scroll",revealSection);
+document.querySelectorAll("section").forEach((section)=>{
+    observer.observe(section);
+});
 
-revealSection();
+// ==============================
+// CURRENT YEAR IN FOOTER
+// ==============================
 
+const footerText = document.querySelector(".footer p");
 
-/* ===========================
-   SKILL BAR ANIMATION
-=========================== */
-
-const bars = document.querySelectorAll(".progress span");
-
-function animateBars(){
-
-    bars.forEach(bar=>{
-
-        const value = bar.style.width;
-
-        bar.style.width="0";
-
-        setTimeout(()=>{
-
-            bar.style.width=value;
-
-        },300);
-
-    });
-
-}
-
-animateBars();
+footerText.innerHTML =
+`© ${new Date().getFullYear()} Bablu Kumar | All Rights Reserved`;
