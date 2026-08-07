@@ -116,3 +116,31 @@ nav{
 }
 
 }
+.about{
+    padding:100px 8%;
+    text-align:center;
+}
+
+.about h2{
+    font-size:40px;
+    color:#4db5ff;
+    margin-bottom:20px;
+}
+
+.about p{
+    max-width:700px;
+    margin:auto;
+    color:#ccc;
+    line-height:1.8;
+    font-size:18px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:12px 28px;
+    background:linear-gradient(45deg,#4db5ff,#bb86fc);
+    color:white;
+    border-radius:30px;
+    text-decoration:none;
+}
