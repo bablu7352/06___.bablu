@@ -550,3 +550,47 @@ section{
 }
 
 }
+/* ===== Active Navbar ===== */
+
+.navbar a.active{
+    color:#00bfff;
+}
+
+/* ===== Mobile Menu ===== */
+
+@media(max-width:991px){
+
+.navbar.active{
+    display:flex;
+    position:absolute;
+    top:80px;
+    right:20px;
+    width:220px;
+    background:#111827;
+    border-radius:15px;
+    flex-direction:column;
+    padding:20px;
+    gap:15px;
+    box-shadow:0 0 20px rgba(0,191,255,.4);
+}
+
+}
+
+/* ===== Scroll Animation ===== */
+
+section{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all .8s ease;
+}
+
+section.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ===== Top Button Hidden ===== */
+
+.top-btn{
+    display:none;
+}
