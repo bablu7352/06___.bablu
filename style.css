@@ -723,67 +723,56 @@ section.show{
     }
 }
 /* =================================
-   FINAL MOBILE HOME FIX
-================================ */
+   REMOVE EXTRA MOBILE HOME SPACE
+================================= */
 
 @media (max-width: 600px) {
 
     .home {
-        min-height: auto !important;
+        display: block !important;
+        min-height: 0 !important;
         height: auto !important;
-
-        display: flex !important;
-        flex-direction: column !important;
-
-        justify-content: flex-start !important;
-        align-items: center !important;
-
-        gap: 0 !important;
 
         padding: 95px 20px 40px !important;
         margin: 0 !important;
-    }
-
-    /* Profile photo first */
-    .home-image {
-        order: 1 !important;
-
-        flex: none !important;
-        width: 100% !important;
-        height: auto !important;
-
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    .home-image img {
-        width: 210px !important;
-        height: 210px !important;
-
-        display: block !important;
-        margin: 0 !important;
-    }
-
-    /* Text directly below image */
-    .home-content {
-        order: 2 !important;
-
-        flex: none !important;
-        width: 100% !important;
-        height: auto !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
 
         text-align: center !important;
     }
 
+    .home-image {
+        display: block !important;
+
+        width: 100% !important;
+        height: 210px !important;
+
+        margin: 0 0 0 0 !important;
+        padding: 0 !important;
+
+        flex: none !important;
+    }
+
+    .home-image img {
+        display: block !important;
+
+        width: 210px !important;
+        height: 210px !important;
+
+        margin: 0 auto !important;
+    }
+
+    .home-content {
+        display: block !important;
+
+        width: 100% !important;
+        height: auto !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
     .home-content h3 {
         margin: 0 !important;
+        padding: 0 !important;
     }
 
     .home-content h1 {
@@ -794,15 +783,4 @@ section.show{
         margin: 0 0 10px !important;
     }
 
-    .home-content p {
-        margin: 0 auto !important;
-    }
-
-    .btn-box {
-        margin-top: 18px !important;
-    }
-
-    .social-icons {
-        margin-top: 18px !important;
-    }
 }
