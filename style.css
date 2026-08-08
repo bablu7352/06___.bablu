@@ -722,29 +722,10 @@ section.show{
         padding: 25px 15px;
     }
 }
-/* ================================
-   HOME SECTION - MOBILE GAP FIX
+/* =================================
+   FINAL MOBILE HOME FIX
 ================================ */
 
-.home {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    padding: 120px 8% 60px;
-}
-
-.home-image {
-    flex: 0 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* ================================
-   MOBILE
-================================ */
 @media (max-width: 600px) {
 
     .home {
@@ -752,7 +733,7 @@ section.show{
         height: auto !important;
 
         display: flex !important;
-        flex-direction: column-reverse !important;
+        flex-direction: column !important;
 
         justify-content: flex-start !important;
         align-items: center !important;
@@ -763,10 +744,17 @@ section.show{
         margin: 0 !important;
     }
 
+    /* Profile photo first */
     .home-image {
-        flex: 0 0 auto !important;
+        order: 1 !important;
+
+        flex: none !important;
         width: 100% !important;
         height: auto !important;
+
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
 
         margin: 0 !important;
         padding: 0 !important;
@@ -780,8 +768,11 @@ section.show{
         margin: 0 !important;
     }
 
+    /* Text directly below image */
     .home-content {
-        flex: 0 0 auto !important;
+        order: 2 !important;
+
+        flex: none !important;
         width: 100% !important;
         height: auto !important;
 
@@ -803,4 +794,15 @@ section.show{
         margin: 0 0 10px !important;
     }
 
+    .home-content p {
+        margin: 0 auto !important;
+    }
+
+    .btn-box {
+        margin-top: 18px !important;
+    }
+
+    .social-icons {
+        margin-top: 18px !important;
+    }
 }
