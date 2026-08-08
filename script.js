@@ -475,3 +475,75 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("portfolio-ready");
 
 });
+// =========================================
+// BOTTOM NAVIGATION - ACTIVE SECTION
+// =========================================
+
+const bottomLinks = document.querySelectorAll(".bottom-link");
+const pageSections = document.querySelectorAll("section[id]");
+
+function updateBottomNavigation() {
+
+    let currentSection = "";
+
+    pageSections.forEach(section => {
+
+        const sectionTop = section.offsetTop - 180;
+        const sectionBottom =
+            sectionTop + section.offsetHeight;
+
+        if (
+            window.scrollY >= sectionTop &&
+            window.scrollY < sectionBottom
+        ) {
+            currentSection = section.id;
+        }
+
+    });
+
+    bottomLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (
+            link.getAttribute("href") ===
+            "#" + currentSection
+        ) {
+            link.classList.add("active");
+        }
+
+    });
+}
+
+
+// Scroll पर update
+window.addEventListener(
+    "scroll",
+    updateBottomNavigation
+);
+
+
+// Page load पर update
+window.addEventListener(
+    "load",
+    updateBottomNavigation
+);
+
+
+// =========================================
+// BOTTOM NAV CLICK
+// =========================================
+
+bottomLinks.forEach(link => {
+
+    link.addEventListener("click", function() {
+
+        bottomLinks.forEach(item => {
+            item.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+    });
+
+});
