@@ -1515,3 +1515,68 @@ body{
     }
 
 }
+/* =================================
+   BOTTOM NAV - PREMIUM EFFECT
+================================= */
+
+.bottom-nav{
+    box-shadow:0 -5px 25px rgba(0,0,0,.45);
+}
+
+/* ICON CIRCLE EFFECT */
+
+.bottom-link i{
+    width:32px;
+    height:32px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    transition:.3s ease;
+}
+
+/* ACTIVE ICON */
+
+.bottom-link.active i{
+    background:#fff;
+    color:#000;
+
+    transform:scale(1.05);
+}
+
+/* ACTIVE TEXT */
+
+.bottom-link.active span{
+    color:#fff;
+    font-weight:600;
+}
+
+/* PRESS EFFECT */
+
+.bottom-link:active i{
+    transform:scale(.88);
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .bottom-nav{
+        height:62px;
+    }
+
+    .bottom-link{
+        font-size:9px;
+        gap:3px;
+    }
+
+    .bottom-link i{
+        width:30px;
+        height:30px;
+        font-size:17px;
+    }
+
+}
