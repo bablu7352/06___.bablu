@@ -594,3 +594,131 @@ section.show{
 .top-btn{
     display:none;
 }
+/* =================================
+   MOBILE LAYOUT FIX
+================================= */
+
+@media (max-width: 600px) {
+
+    /* Home section */
+    .home {
+        min-height: auto;
+        padding: 110px 20px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 35px;
+    }
+
+    /* Profile photo */
+    .home-image {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .home-image img {
+        width: 220px;
+        height: 220px;
+    }
+
+    /* Home text */
+    .home-content {
+        width: 100%;
+        text-align: center;
+    }
+
+    .home-content h3 {
+        font-size: 18px;
+    }
+
+    .home-content h1 {
+        font-size: 36px;
+        margin: 6px 0;
+    }
+
+    .home-content h2 {
+        font-size: 20px;
+    }
+
+    .home-content p {
+        font-size: 12px;
+        line-height: 1.7;
+        max-width: 330px;
+        margin: auto;
+    }
+
+    /* Buttons */
+    .btn-box {
+        margin-top: 22px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 10px 18px;
+        font-size: 12px;
+    }
+
+    /* Social icons */
+    .social-icons {
+        margin-top: 22px;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .social-icons a {
+        width: 40px;
+        height: 40px;
+        font-size: 17px;
+    }
+
+    /* All sections */
+    section {
+        padding: 65px 20px;
+    }
+
+    .heading {
+        font-size: 28px;
+        margin-bottom: 35px;
+    }
+
+    /* About */
+    .about-container {
+        gap: 30px;
+    }
+
+    .about-image img {
+        width: 220px;
+    }
+
+    .about-content p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    /* Cards */
+    .skills-container,
+    .education-container,
+    .projects-container,
+    .certificate-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .skill-box,
+    .education-box,
+    .project-box,
+    .certificate-box {
+        padding: 22px;
+    }
+
+    /* Footer */
+    .footer {
+        margin-top: 30px;
+        padding: 25px 15px;
+    }
+}
