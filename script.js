@@ -547,3 +547,250 @@ bottomLinks.forEach(link => {
     });
 
 });
+// =========================================
+// PROJECT POPUP / MODAL
+// =========================================
+
+const projectCards =
+    document.querySelectorAll(".post-card");
+
+const projectModal =
+    document.getElementById("project-modal");
+
+const modalClose =
+    document.getElementById("modal-close");
+
+const modalImage =
+    document.getElementById("modal-project-image");
+
+const modalTitle =
+    document.getElementById("modal-project-title");
+
+const modalDescription =
+    document.getElementById("modal-project-description");
+
+const modalTags =
+    document.getElementById("modal-project-tags");
+
+const modalGithub =
+    document.getElementById("modal-github");
+
+
+// =========================================
+// PROJECT DATA
+// =========================================
+
+const projects = [
+
+    {
+        title: "Personal Portfolio",
+
+        image: "project1.jpg",
+
+        description:
+            "A modern responsive personal portfolio website created using HTML, CSS and JavaScript.",
+
+        tags: ["HTML", "CSS", "JavaScript"],
+
+        github:
+            "https://github.com/bablu7352"
+    },
+
+
+    {
+        title: "Calculator App",
+
+        image: "project2.jpg",
+
+        description:
+            "A clean and responsive calculator application with a simple modern interface.",
+
+        tags: ["HTML", "CSS", "JavaScript"],
+
+        github:
+            "https://github.com/bablu7352"
+    },
+
+
+    {
+        title: "To-Do App",
+
+        image: "project3.jpg",
+
+        description:
+            "A simple task management application for adding and managing daily tasks.",
+
+        tags: ["HTML", "CSS", "JavaScript"],
+
+        github:
+            "https://github.com/bablu7352"
+    },
+
+
+    {
+        title: "Web Design",
+
+        image: "project4.jpg",
+
+        description:
+            "A modern responsive web design project focused on clean user interface and mobile layout.",
+
+        tags: ["HTML", "CSS"],
+
+        github:
+            "https://github.com/bablu7352"
+    },
+
+
+    {
+        title: "JavaScript Project",
+
+        image: "project5.jpg",
+
+        description:
+            "An interactive JavaScript project with dynamic elements and user interaction.",
+
+        tags: ["HTML", "CSS", "JavaScript"],
+
+        github:
+            "https://github.com/bablu7352"
+    },
+
+
+    {
+        title: "Responsive Website",
+
+        image: "project6.jpg",
+
+        description:
+            "A responsive website designed to work smoothly on mobile, tablet and desktop screens.",
+
+        tags: ["HTML", "CSS", "JavaScript"],
+
+        github:
+            "https://github.com/bablu7352"
+    }
+
+];
+
+
+// =========================================
+// OPEN PROJECT
+// =========================================
+
+projectCards.forEach((card, index) => {
+
+    card.addEventListener("click", () => {
+
+        const project = projects[index];
+
+        if (!project) return;
+
+
+        modalImage.src = project.image;
+
+        modalTitle.textContent =
+            project.title;
+
+        modalDescription.textContent =
+            project.description;
+
+
+        // Tags create करना
+
+        modalTags.innerHTML = "";
+
+        project.tags.forEach(tag => {
+
+            const tagElement =
+                document.createElement("span");
+
+            tagElement.textContent = tag;
+
+            modalTags.appendChild(tagElement);
+
+        });
+
+
+        modalGithub.href =
+            project.github;
+
+
+        projectModal.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+
+    });
+
+});
+
+
+// =========================================
+// CLOSE PROJECT
+// =========================================
+
+function closeProjectModal() {
+
+    projectModal.classList.remove("show");
+
+    document.body.style.overflow = "";
+
+}
+
+
+// Close button
+
+if (modalClose) {
+
+    modalClose.addEventListener(
+        "click",
+        closeProjectModal
+    );
+
+}
+
+
+// =========================================
+// CLOSE BY CLICKING OUTSIDE
+// =========================================
+
+if (projectModal) {
+
+    projectModal.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target === projectModal
+            ) {
+
+                closeProjectModal();
+
+            }
+
+        }
+    );
+
+}
+
+
+// =========================================
+// CLOSE WITH ESC KEY
+// =========================================
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape" &&
+            projectModal &&
+            projectModal.classList.contains("show")
+        ) {
+
+            closeProjectModal();
+
+        }
+
+    }
+);
