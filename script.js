@@ -889,3 +889,220 @@ postImages.forEach((imageBox) => {
     });
 
 });
+// =================================
+// SAVE BUTTON
+// =================================
+
+const saveButtons =
+    document.querySelectorAll(".save-btn");
+
+saveButtons.forEach((button) => {
+
+    button.addEventListener("click", function () {
+
+        const icon = this.querySelector("i");
+
+        if (this.classList.contains("saved")) {
+
+            this.classList.remove("saved");
+
+            icon.classList.remove("fa-solid");
+            icon.classList.add("fa-regular");
+
+        } else {
+
+            this.classList.add("saved");
+
+            icon.classList.remove("fa-regular");
+            icon.classList.add("fa-solid");
+
+        }
+
+    });
+
+});
+
+
+// =================================
+// SHARE BUTTON
+// =================================
+
+const shareButtons =
+    document.querySelectorAll(".share-btn");
+
+shareButtons.forEach((button) => {
+
+    button.addEventListener("click", async function () {
+
+        const post =
+            this.closest(".insta-post");
+
+        const title =
+            post.querySelector(".insta-user strong")
+            ?.textContent || "Bablu Kumar";
+
+        const text =
+            "Check out this project by " + title;
+
+        const shareData = {
+            title: "Bablu Kumar Portfolio",
+            text: text,
+            url: window.location.href
+        };
+
+        // Mobile Share
+        if (navigator.share) {
+
+            try {
+
+                await navigator.share(shareData);
+
+            } catch (error) {
+
+                // User cancelled share
+                console.log("Share cancelled");
+
+            }
+
+        } else {
+
+            // Desktop / unsupported browser
+            try {
+
+                await navigator.clipboard.writeText(
+                    window.location.href
+                );
+
+                alert("Portfolio link copied!");
+
+            } catch (error) {
+
+                alert("Share is not supported on this device.");
+
+            }
+
+        }
+
+    });
+
+});
+// =================================
+// INSTAGRAM COMMENT SYSTEM
+// =================================
+
+const commentButtons =
+    document.querySelectorAll(".comment-btn");
+
+commentButtons.forEach((button) => {
+
+    button.addEventListener("click", function () {
+
+        const post =
+            this.closest(".insta-post");
+
+        let commentBox =
+            post.querySelector(".comment-box");
+
+        // Already open है तो बंद करो
+        if (commentBox) {
+
+            commentBox.remove();
+            return;
+
+        }
+
+        // Comment box बनाना
+        commentBox =
+            document.createElement("div");
+
+        commentBox.className =
+            "comment-box";
+
+        commentBox.innerHTML = `
+            <input
+                type="text"
+                class="comment-input"
+                placeholder="Add a comment..."
+                maxlength="150"
+            >
+
+            <button class="comment-submit">
+                Post
+            </button>
+
+            <div class="comment-list"></div>
+        `;
+
+        post.appendChild(commentBox);
+
+        const input =
+            commentBox.querySelector(".comment-input");
+
+        const submit =
+            commentBox.querySelector(".comment-submit");
+
+        const list =
+            commentBox.querySelector(".comment-list");
+
+
+        // Post Comment
+        submit.addEventListener("click", function () {
+
+            const text =
+                input.value.trim();
+
+            if (text === "") {
+                return;
+            }
+
+            const comment =
+                document.createElement("div");
+
+            comment.className =
+                "user-comment";
+
+            comment.innerHTML = `
+                <strong>Bablu Kumar</strong>
+                <span>${escapeComment(text)}</span>
+            `;
+
+            list.appendChild(comment);
+
+            input.value = "";
+
+        });
+
+
+        // Enter key से comment
+        input.addEventListener("keydown", function (event) {
+
+            if (event.key === "Enter") {
+
+                submit.click();
+
+            }
+
+        });
+
+
+        input.focus();
+
+    });
+
+});
+
+
+// =================================
+// SAFE COMMENT TEXT
+// =================================
+
+function escapeComment(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
