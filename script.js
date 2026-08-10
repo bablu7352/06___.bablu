@@ -840,3 +840,52 @@ likeButtons.forEach((button) => {
     });
 
 });
+// =================================
+// INSTAGRAM DOUBLE-TAP LIKE
+// =================================
+
+const postImages =
+    document.querySelectorAll(".insta-post-image");
+
+postImages.forEach((imageBox) => {
+
+    let lastTap = 0;
+
+    imageBox.addEventListener("click", function () {
+
+        const currentTime = new Date().getTime();
+
+        const tapGap = currentTime - lastTap;
+
+        if (tapGap < 300 && tapGap > 0) {
+
+            const post =
+                this.closest(".insta-post");
+
+            const likeButton =
+                post.querySelector(".like-btn");
+
+            const heart =
+                this.querySelector(".double-tap-heart");
+
+            // Like only if not already liked
+            if (!likeButton.classList.contains("liked")) {
+
+                likeButton.click();
+
+            }
+
+            // Heart animation
+            heart.classList.remove("show");
+
+            void heart.offsetWidth;
+
+            heart.classList.add("show");
+
+        }
+
+        lastTap = currentTime;
+
+    });
+
+});
