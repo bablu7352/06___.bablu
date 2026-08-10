@@ -794,3 +794,49 @@ document.addEventListener(
 
     }
 );
+// =================================
+// INSTAGRAM LIKE BUTTON
+// =================================
+
+const likeButtons = document.querySelectorAll(".like-btn");
+
+likeButtons.forEach((button) => {
+
+    button.addEventListener("click", function () {
+
+        const icon = this.querySelector("i");
+        const post = this.closest(".insta-post");
+        const likeCount = post.querySelector(".like-count");
+
+        let currentLikes = parseInt(
+            likeCount.textContent
+        ) || 0;
+
+        if (this.classList.contains("liked")) {
+
+            // Unlike
+            this.classList.remove("liked");
+
+            icon.classList.remove("fa-solid");
+            icon.classList.add("fa-regular");
+
+            currentLikes--;
+
+        } else {
+
+            // Like
+            this.classList.add("liked");
+
+            icon.classList.remove("fa-regular");
+            icon.classList.add("fa-solid");
+
+            currentLikes++;
+
+        }
+
+        likeCount.textContent =
+            currentLikes + " likes";
+
+    });
+
+});
