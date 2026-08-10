@@ -1980,3 +1980,200 @@ body{
     }
 
 }
+/* =================================
+   INSTAGRAM POST ACTIONS
+================================= */
+
+.insta-post-actions{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 14px 5px;
+}
+
+.post-left-actions{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.insta-post-actions button{
+    background:none;
+    border:none;
+    color:#fff;
+    padding:0;
+    cursor:pointer;
+    font-size:23px;
+    transition:.2s ease;
+}
+
+.insta-post-actions button:hover{
+    transform:scale(1.12);
+}
+
+/* LIKE */
+
+.like-btn.liked{
+    color:#ff3040;
+}
+
+.like-btn.liked i{
+    font-family:"Font Awesome 6 Free";
+    font-weight:900;
+}
+
+/* SAVE */
+
+.save-btn.saved{
+    color:#fff;
+}
+
+.save-btn.saved i{
+    font-family:"Font Awesome 6 Free";
+    font-weight:900;
+}
+
+/* POST INFORMATION */
+
+.insta-post-info{
+    padding:4px 14px 15px;
+}
+
+.like-count{
+    display:block;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.insta-post-info p{
+    font-size:13px;
+    line-height:1.5;
+    margin:0 0 8px;
+}
+
+.insta-post-info p strong{
+    margin-right:5px;
+}
+
+.view-comments{
+    background:none;
+    border:none;
+    padding:0;
+    color:#888;
+    font-size:12px;
+    cursor:pointer;
+}
+
+/* SHARE BUTTON */
+
+.share-btn{
+    position:relative;
+}
+
+.share-btn:active{
+    transform:scale(.85);
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .posts-section{
+        padding-left:12px;
+        padding-right:12px;
+    }
+
+    .insta-post{
+        border-radius:10px;
+    }
+
+    .insta-post-actions button{
+        font-size:21px;
+    }
+
+    .post-left-actions{
+        gap:17px;
+    }
+
+    .insta-post-info p{
+        font-size:12px;
+    }
+
+}
+/* =================================
+   INSTAGRAM POST — PART 3
+================================= */
+
+.insta-post{
+    width:100%;
+    max-width:100%;
+    background:#111;
+    border:1px solid #222;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+/* Post image ratio */
+
+.insta-post-image{
+    width:100%;
+    aspect-ratio:1 / 1;
+    position:relative;
+    overflow:hidden;
+    background:#000;
+}
+
+.insta-post-image img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+}
+
+/* Smooth image effect */
+
+.insta-post-image img{
+    transition:transform .4s ease;
+}
+
+.insta-post-image:hover img{
+    transform:scale(1.02);
+}
+
+/* Header spacing */
+
+.insta-post-header{
+    min-height:60px;
+}
+
+/* Heart position */
+
+.double-tap-heart{
+    z-index:5;
+}
+
+/* Better mobile view */
+
+@media(max-width:600px){
+
+    .posts-section{
+        width:100%;
+        max-width:100%;
+        padding:25px 0 100px;
+    }
+
+    .posts-section .section-title{
+        padding:0 15px;
+    }
+
+    .insta-post{
+        border-left:none;
+        border-right:none;
+        border-radius:0;
+    }
+
+    .insta-post-image{
+        aspect-ratio:1 / 1;
+    }
+
+}
