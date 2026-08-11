@@ -3810,3 +3810,2127 @@ body.cursor-hover .cursor-dot {
 /* =========================================================
    CSS V6.0 COMPLETE
    ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.1
+   POLISH — HOME / HERO
+   ========================================================= */
+
+
+/* ================= HERO GLOW ================= */
+
+.home::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    top: 10%;
+    left: -180px;
+
+    border-radius: 50%;
+
+    background: rgba(22, 131, 255, 0.08);
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+
+/* ================= HOME CONTENT POLISH ================= */
+
+.home-content {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.home-content h1 {
+
+    text-shadow:
+        0 8px 35px rgba(22, 131, 255, 0.12);
+}
+
+
+.home-content h1 span {
+
+    background:
+        linear-gradient(
+            90deg,
+            #55b7ff,
+            #6c4dff,
+            #55b7ff
+        );
+
+    background-size: 200% auto;
+
+    animation:
+        gradientText 5s linear infinite;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+
+@keyframes gradientText {
+
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+
+/* ================= TYPING TEXT ================= */
+
+.typing-text {
+
+    display: inline-block;
+
+    min-width: 180px;
+
+    color: var(--primary-light);
+
+    font-weight: 600;
+
+    position: relative;
+}
+
+
+.typing-text::after {
+
+    content: "|";
+
+    margin-left: 3px;
+
+    color: var(--primary-light);
+
+    animation:
+        blinkCursor 0.8s infinite;
+}
+
+
+@keyframes blinkCursor {
+
+    0%,
+    45% {
+        opacity: 1;
+    }
+
+    46%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* ================= HERO BUTTON POLISH ================= */
+
+.home-buttons .btn {
+
+    position: relative;
+
+    overflow: hidden;
+
+    z-index: 1;
+}
+
+
+.home-buttons .btn::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.20),
+            transparent
+        );
+
+    transition: 0.6s ease;
+
+    z-index: -1;
+}
+
+
+.home-buttons .btn:hover::before {
+
+    left: 120%;
+}
+
+
+/* ================= SOCIAL ICON POLISH ================= */
+
+.social-icons a {
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.social-icons a::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 131, 255, 0.18);
+
+    transform: translate(-50%, -50%);
+
+    left: 50%;
+    top: 50%;
+
+    transition:
+        width 0.35s ease,
+        height 0.35s ease;
+}
+
+
+.social-icons a:hover::before {
+
+    width: 100px;
+    height: 100px;
+}
+
+
+.social-icons a i {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* ================= PROFILE IMAGE POLISH ================= */
+
+.home-image {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.home-image::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    border-radius: 50%;
+
+    border: 1px dashed
+        rgba(85, 183, 255, 0.25);
+
+    animation:
+        rotateCircle 18s linear infinite;
+}
+
+
+@keyframes rotateCircle {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.image-circle {
+
+    position: relative;
+
+    z-index: 2;
+
+    box-shadow:
+        0 0 0 8px rgba(22, 131, 255, 0.04),
+        0 25px 70px rgba(22, 131, 255, 0.16);
+}
+
+
+/* ================= FLOATING EFFECT ================= */
+
+.home-image {
+
+    animation:
+        heroFloat 5s ease-in-out infinite;
+}
+
+
+@keyframes heroFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+}
+
+
+/* ================= MOBILE FIX ================= */
+
+@media (max-width: 900px) {
+
+    .home-image::before {
+
+        width: 350px;
+        height: 350px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .home-image::before {
+
+        width: 290px;
+        height: 290px;
+    }
+
+    .home-image {
+
+        animation:
+            heroFloat 6s ease-in-out infinite;
+    }
+
+}
+
+
+/* =========================================================
+   V6.1 CSS PART 1 END
+   ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.1
+   POLISH — PROJECTS
+   ========================================================= */
+
+
+/* ================= PROJECT SECTION GLOW ================= */
+
+.projects::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    left: -180px;
+    top: 25%;
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 131, 255, 0.06);
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+
+/* ================= PROJECT CARD ================= */
+
+.project-card {
+
+    isolation: isolate;
+
+    transform-style: preserve-3d;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ================= CARD SHINE ================= */
+
+.project-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -130%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.07),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        left 0.8s ease;
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+
+.project-card:hover::before {
+
+    left: 150%;
+}
+
+
+/* ================= PROJECT IMAGE ================= */
+
+.project-image {
+
+    position: relative;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+.project-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 55%,
+            rgba(5, 11, 24, 0.45)
+        );
+
+    pointer-events: none;
+}
+
+
+.project-image img {
+
+    filter: saturate(0.95);
+
+    transition:
+        transform 0.7s cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+        filter 0.5s ease;
+}
+
+
+.project-card:hover .project-image img {
+
+    transform: scale(1.10);
+
+    filter: saturate(1.1);
+}
+
+
+/* ================= PROJECT OVERLAY ================= */
+
+.project-overlay {
+
+    backdrop-filter: blur(5px);
+
+    z-index: 4;
+}
+
+
+.project-overlay a {
+
+    transform:
+        translateY(15px)
+        scale(0.85);
+
+    opacity: 0;
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease,
+        background 0.3s ease;
+}
+
+
+.project-card:hover .project-overlay a {
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity: 1;
+}
+
+
+.project-card:hover
+.project-overlay a:nth-child(2) {
+
+    transition-delay: 0.08s;
+}
+
+
+/* ================= PROJECT NUMBER ================= */
+
+.project-number {
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 131, 255, 0.08);
+
+    border: 1px solid
+        rgba(85, 183, 255, 0.12);
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.project-card:hover .project-number {
+
+    transform: rotate(10deg);
+
+    background:
+        rgba(22, 131, 255, 0.16);
+}
+
+
+/* ================= PROJECT CONTENT ================= */
+
+.project-content {
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.012),
+            transparent
+        );
+}
+
+
+.project-content h3 {
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.project-card:hover
+.project-content h3 {
+
+    color: var(--primary-light);
+
+    transform: translateX(2px);
+}
+
+
+/* ================= PROJECT TAGS ================= */
+
+.project-tags span {
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.project-tags span:hover {
+
+    transform: translateY(-2px);
+
+    background:
+        rgba(22, 131, 255, 0.15);
+
+    border-color:
+        rgba(85, 183, 255, 0.25);
+}
+
+
+/* ================= PROJECT BUTTON ================= */
+
+.projects-button .btn {
+
+    box-shadow:
+        0 12px 30px rgba(22, 131, 255, 0.12);
+}
+
+
+.projects-button .btn:hover {
+
+    box-shadow:
+        0 18px 40px rgba(22, 131, 255, 0.20);
+}
+
+
+/* ================= PROJECT RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    .projects-container {
+
+        gap: 20px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .projects::before {
+
+        width: 250px;
+        height: 250px;
+
+        left: -130px;
+    }
+
+
+    .project-card {
+
+        border-radius: 17px;
+    }
+
+
+    .project-image {
+
+        height: 195px;
+    }
+
+
+    .project-overlay a {
+
+        width: 42px;
+        height: 42px;
+    }
+
+}
+
+
+/* =========================================================
+   V6.1 CSS PART 2 END
+   ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.1
+   POLISH — ABOUT + SKILLS
+   ========================================================= */
+
+
+/* =========================================================
+   ABOUT POLISH
+   ========================================================= */
+
+.about {
+    overflow: hidden;
+}
+
+
+.about-container {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ================= ABOUT IMAGE GLOW ================= */
+
+.about-image::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 131, 255, 0.10);
+
+    filter: blur(80px);
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+/* ================= IMAGE FRAME ================= */
+
+.about-image-box {
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.30),
+        0 0 50px rgba(22, 131, 255, 0.07);
+
+    transition:
+        transform 0.5s cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+        box-shadow 0.5s ease;
+}
+
+
+.about-image-box::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    border-radius: 27px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(85,183,255,0.45),
+            transparent 35%,
+            transparent 65%,
+            rgba(108,77,255,0.35)
+        );
+
+    z-index: -1;
+
+    opacity: 0;
+
+    transition: opacity 0.4s ease;
+}
+
+
+.about-image-box:hover::before {
+    opacity: 1;
+}
+
+
+/* ================= ABOUT IMAGE HOVER ================= */
+
+.about-image-box:hover {
+
+    transform:
+        rotate(0deg)
+        translateY(-10px)
+        scale(1.015);
+
+    box-shadow:
+        0 35px 85px rgba(0, 0, 0, 0.38),
+        0 0 45px rgba(22, 131, 255, 0.12);
+}
+
+
+/* ================= EXPERIENCE BADGE ================= */
+
+.experience-badge {
+
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.35),
+        0 0 25px rgba(22, 131, 255, 0.08);
+
+    animation:
+        badgeFloat 4s ease-in-out infinite;
+}
+
+
+@keyframes badgeFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+
+/* ================= ABOUT HEADING ================= */
+
+.about-content h3 {
+
+    position: relative;
+
+    display: inline-block;
+}
+
+
+.about-content h3::after {
+
+    content: "";
+
+    display: block;
+
+    width: 45px;
+
+    height: 3px;
+
+    margin-top: 9px;
+
+    border-radius: 10px;
+
+    background: var(--gradient);
+
+    transition: width 0.35s ease;
+}
+
+
+.about-content:hover h3::after {
+    width: 75px;
+}
+
+
+/* ================= ABOUT TEXT ================= */
+
+.about-content > p {
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.about-content > p:hover {
+    color: var(--text-light);
+}
+
+
+/* ================= INFO CARDS ================= */
+
+.info-item {
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.info-item::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 2px;
+    height: 0;
+
+    background: var(--gradient);
+
+    transition: height 0.35s ease;
+}
+
+
+.info-item:hover::before {
+    height: 100%;
+}
+
+
+.info-item:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =========================================================
+   SKILLS POLISH
+   ========================================================= */
+
+.skills {
+    overflow: hidden;
+}
+
+
+.skills-container {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ================= SKILL CARD ================= */
+
+.skill-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.10);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.skill-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    right: -60px;
+    bottom: -60px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 131, 255, 0.08);
+
+    filter: blur(10px);
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.skill-card:hover::after {
+
+    transform:
+        scale(2.2);
+}
+
+
+/* ================= SKILL ICON ================= */
+
+.skill-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.10);
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.skill-card:hover .skill-icon {
+
+    transform:
+        translateY(-3px)
+        rotate(5deg)
+        scale(1.06);
+
+    box-shadow:
+        0 10px 25px rgba(22, 131, 255, 0.18);
+}
+
+
+/* ================= SKILL TITLE ================= */
+
+.skill-title h3 {
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.skill-card:hover .skill-title h3 {
+    color: var(--primary-light);
+}
+
+
+/* ================= SKILL BAR ================= */
+
+.skill-bar {
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+
+.skill-progress {
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 12px rgba(22, 131, 255, 0.20);
+}
+
+
+.skill-progress::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.35),
+            transparent
+        );
+
+    animation:
+        skillShine 2.8s ease-in-out infinite;
+}
+
+
+@keyframes skillShine {
+
+    0% {
+        left: -100%;
+    }
+
+    55%,
+    100% {
+        left: 130%;
+    }
+}
+
+
+/* ================= SKILL PERCENTAGE ================= */
+
+.skill-title span {
+
+    padding: 3px 7px;
+
+    border-radius: 5px;
+
+    background:
+        rgba(22, 131, 255, 0.06);
+
+    transition:
+        background 0.3s ease;
+}
+
+
+.skill-card:hover .skill-title span {
+
+    background:
+        rgba(22, 131, 255, 0.13);
+}
+
+
+/* =========================================================
+   MOBILE OPTIMIZATION
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .about-image::before {
+
+        width: 220px;
+        height: 220px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .about-image-box:hover {
+
+        transform:
+            rotate(0deg)
+            translateY(-5px)
+            scale(1.01);
+    }
+
+
+    .experience-badge {
+
+        animation:
+            badgeFloat 5s ease-in-out infinite;
+    }
+
+
+    .skill-card:hover {
+
+        transform:
+            translateY(-3px);
+    }
+
+}
+
+
+/* =========================================================
+   V6.1 CSS PART 3 END
+   ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.1
+   POLISH — EDUCATION + CERTIFICATES
+   ========================================================= */
+
+
+/* =========================================================
+   EDUCATION POLISH
+   ========================================================= */
+
+.education {
+    overflow: hidden;
+}
+
+
+/* ================= TIMELINE LINE ================= */
+
+.education-container::before {
+
+    width: 2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--primary),
+            rgba(85, 183, 255, 0.45),
+            rgba(108, 77, 255, 0.15),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(22, 131, 255, 0.18);
+}
+
+
+/* ================= EDUCATION ITEM ================= */
+
+.education-item {
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+.education-item:hover {
+
+    transform: translateX(4px);
+}
+
+
+/* ================= EDUCATION ICON ================= */
+
+.education-icon {
+
+    position: relative;
+
+    box-shadow:
+        0 0 0 8px var(--bg),
+        0 0 20px rgba(22, 131, 255, 0.12);
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.education-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -6px;
+
+    border-radius: 50%;
+
+    border: 1px solid
+        rgba(85, 183, 255, 0.18);
+
+    opacity: 0;
+
+    transform: scale(0.7);
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+.education-item:hover .education-icon {
+
+    transform:
+        scale(1.08)
+        rotate(4deg);
+
+    background:
+        rgba(22, 131, 255, 0.10);
+
+    box-shadow:
+        0 0 0 8px var(--bg),
+        0 0 28px rgba(22, 131, 255, 0.22);
+}
+
+
+.education-item:hover
+.education-icon::before {
+
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+/* ================= EDUCATION CONTENT ================= */
+
+.education-content {
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.10);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.education-content::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 3px;
+    height: 0;
+
+    background: var(--gradient);
+
+    transition:
+        height 0.4s ease;
+}
+
+
+.education-content:hover::before {
+    height: 100%;
+}
+
+
+.education-content:hover {
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.18),
+        0 0 25px rgba(22, 131, 255, 0.05);
+}
+
+
+/* ================= EDUCATION YEAR ================= */
+
+.education-year {
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.education-year::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.20),
+            transparent
+        );
+
+    transition:
+        left 0.5s ease;
+}
+
+
+.education-content:hover
+.education-year::after {
+
+    left: 130%;
+}
+
+
+.education-content:hover
+.education-year {
+
+    transform: translateY(-2px);
+
+    background:
+        rgba(22, 131, 255, 0.14);
+}
+
+
+/* ================= EDUCATION HEADING ================= */
+
+.education-content h3 {
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.education-content:hover h3 {
+
+    color: var(--primary-light);
+}
+
+
+/* =========================================================
+   CERTIFICATES POLISH
+   ========================================================= */
+
+.certificates {
+    overflow: hidden;
+}
+
+
+.certificates-container {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ================= CERTIFICATE CARD ================= */
+
+.certificate-card {
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.4s cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.certificate-card:hover {
+
+    transform:
+        translateY(-10px)
+        scale(1.01);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.22),
+        0 0 30px rgba(22, 131, 255, 0.06);
+}
+
+
+/* ================= CERTIFICATE GLOW ================= */
+
+.certificate-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: -70px;
+    bottom: -70px;
+
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 131, 255, 0.07);
+
+    filter: blur(25px);
+
+    transition:
+        transform 0.5s ease;
+}
+
+
+.certificate-card:hover::after {
+
+    transform:
+        scale(1.7);
+}
+
+
+/* ================= CERTIFICATE ICON ================= */
+
+.certificate-icon {
+
+    position: relative;
+
+    z-index: 2;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.10);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.certificate-card:hover
+.certificate-icon {
+
+    transform:
+        translateY(-4px)
+        rotate(5deg)
+        scale(1.06);
+
+    box-shadow:
+        0 12px 30px rgba(22, 131, 255, 0.18);
+}
+
+
+/* ================= CERTIFICATE CONTENT ================= */
+
+.certificate-content {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.certificate-content h3 {
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.certificate-card:hover
+.certificate-content h3 {
+
+    color: var(--primary-light);
+
+    transform: translateX(2px);
+}
+
+
+/* ================= CERTIFICATE LINK ================= */
+
+.certificate-link {
+
+    z-index: 3;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.certificate-link:hover {
+
+    box-shadow:
+        0 8px 22px rgba(22, 131, 255, 0.20);
+}
+
+
+/* =========================================================
+   MOBILE OPTIMIZATION
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .education-item:hover {
+
+        transform: none;
+    }
+
+
+    .education-content:hover {
+
+        transform: translateX(3px);
+    }
+
+
+    .certificate-card:hover {
+
+        transform:
+            translateY(-5px)
+            scale(1.005);
+    }
+
+}
+
+
+/* =========================================================
+   V6.1 CSS PART 4 END
+   ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.1
+   POLISH — CONTACT + FAQ + FOOTER
+   ========================================================= */
+
+
+/* =========================================================
+   CONTACT SECTION
+   ========================================================= */
+
+.contact {
+    overflow: hidden;
+}
+
+
+.contact-container {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ================= CONTACT CARDS ================= */
+
+.contact-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.contact-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.05),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        left 0.7s ease;
+
+    pointer-events: none;
+}
+
+
+.contact-card:hover::before {
+    left: 140%;
+}
+
+
+.contact-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.18),
+        0 0 25px rgba(22, 131, 255, 0.05);
+}
+
+
+/* ================= CONTACT ICON ================= */
+
+.contact-icon {
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+.contact-card:hover .contact-icon {
+
+    transform:
+        scale(1.08)
+        rotate(5deg);
+
+    box-shadow:
+        0 10px 25px rgba(22, 131, 255, 0.16);
+}
+
+
+/* =========================================================
+   CONTACT FORM
+   ========================================================= */
+
+.contact-form-container {
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.15);
+}
+
+
+.contact-form-container::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    right: -90px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 131, 255, 0.08);
+
+    filter: blur(30px);
+
+    pointer-events: none;
+}
+
+
+/* ================= FORM INPUT ================= */
+
+.form-group input,
+.form-group textarea {
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.25s ease;
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    transform: translateY(-1px);
+
+    border-color:
+        rgba(85, 183, 255, 0.55);
+
+    background:
+        rgba(255,255,255,0.045);
+
+    box-shadow:
+        0 0 0 3px rgba(22, 131, 255, 0.07),
+        0 8px 25px rgba(0, 0, 0, 0.08);
+
+    outline: none;
+}
+
+
+/* ================= FORM LABEL ================= */
+
+.form-group label {
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.form-group:focus-within label {
+
+    color:
+        var(--primary-light);
+}
+
+
+/* ================= FORM BUTTON ================= */
+
+.contact-form-container .btn {
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 12px 30px rgba(22, 131, 255, 0.13);
+}
+
+
+.contact-form-container .btn:hover {
+
+    box-shadow:
+        0 18px 40px rgba(22, 131, 255, 0.22);
+}
+
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+
+.faq {
+    overflow: hidden;
+}
+
+
+.faq-container {
+    position: relative;
+    z-index: 2;
+}
+
+
+.faq-item {
+
+    overflow: hidden;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.faq-item:hover {
+
+    border-color:
+        rgba(85, 183, 255, 0.20);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.10);
+}
+
+
+.faq-item.active {
+
+    border-color:
+        rgba(85, 183, 255, 0.28);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.14);
+}
+
+
+/* ================= FAQ QUESTION ================= */
+
+.faq-question {
+
+    position: relative;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease;
+}
+
+
+.faq-question:hover {
+
+    color:
+        var(--primary-light);
+}
+
+
+.faq-item.active .faq-question {
+
+    color:
+        var(--primary-light);
+
+    background:
+        rgba(22, 131, 255, 0.035);
+}
+
+
+/* ================= FAQ ICON ================= */
+
+.faq-question i {
+
+    transition:
+        transform 0.35s ease,
+        color 0.3s ease;
+}
+
+
+.faq-item.active
+.faq-question i {
+
+    transform: rotate(180deg);
+
+    color:
+        var(--primary-light);
+}
+
+
+/* ================= FAQ ANSWER ================= */
+
+.faq-answer {
+
+    overflow: hidden;
+
+    transition:
+        max-height 0.4s ease;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.footer::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 400px;
+    height: 200px;
+
+    left: 50%;
+
+    bottom: -170px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(22, 131, 255, 0.07);
+
+    filter: blur(70px);
+
+    pointer-events: none;
+}
+
+
+/* ================= FOOTER BRAND ================= */
+
+.footer-brand .logo {
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.footer-brand .logo:hover {
+
+    transform:
+        translateX(3px);
+}
+
+
+/* ================= FOOTER LINKS ================= */
+
+.footer-links a {
+
+    position: relative;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.footer-links a:hover {
+
+    color:
+        var(--primary-light);
+
+    transform:
+        translateX(4px);
+}
+
+
+/* ================= FOOTER SOCIAL ================= */
+
+.footer-social a {
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.footer-social a:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(22, 131, 255, 0.15);
+}
+
+
+/* ================= FOOTER BOTTOM ================= */
+
+.footer-bottom {
+
+    position: relative;
+}
+
+
+.footer-bottom::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 0;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(85,183,255,0.35),
+            transparent
+        );
+
+    transform: translateX(-50%);
+
+    transition:
+        width 0.8s ease;
+}
+
+
+.footer:hover .footer-bottom::before {
+
+    width: 100%;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+   ========================================================= */
+
+.back-to-top {
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.20);
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.back-to-top:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(22, 131, 255, 0.20);
+}
+
+
+/* =========================================================
+   FORM MESSAGE
+   ========================================================= */
+
+.form-message {
+
+    backdrop-filter: blur(12px);
+
+    animation:
+        formMessageIn 0.35s ease;
+}
+
+
+@keyframes formMessageIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(10px)
+            scale(0.98);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   MOBILE OPTIMIZATION
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .contact-card:hover {
+
+        transform:
+            translateY(-3px);
+    }
+
+
+    .faq-item:hover {
+
+        transform: none;
+    }
+
+
+    .footer::before {
+
+        width: 280px;
+    }
+
+
+    .form-group input,
+    .form-group textarea {
+
+        font-size: 14px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .footer-brand .logo,
+    .footer-links a,
+    .footer-social a,
+    .contact-card,
+    .faq-item,
+    .back-to-top {
+
+        transition: none;
+    }
+
+}
+
+
+/* =========================================================
+   V6.1 CSS PART 5 END
+   ========================================================= */
