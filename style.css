@@ -5934,3 +5934,1474 @@ body.cursor-hover .cursor-dot {
 /* =========================================================
    V6.1 CSS PART 5 END
    ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.2
+   CSS PART 1
+   THEME TOGGLE + SCROLL PROGRESS
+   ========================================================= */
+
+
+/* =========================================================
+   SCROLL PROGRESS BAR
+   ========================================================= */
+
+.scroll-progress {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: transparent;
+
+    z-index: 99999;
+
+    pointer-events: none;
+
+}
+
+
+.scroll-progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00c6ff,
+            #0072ff,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(0, 150, 255, 0.7);
+
+    transition:
+        width 0.08s linear;
+
+}
+
+
+/* =========================================================
+   THEME TOGGLE
+   ========================================================= */
+
+.theme-toggle {
+
+    position: fixed;
+
+    right: 22px;
+    bottom: 85px;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid
+        rgba(90, 170, 255, 0.35);
+
+    border-radius: 50%;
+
+    background:
+        rgba(12, 25, 48, 0.85);
+
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    z-index: 9990;
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.theme-toggle:hover {
+
+    transform:
+        translateY(-4px)
+        rotate(12deg);
+
+    background:
+        rgba(30, 80, 160, 0.95);
+
+    border-color:
+        rgba(80, 190, 255, 0.75);
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 140, 255, 0.35);
+
+}
+
+
+.theme-toggle:active {
+
+    transform:
+        scale(0.92);
+
+}
+
+
+/* =========================================================
+   LIGHT THEME BASE
+   ========================================================= */
+
+body.light-theme {
+
+    background:
+        #f4f7fb;
+
+    color:
+        #172033;
+
+}
+
+
+/* Main sections */
+
+body.light-theme section {
+
+    background:
+        transparent;
+
+}
+
+
+/* Header */
+
+body.light-theme .header {
+
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    border-bottom:
+        1px solid
+        rgba(0, 0, 0, 0.08);
+
+    box-shadow:
+        0 5px 25px
+        rgba(0, 0, 0, 0.06);
+
+}
+
+
+/* Cards */
+
+body.light-theme
+.project-card,
+
+body.light-theme
+.skill-card,
+
+body.light-theme
+.education-card,
+
+body.light-theme
+.certificate-card,
+
+body.light-theme
+.contact-card,
+
+body.light-theme
+.faq-item {
+
+    background:
+        rgba(255, 255, 255, 0.85);
+
+    border-color:
+        rgba(0, 0, 0, 0.08);
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.06);
+
+}
+
+
+/* Theme button in light mode */
+
+body.light-theme
+.theme-toggle {
+
+    background:
+        #ffffff;
+
+    color:
+        #172033;
+
+    border-color:
+        rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .theme-toggle {
+
+        right: 15px;
+
+        bottom: 72px;
+
+        width: 39px;
+
+        height: 39px;
+
+        font-size: 14px;
+
+    }
+
+
+    .scroll-progress {
+
+        height: 2px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .theme-toggle {
+
+        right: 12px;
+
+        bottom: 68px;
+
+        width: 36px;
+
+        height: 36px;
+
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.theme-toggle:focus-visible {
+
+    outline:
+        2px solid
+        #00c6ff;
+
+    outline-offset:
+        3px;
+
+}
+
+
+/* =========================================================
+   V6.2 CSS PART 1 END
+   ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.2
+   CSS PART 2
+   PROJECT FILTER + LANGUAGE SWITCHER
+   ========================================================= */
+
+
+/* =========================================================
+   LANGUAGE SWITCHER
+   ========================================================= */
+
+.language-switcher {
+
+    position: fixed;
+
+    top: 72px;
+    right: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 6px 10px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(10, 24, 45, 0.78);
+
+    border:
+        1px solid
+        rgba(80, 170, 255, 0.20);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.25);
+
+    z-index: 9000;
+
+}
+
+
+/* Language buttons */
+
+.language-btn {
+
+    border: none;
+
+    background: transparent;
+
+    color:
+        rgba(255, 255, 255, 0.55);
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+    padding: 5px 7px;
+
+    border-radius: 15px;
+
+    cursor: pointer;
+
+    transition:
+        all 0.3s ease;
+
+}
+
+
+/* Active language */
+
+.language-btn.active {
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0072ff,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 4px 15px
+        rgba(0, 114, 255, 0.30);
+
+}
+
+
+/* Hover */
+
+.language-btn:hover {
+
+    color: #ffffff;
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* Divider */
+
+.language-divider {
+
+    color:
+        rgba(255, 255, 255, 0.18);
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+body.light-theme
+.language-switcher {
+
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    border-color:
+        rgba(0, 0, 0, 0.08);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.08);
+
+}
+
+
+body.light-theme
+.language-btn {
+
+    color:
+        rgba(23, 32, 51, 0.55);
+
+}
+
+
+body.light-theme
+.language-btn.active {
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   PROJECT FILTER
+   ========================================================= */
+
+.project-filter {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin:
+        0 auto 28px;
+
+    padding:
+        6px;
+
+    width: fit-content;
+
+    max-width: 95%;
+
+    border-radius: 40px;
+
+    background:
+        rgba(10, 24, 45, 0.65);
+
+    border:
+        1px solid
+        rgba(80, 170, 255, 0.16);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+}
+
+
+/* Filter buttons */
+
+.filter-btn {
+
+    border: none;
+
+    outline: none;
+
+    padding:
+        8px 16px;
+
+    border-radius: 25px;
+
+    background:
+        transparent;
+
+    color:
+        rgba(255, 255, 255, 0.60);
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        all 0.3s ease;
+
+}
+
+
+/* Hover */
+
+.filter-btn:hover {
+
+    color:
+        #ffffff;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* Active */
+
+.filter-btn.active {
+
+    color:
+        #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0072ff,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 6px 18px
+        rgba(0, 114, 255, 0.28);
+
+}
+
+
+/* =========================================================
+   PROJECT FILTER ANIMATION
+   ========================================================= */
+
+.project-card.filter-hidden {
+
+    display: none;
+
+}
+
+
+.project-card.filter-show {
+
+    animation:
+        projectFilterIn
+        0.45s ease both;
+
+}
+
+
+@keyframes projectFilterIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(0.97);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   LIGHT THEME PROJECT FILTER
+   ========================================================= */
+
+body.light-theme
+.project-filter {
+
+    background:
+        rgba(255, 255, 255, 0.90);
+
+    border-color:
+        rgba(0, 0, 0, 0.08);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.06);
+
+}
+
+
+body.light-theme
+.filter-btn {
+
+    color:
+        rgba(23, 32, 51, 0.55);
+
+}
+
+
+body.light-theme
+.filter-btn:hover {
+
+    color:
+        #172033;
+
+}
+
+
+body.light-theme
+.filter-btn.active {
+
+    color:
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .language-switcher {
+
+        top: 62px;
+
+        right: 12px;
+
+        padding: 5px 8px;
+
+        gap: 5px;
+
+    }
+
+
+    .language-btn {
+
+        font-size: 9px;
+
+        padding:
+            4px 6px;
+
+    }
+
+
+    .project-filter {
+
+        gap: 5px;
+
+        padding: 5px;
+
+        margin-bottom: 22px;
+
+    }
+
+
+    .filter-btn {
+
+        padding:
+            7px 11px;
+
+        font-size: 10px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .language-switcher {
+
+        top: 58px;
+
+        right: 8px;
+
+    }
+
+
+    .project-filter {
+
+        max-width: 92%;
+
+    }
+
+
+    .filter-btn {
+
+        padding:
+            6px 9px;
+
+        font-size: 9px;
+
+    }
+
+}
+
+
+/* =========================================================
+   V6.2 CSS PART 2 END
+   ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.2
+   CSS PART 3
+   PROJECT PREVIEW MODAL
+   ========================================================= */
+
+
+/* =========================================================
+   MODAL BACKGROUND
+   ========================================================= */
+
+.project-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(2, 8, 20, 0.82);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    z-index: 99999;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+
+}
+
+
+/* Active modal */
+
+.project-modal.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+}
+
+
+/* =========================================================
+   MODAL OVERLAY
+   ========================================================= */
+
+.project-modal-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   MODAL CONTENT
+   ========================================================= */
+
+.project-modal-content {
+
+    position: relative;
+
+    width: min(850px, 100%);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 32, 58, 0.96),
+            rgba(5, 17, 35, 0.98)
+        );
+
+    border:
+        1px solid
+        rgba(80, 170, 255, 0.25);
+
+    border-radius:
+        24px;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, 0.55),
+        0 0 50px
+        rgba(0, 114, 255, 0.12);
+
+    transform:
+        translateY(25px)
+        scale(0.95);
+
+    transition:
+        transform 0.4s ease;
+
+    scrollbar-width: thin;
+
+}
+
+
+/* Modal active animation */
+
+.project-modal.active
+.project-modal-content {
+
+    transform:
+        translateY(0)
+        scale(1);
+
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
+.project-modal-close {
+
+    position: absolute;
+
+    top: 14px;
+
+    right: 14px;
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.15);
+
+    border-radius: 50%;
+
+    background:
+        rgba(5, 15, 30, 0.75);
+
+    color:
+        #ffffff;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    transition:
+        all 0.3s ease;
+
+}
+
+
+.project-modal-close:hover {
+
+    transform:
+        rotate(90deg)
+        scale(1.08);
+
+    background:
+        rgba(255, 60, 80, 0.85);
+
+    border-color:
+        rgba(255, 100, 120, 0.7);
+
+}
+
+
+/* =========================================================
+   MODAL IMAGE
+   ========================================================= */
+
+.project-modal-image {
+
+    min-height: 360px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    overflow: hidden;
+
+}
+
+
+.project-modal-image img {
+
+    width: 100%;
+
+    max-height: 420px;
+
+    object-fit: cover;
+
+    border-radius:
+        18px;
+
+    border:
+        1px solid
+        rgba(80, 170, 255, 0.20);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.30);
+
+    transition:
+        transform 0.4s ease;
+
+}
+
+
+.project-modal-image img:hover {
+
+    transform:
+        scale(1.02);
+
+}
+
+
+/* =========================================================
+   MODAL INFORMATION
+   ========================================================= */
+
+.project-modal-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding:
+        40px 35px;
+
+}
+
+
+.project-modal-category {
+
+    display: inline-block;
+
+    width: fit-content;
+
+    margin-bottom: 10px;
+
+    padding:
+        5px 12px;
+
+    border-radius:
+        20px;
+
+    background:
+        rgba(0, 114, 255, 0.12);
+
+    border:
+        1px solid
+        rgba(0, 150, 255, 0.20);
+
+    color:
+        #4db8ff;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        1px;
+
+}
+
+
+.project-modal-info h2 {
+
+    margin:
+        0 0 15px;
+
+    font-size:
+        clamp(24px, 4vw, 34px);
+
+    line-height:
+        1.2;
+
+    color:
+        #ffffff;
+
+}
+
+
+.project-modal-info p {
+
+    margin:
+        0 0 22px;
+
+    color:
+        rgba(255, 255, 255, 0.65);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.8;
+
+}
+
+
+/* =========================================================
+   TECHNOLOGY LIST
+   ========================================================= */
+
+.project-modal-tech {
+
+    margin-bottom:
+        25px;
+
+}
+
+
+.project-modal-tech > span {
+
+    display: block;
+
+    margin-bottom:
+        10px;
+
+    color:
+        rgba(255, 255, 255, 0.75);
+
+    font-size:
+        11px;
+
+    font-weight:
+        600;
+
+}
+
+
+.project-modal-tech > span i {
+
+    margin-right:
+        6px;
+
+    color:
+        #4db8ff;
+
+}
+
+
+.tech-list {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        7px;
+
+}
+
+
+.tech-list span {
+
+    padding:
+        5px 10px;
+
+    border-radius:
+        15px;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    color:
+        rgba(255, 255, 255, 0.72);
+
+    font-size:
+        9px;
+
+}
+
+
+/* =========================================================
+   MODAL BUTTONS
+   ========================================================= */
+
+.project-modal-buttons {
+
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        10px;
+
+}
+
+
+.project-modal-buttons .btn {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    text-decoration:
+        none;
+
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+body.light-theme
+.project-modal {
+
+    background:
+        rgba(235, 242, 250, 0.78);
+
+}
+
+
+body.light-theme
+.project-modal-content {
+
+    background:
+        rgba(255, 255, 255, 0.97);
+
+    border-color:
+        rgba(0, 0, 0, 0.10);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, 0.20);
+
+}
+
+
+body.light-theme
+.project-modal-info h2 {
+
+    color:
+        #172033;
+
+}
+
+
+body.light-theme
+.project-modal-info p {
+
+    color:
+        rgba(23, 32, 51, 0.65);
+
+}
+
+
+body.light-theme
+.project-modal-tech > span {
+
+    color:
+        rgba(23, 32, 51, 0.75);
+
+}
+
+
+body.light-theme
+.tech-list span {
+
+    background:
+        rgba(0, 0, 0, 0.04);
+
+    border-color:
+        rgba(0, 0, 0, 0.07);
+
+    color:
+        rgba(23, 32, 51, 0.70);
+
+}
+
+
+body.light-theme
+.project-modal-close {
+
+    background:
+        rgba(0, 0, 0, 0.05);
+
+    color:
+        #172033;
+
+    border-color:
+        rgba(0, 0, 0, 0.10);
+
+}
+
+
+/* =========================================================
+   MOBILE MODAL
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .project-modal {
+
+        padding:
+            12px;
+
+    }
+
+
+    .project-modal-content {
+
+        grid-template-columns:
+            1fr;
+
+        width:
+            100%;
+
+        max-height:
+            92vh;
+
+        border-radius:
+            20px;
+
+    }
+
+
+    .project-modal-image {
+
+        min-height:
+            210px;
+
+        padding:
+            18px 18px 5px;
+
+    }
+
+
+    .project-modal-image img {
+
+        max-height:
+            240px;
+
+        border-radius:
+            14px;
+
+    }
+
+
+    .project-modal-info {
+
+        padding:
+            20px;
+
+    }
+
+
+    .project-modal-info h2 {
+
+        font-size:
+            23px;
+
+    }
+
+
+    .project-modal-info p {
+
+        font-size:
+            11px;
+
+    }
+
+
+    .project-modal-close {
+
+        width:
+            34px;
+
+        height:
+            34px;
+
+        top:
+            10px;
+
+        right:
+            10px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .project-modal {
+
+        padding:
+            8px;
+
+    }
+
+
+    .project-modal-content {
+
+        border-radius:
+            17px;
+
+    }
+
+
+    .project-modal-image {
+
+        min-height:
+            175px;
+
+        padding:
+            15px 15px 3px;
+
+    }
+
+
+    .project-modal-image img {
+
+        max-height:
+            190px;
+
+    }
+
+
+    .project-modal-info {
+
+        padding:
+            17px;
+
+    }
+
+
+    .project-modal-buttons {
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .project-modal-buttons .btn {
+
+        width:
+            100%;
+
+        justify-content:
+            center;
+
+    }
+
+}
+
+
+/* =========================================================
+   V6.2 CSS PART 3 END
+   ========================================================= */
