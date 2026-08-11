@@ -2420,3 +2420,763 @@ console.log(
 /* =========================================================
    V6.1 JAVASCRIPT PART 3 END
    ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.2
+   JS PART 1
+   THEME TOGGLE
+   ========================================================= */
+
+(function () {
+
+    const themeToggle =
+        document.getElementById("theme-toggle");
+
+    if (!themeToggle) return;
+
+
+    const icon =
+        themeToggle.querySelector("i");
+
+
+    /* -------------------------------------------------------
+       LOAD SAVED THEME
+       ------------------------------------------------------- */
+
+    const savedTheme =
+        localStorage.getItem("bablu-theme");
+
+
+    if (savedTheme === "light") {
+
+        document.body.classList.add("light-theme");
+
+        if (icon) {
+
+            icon.classList.remove(
+                "fa-sun"
+            );
+
+            icon.classList.add(
+                "fa-moon"
+            );
+
+        }
+
+    }
+
+
+    /* -------------------------------------------------------
+       THEME TOGGLE
+       ------------------------------------------------------- */
+
+    themeToggle.addEventListener(
+        "click",
+        function () {
+
+            document.body.classList.toggle(
+                "light-theme"
+            );
+
+
+            const isLight =
+                document.body.classList.contains(
+                    "light-theme"
+                );
+
+
+            /* Save preference */
+
+            localStorage.setItem(
+                "bablu-theme",
+                isLight
+                    ? "light"
+                    : "dark"
+            );
+
+
+            /* Change icon */
+
+            if (icon) {
+
+                icon.classList.toggle(
+                    "fa-sun",
+                    !isLight
+                );
+
+                icon.classList.toggle(
+                    "fa-moon",
+                    isLight
+                );
+
+            }
+
+        }
+    );
+
+})();
+
+
+/* =========================================================
+   V6.2 JS PART 1 END
+   ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.2
+   JS PART 2
+   SCROLL PROGRESS + LANGUAGE TOGGLE
+   ========================================================= */
+
+
+/* =========================================================
+   SCROLL PROGRESS
+   ========================================================= */
+
+(function () {
+
+    const progressBar =
+        document.querySelector(
+            ".scroll-progress-bar"
+        );
+
+    if (!progressBar) return;
+
+
+    function updateScrollProgress() {
+
+        const scrollTop =
+            window.scrollY;
+
+        const documentHeight =
+            document.documentElement.scrollHeight
+            - window.innerHeight;
+
+
+        if (documentHeight <= 0) {
+
+            progressBar.style.width = "0%";
+
+            return;
+
+        }
+
+
+        const progress =
+            (scrollTop / documentHeight) * 100;
+
+
+        progressBar.style.width =
+            Math.min(progress, 100) + "%";
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateScrollProgress,
+        { passive: true }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        updateScrollProgress
+    );
+
+
+    updateScrollProgress();
+
+})();
+
+
+/* =========================================================
+   LANGUAGE TOGGLE
+   ========================================================= */
+
+(function () {
+
+    const languageButtons =
+        document.querySelectorAll(
+            ".language-btn"
+        );
+
+
+    if (!languageButtons.length) return;
+
+
+    const savedLanguage =
+        localStorage.getItem(
+            "bablu-language"
+        ) || "en";
+
+
+    function setActiveLanguage(language) {
+
+        languageButtons.forEach(
+            function (button) {
+
+                const buttonLanguage =
+                    button.getAttribute(
+                        "data-lang"
+                    );
+
+
+                button.classList.toggle(
+                    "active",
+                    buttonLanguage === language
+                );
+
+            }
+        );
+
+    }
+
+
+    setActiveLanguage(
+        savedLanguage
+    );
+
+
+    languageButtons.forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const language =
+                        button.getAttribute(
+                            "data-lang"
+                        );
+
+
+                    if (!language) return;
+
+
+                    localStorage.setItem(
+                        "bablu-language",
+                        language
+                    );
+
+
+                    setActiveLanguage(
+                        language
+                    );
+
+
+                    /*
+                     * Full text translation
+                     * will be connected in
+                     * a later JS part.
+                     */
+
+                    document.documentElement
+                        .setAttribute(
+                            "lang",
+                            language === "hi"
+                                ? "hi"
+                                : "en"
+                        );
+
+                }
+            );
+
+        }
+    );
+
+})();
+
+
+/* =========================================================
+   V6.2 JS PART 2 END
+   ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.2
+   JS PART 3
+   PROJECT FILTER
+   ========================================================= */
+
+(function () {
+
+    const filterButtons =
+        document.querySelectorAll(".filter-btn");
+
+    const projectCards =
+        document.querySelectorAll(".project-card");
+
+    if (!filterButtons.length || !projectCards.length) {
+        return;
+    }
+
+
+    function filterProjects(category) {
+
+        projectCards.forEach(function (card) {
+
+            const cardCategory =
+                card.getAttribute("data-category");
+
+
+            /* Show all projects */
+
+            if (category === "all") {
+
+                card.classList.remove(
+                    "filter-hidden"
+                );
+
+                card.classList.add(
+                    "filter-show"
+                );
+
+                return;
+            }
+
+
+            /* Show matching projects */
+
+            if (cardCategory === category) {
+
+                card.classList.remove(
+                    "filter-hidden"
+                );
+
+                card.classList.add(
+                    "filter-show"
+                );
+
+            } else {
+
+                card.classList.remove(
+                    "filter-show"
+                );
+
+                card.classList.add(
+                    "filter-hidden"
+                );
+
+            }
+
+        });
+
+    }
+
+
+    filterButtons.forEach(function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const category =
+                    button.getAttribute(
+                        "data-filter"
+                    );
+
+
+                if (!category) return;
+
+
+                /* Active button */
+
+                filterButtons.forEach(
+                    function (btn) {
+
+                        btn.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+                button.classList.add(
+                    "active"
+                );
+
+
+                /* Filter projects */
+
+                filterProjects(
+                    category
+                );
+
+            }
+        );
+
+    });
+
+
+    /* Initial state */
+
+    filterProjects("all");
+
+
+})();
+
+
+/* =========================================================
+   V6.2 JS PART 3 END
+   ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.2
+   JS PART 4
+   PROJECT PREVIEW MODAL
+   ========================================================= */
+
+(function () {
+
+    const modal =
+        document.getElementById("project-modal");
+
+    const modalClose =
+        document.getElementById("project-modal-close");
+
+    const modalOverlay =
+        document.querySelector(
+            ".project-modal-overlay"
+        );
+
+    const previewButtons =
+        document.querySelectorAll(
+            ".project-preview-btn"
+        );
+
+    if (!modal || !previewButtons.length) {
+        return;
+    }
+
+
+    /* -------------------------------------------------------
+       PROJECT DATA
+       ------------------------------------------------------- */
+
+    const projects = {
+
+        1: {
+            title: "Personal Portfolio",
+            category: "HTML / CSS / JavaScript",
+            description:
+                "A modern responsive personal portfolio website created to showcase my skills, projects, education and certificates.",
+            image: "portfolio.jpg",
+            technologies: [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ],
+            demo: "#",
+            github: "#"
+        },
+
+        2: {
+            title: "Calculator App",
+            category: "CSS / JavaScript",
+            description:
+                "A responsive calculator application with a clean and modern interface.",
+            image: "calculator.jpg",
+            technologies: [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ],
+            demo: "#",
+            github: "#"
+        },
+
+        3: {
+            title: "My Task",
+            category: "JavaScript",
+            description:
+                "A simple task management project designed to organize daily tasks in an easy-to-use interface.",
+            image: "mytask.jpg",
+            technologies: [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ],
+            demo: "#",
+            github: "#"
+        },
+
+        4: {
+            title: "Weather App",
+            category: "HTML / CSS / JavaScript",
+            description:
+                "A responsive weather project with a modern interface for displaying weather information.",
+            image: "weather.jpg",
+            technologies: [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ],
+            demo: "#",
+            github: "#"
+        },
+
+        5: {
+            title: "JavaScript Project",
+            category: "JavaScript",
+            description:
+                "A modern JavaScript project created to demonstrate interactive web development skills.",
+            image: "js-project.jpg",
+            technologies: [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ],
+            demo: "#",
+            github: "#"
+        },
+
+        6: {
+            title: "Restaurant Website",
+            category: "HTML / CSS",
+            description:
+                "A modern responsive restaurant website with a stylish layout and user-friendly design.",
+            image: "restaurant.jpg",
+            technologies: [
+                "HTML",
+                "CSS",
+                "JavaScript"
+            ],
+            demo: "#",
+            github: "#"
+        }
+
+    };
+
+
+    /* -------------------------------------------------------
+       MODAL ELEMENTS
+       ------------------------------------------------------- */
+
+    const modalImage =
+        document.getElementById(
+            "project-modal-img"
+        );
+
+    const modalTitle =
+        document.getElementById(
+            "project-modal-title"
+        );
+
+    const modalCategory =
+        document.getElementById(
+            "project-modal-category"
+        );
+
+    const modalDescription =
+        document.getElementById(
+            "project-modal-description"
+        );
+
+    const modalTechList =
+        document.getElementById(
+            "project-modal-tech-list"
+        );
+
+    const liveDemo =
+        document.getElementById(
+            "project-live-demo"
+        );
+
+    const github =
+        document.getElementById(
+            "project-github"
+        );
+
+
+    /* -------------------------------------------------------
+       OPEN MODAL
+       ------------------------------------------------------- */
+
+    function openModal(projectId) {
+
+        const project =
+            projects[projectId];
+
+        if (!project) return;
+
+
+        modalTitle.textContent =
+            project.title;
+
+        modalCategory.textContent =
+            project.category;
+
+        modalDescription.textContent =
+            project.description;
+
+
+        /* Project image */
+
+        if (modalImage) {
+
+            modalImage.src =
+                project.image;
+
+            modalImage.alt =
+                project.title;
+
+        }
+
+
+        /* Technologies */
+
+        if (modalTechList) {
+
+            modalTechList.innerHTML = "";
+
+            project.technologies.forEach(
+                function (technology) {
+
+                    const span =
+                        document.createElement(
+                            "span"
+                        );
+
+                    span.textContent =
+                        technology;
+
+                    modalTechList.appendChild(
+                        span
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* Links */
+
+        if (liveDemo) {
+
+            liveDemo.href =
+                project.demo;
+
+        }
+
+
+        if (github) {
+
+            github.href =
+                project.github;
+
+        }
+
+
+        /* Show modal */
+
+        modal.classList.add(
+            "active"
+        );
+
+        modal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.style.overflow =
+            "hidden";
+
+    }
+
+
+    /* -------------------------------------------------------
+       CLOSE MODAL
+       ------------------------------------------------------- */
+
+    function closeModal() {
+
+        modal.classList.remove(
+            "active"
+        );
+
+        modal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        document.body.style.overflow =
+            "";
+
+    }
+
+
+    /* -------------------------------------------------------
+       VIEW DETAILS BUTTONS
+       ------------------------------------------------------- */
+
+    previewButtons.forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const projectId =
+                        button.getAttribute(
+                            "data-project"
+                        );
+
+                    openModal(
+                        projectId
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    /* Close button */
+
+    if (modalClose) {
+
+        modalClose.addEventListener(
+            "click",
+            closeModal
+        );
+
+    }
+
+
+    /* Close by clicking overlay */
+
+    if (modalOverlay) {
+
+        modalOverlay.addEventListener(
+            "click",
+            closeModal
+        );
+
+    }
+
+
+    /* Close with Escape */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape" &&
+                modal.classList.contains(
+                    "active"
+                )
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+})();
+
+
+/* =========================================================
+   V6.2 JS PART 4 END
+   ========================================================= */
