@@ -1,57 +1,72 @@
-// =========================================
-// INSTAGRAM-STYLE PORTFOLIO
-// JAVASCRIPT PART 1
-// =========================================
+/* =========================================================
+   BABLU KUMAR — PORTFOLIO V6.0
+   JAVASCRIPT PART 1
+   NAVBAR + HEADER + BACK TO TOP
+   ========================================================= */
 
 
-// =========================================
-// MOBILE MENU
-// =========================================
+/* ================= SELECT ELEMENTS ================= */
 
 const menuIcon = document.querySelector(".menu-icon");
+const navbar = document.querySelector(".navbar");
+const menuIconElement = document.querySelector(".menu-icon i");
 
-if (menuIcon) {
+const header = document.querySelector(".header");
+const backToTop = document.querySelector(".back-to-top");
+
+const navLinks = document.querySelectorAll(".navbar a");
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+if (menuIcon && navbar) {
 
     menuIcon.addEventListener("click", () => {
 
-        alert("Menu feature coming soon!");
+        navbar.classList.toggle("active");
+
+
+        /* Change menu icon */
+
+        if (navbar.classList.contains("active")) {
+
+            menuIconElement.classList.remove("fa-bars");
+
+            menuIconElement.classList.add("fa-xmark");
+
+        } else {
+
+            menuIconElement.classList.remove("fa-xmark");
+
+            menuIconElement.classList.add("fa-bars");
+
+        }
 
     });
 
 }
 
 
-// =========================================
-// SMOOTH SCROLL
-// =========================================
+/* =========================================================
+   CLOSE MOBILE MENU AFTER CLICKING NAV LINK
+   ========================================================= */
 
-const navigationLinks = document.querySelectorAll(
-    'a[href^="#"]'
-);
+navLinks.forEach(link => {
 
-navigationLinks.forEach(link => {
+    link.addEventListener("click", () => {
 
-    link.addEventListener("click", function(event) {
+        if (!navbar) return;
 
-        const targetId = this.getAttribute("href");
+        navbar.classList.remove("active");
 
-        if (
-            targetId &&
-            targetId !== "#"
-        ) {
 
-            const target = document.querySelector(targetId);
+        if (menuIconElement) {
 
-            if (target) {
+            menuIconElement.classList.remove("fa-xmark");
 
-                event.preventDefault();
-
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-
-            }
+            menuIconElement.classList.add("fa-bars");
 
         }
 
@@ -60,115 +75,358 @@ navigationLinks.forEach(link => {
 });
 
 
-// =========================================
-// BACK TO TOP
-// =========================================
+/* =========================================================
+   HEADER SCROLL EFFECT
+   ========================================================= */
 
-const backToTop = document.querySelector(".back-to-top");
+function updateHeader() {
 
-if (backToTop) {
+    if (!header) return;
 
-    window.addEventListener("scroll", () => {
 
-        if (window.scrollY > 400) {
+    if (window.scrollY > 50) {
 
-            backToTop.style.opacity = "1";
-            backToTop.style.pointerEvents = "auto";
+        header.classList.add("scrolled");
 
-        } else {
+    } else {
 
-            backToTop.style.opacity = "0";
-            backToTop.style.pointerEvents = "none";
+        header.classList.remove("scrolled");
 
-        }
-
-    });
+    }
 
 }
-// =========================================
-// JAVASCRIPT PART 2
-// SCROLL ANIMATION + ACTIVE SECTION
-// + CONTACT FORM VALIDATION
-// =========================================
 
 
-// =========================================
-// SCROLL REVEAL ANIMATION
-// =========================================
+window.addEventListener("scroll", updateHeader);
 
-const sections = document.querySelectorAll(
-    ".content-section, .about, .highlights, .contact-section"
-);
 
-const revealSections = () => {
+/* Run once when page loads */
+
+updateHeader();
+
+
+/* =========================================================
+   ACTIVE NAVIGATION LINK
+   ========================================================= */
+
+const sections = document.querySelectorAll("section[id]");
+
+
+function updateActiveNavigation() {
+
+    const scrollPosition = window.scrollY + 180;
+
 
     sections.forEach(section => {
 
-        const sectionTop =
-            section.getBoundingClientRect().top;
+        const sectionTop = section.offsetTop;
 
-        const windowHeight = window.innerHeight;
+        const sectionHeight = section.offsetHeight;
 
-        if (sectionTop < windowHeight - 80) {
+        const sectionId = section.getAttribute("id");
 
-            section.classList.add("show");
+
+        if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+        ) {
+
+            navLinks.forEach(link => {
+
+                link.classList.remove("active");
+
+
+                const targetLink = document.querySelector(
+                    `.navbar a[href="#${sectionId}"]`
+                );
+
+
+                if (targetLink) {
+
+                    targetLink.classList.add("active");
+
+                }
+
+            });
 
         }
 
     });
 
-};
-
-window.addEventListener("scroll", revealSections);
-
-revealSections();
+}
 
 
-// =========================================
-// ACTIVE SECTION
-// =========================================
+window.addEventListener("scroll", updateActiveNavigation);
 
-const allSections = document.querySelectorAll(
-    "section[id]"
-);
 
-const allNavLinks = document.querySelectorAll(
-    'a[href^="#"]'
-);
+/* =========================================================
+   BACK TO TOP BUTTON
+   ========================================================= */
 
-window.addEventListener("scroll", () => {
+function updateBackToTop() {
 
-    let currentSection = "";
+    if (!backToTop) return;
 
-    allSections.forEach(section => {
 
-        const sectionTop =
-            section.offsetTop - 150;
+    if (window.scrollY > 500) {
 
-        const sectionHeight =
-            section.offsetHeight;
+        backToTop.classList.add("show");
 
-        if (
-            window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight
-        ) {
+    } else {
 
-            currentSection = section.getAttribute("id");
+        backToTop.classList.remove("show");
 
-        }
+    }
+
+}
+
+
+window.addEventListener("scroll", updateBackToTop);
+
+
+/* Run once */
+
+updateBackToTop();
+
+
+/* =========================================================
+   SMOOTH BACK TO TOP
+   ========================================================= */
+
+if (backToTop) {
+
+    backToTop.addEventListener("click", event => {
+
+        event.preventDefault();
+
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
 
     });
 
-    allNavLinks.forEach(link => {
+}
 
-        link.classList.remove("active");
 
-        if (
-            link.getAttribute("href") ===
-            "#" + currentSection
-        ) {
+/* =========================================================
+   JAVASCRIPT PART 1 END
+   ========================================================= */
+/* =========================================================
+   BABLU KUMAR — PORTFOLIO V6.0
+   JAVASCRIPT PART 2
+   TYPING + SKILLS + FAQ + CURSOR
+   ========================================================= */
 
-            link.classList.add("active");
+
+/* =========================================================
+   TYPING ANIMATION
+   ========================================================= */
+
+const typingText = document.querySelector(".typing-text");
+
+const typingWords = [
+    "Web Designer",
+    "Front-End Developer",
+    "Creative Coder",
+    "UI Enthusiast"
+];
+
+let wordIndex = 0;
+let characterIndex = 0;
+let isDeleting = false;
+
+
+function typeEffect() {
+
+    if (!typingText) return;
+
+
+    const currentWord = typingWords[wordIndex];
+
+
+    if (isDeleting) {
+
+        characterIndex--;
+
+    } else {
+
+        characterIndex++;
+
+    }
+
+
+    typingText.textContent =
+        currentWord.substring(0, characterIndex);
+
+
+    let typingSpeed = isDeleting ? 55 : 100;
+
+
+    /* Pause after completing a word */
+
+    if (!isDeleting && characterIndex === currentWord.length) {
+
+        typingSpeed = 1500;
+
+        isDeleting = true;
+
+    }
+
+
+    /* Move to next word */
+
+    else if (isDeleting && characterIndex === 0) {
+
+        isDeleting = false;
+
+        wordIndex++;
+
+        if (wordIndex >= typingWords.length) {
+
+            wordIndex = 0;
+
+        }
+
+        typingSpeed = 400;
+
+    }
+
+
+    setTimeout(typeEffect, typingSpeed);
+
+}
+
+
+/* Start typing */
+
+typeEffect();
+
+
+
+/* =========================================================
+   SKILL BAR ANIMATION
+   ========================================================= */
+
+const skillSection = document.querySelector("#skills");
+
+const skillProgressBars =
+    document.querySelectorAll(".skill-progress");
+
+let skillsAnimated = false;
+
+
+function animateSkills() {
+
+    if (!skillSection || skillsAnimated) return;
+
+
+    const sectionPosition =
+        skillSection.getBoundingClientRect().top;
+
+
+    const screenHeight =
+        window.innerHeight;
+
+
+    if (sectionPosition < screenHeight * 0.85) {
+
+        skillProgressBars.forEach(bar => {
+
+            /*
+             * Width is already defined in CSS.
+             * We temporarily set it to zero and
+             * then restore the CSS value.
+             */
+
+            const targetWidth =
+                getComputedStyle(bar).width;
+
+
+            bar.style.width = "0";
+
+
+            setTimeout(() => {
+
+                bar.style.width = targetWidth;
+
+            }, 100);
+
+        });
+
+
+        skillsAnimated = true;
+
+    }
+
+}
+
+
+window.addEventListener("scroll", animateSkills);
+
+animateSkills();
+
+
+
+/* =========================================================
+   FAQ ACCORDION
+   ========================================================= */
+
+const faqItems =
+    document.querySelectorAll(".faq-item");
+
+
+faqItems.forEach(item => {
+
+    const question =
+        item.querySelector(".faq-question");
+
+    const answer =
+        item.querySelector(".faq-answer");
+
+
+    if (!question || !answer) return;
+
+
+    question.addEventListener("click", () => {
+
+
+        const isActive =
+            item.classList.contains("active");
+
+
+        /* Close all other FAQ items */
+
+        faqItems.forEach(otherItem => {
+
+            otherItem.classList.remove("active");
+
+
+            const otherAnswer =
+                otherItem.querySelector(".faq-answer");
+
+
+            if (otherAnswer) {
+
+                otherAnswer.style.maxHeight = null;
+
+            }
+
+        });
+
+
+        /* Open selected FAQ */
+
+        if (!isActive) {
+
+            item.classList.add("active");
+
+            answer.style.maxHeight =
+                answer.scrollHeight + "px";
 
         }
 
@@ -177,932 +435,571 @@ window.addEventListener("scroll", () => {
 });
 
 
-// =========================================
-// CONTACT FORM
-// =========================================
+
+/* =========================================================
+   CUSTOM CURSOR
+   ========================================================= */
+
+const cursor =
+    document.querySelector(".cursor");
+
+const cursorDot =
+    document.querySelector(".cursor-dot");
+
+
+/*
+ * Custom cursor is useful on desktop.
+ * It is hidden on mobile through CSS.
+ */
+
+if (cursor && cursorDot) {
+
+    document.addEventListener("mousemove", event => {
+
+        cursor.style.left =
+            event.clientX + "px";
+
+        cursor.style.top =
+            event.clientY + "px";
+
+
+        cursorDot.style.left =
+            event.clientX + "px";
+
+        cursorDot.style.top =
+            event.clientY + "px";
+
+    });
+
+
+    /* Interactive hover effect */
+
+    const interactiveElements =
+        document.querySelectorAll(
+            "a, button, input, textarea, .project-card, .skill-card"
+        );
+
+
+    interactiveElements.forEach(element => {
+
+        element.addEventListener("mouseenter", () => {
+
+            document.body.classList.add("cursor-hover");
+
+        });
+
+
+        element.addEventListener("mouseleave", () => {
+
+            document.body.classList.remove("cursor-hover");
+
+        });
+
+    });
+
+}
+
+
+
+/* =========================================================
+   JAVASCRIPT PART 2 END
+   ========================================================= */
+/* =========================================================
+   BABLU KUMAR — PORTFOLIO V6.0
+   JAVASCRIPT PART 3 — FINAL
+   FORM + REVEAL + YEAR + IMAGE EFFECTS
+   ========================================================= */
+
+
+/* =========================================================
+   CONTACT FORM VALIDATION
+   ========================================================= */
 
 const contactForm =
-    document.getElementById("contact-form");
+    document.querySelector("#contact-form");
+
 
 if (contactForm) {
 
-    contactForm.addEventListener(
-        "submit",
-        function(event) {
+    contactForm.addEventListener("submit", function (event) {
 
-            event.preventDefault();
-
-            const name =
-                document.getElementById("name").value.trim();
-
-            const email =
-                document.getElementById("email").value.trim();
-
-            const message =
-                document.getElementById("message").value.trim();
+        event.preventDefault();
 
 
-            // Check Name
+        const name =
+            document.querySelector("#name");
 
-            if (name.length < 2) {
+        const email =
+            document.querySelector("#email");
 
-                alert("Please enter your name.");
+        const subject =
+            document.querySelector("#subject");
 
-                return;
-
-            }
-
-
-            // Check Email
-
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailPattern.test(email)) {
-
-                alert("Please enter a valid email address.");
-
-                return;
-
-            }
+        const message =
+            document.querySelector("#message");
 
 
-            // Check Message
+        /* Basic validation */
 
-            if (message.length < 5) {
+        if (
+            !name.value.trim() ||
+            !email.value.trim() ||
+            !subject.value.trim() ||
+            !message.value.trim()
+        ) {
 
-                alert("Please write a message.");
-
-                return;
-
-            }
-
-
-            // Success
-
-            alert(
-                "Thank you " +
-                name +
-                "! Your message has been submitted."
+            showFormMessage(
+                "Please fill in all fields.",
+                "error"
             );
 
-
-            contactForm.reset();
-
-        }
-    );
-
-}
-// =========================================
-// JAVASCRIPT PART 3
-// MOBILE MENU + HIGHLIGHT INTERACTION
-// =========================================
-
-
-// =========================================
-// MOBILE MENU
-// =========================================
-
-const menuIcon = document.querySelector(".menu-icon");
-
-const navMenu = document.querySelector(".navbar");
-
-if (menuIcon && navMenu) {
-
-    menuIcon.addEventListener("click", () => {
-
-        navMenu.classList.toggle("active");
-
-        menuIcon.classList.toggle("active");
-
-    });
-
-
-    // Menu link click hone par menu close
-
-    const menuLinks =
-        navMenu.querySelectorAll("a");
-
-    menuLinks.forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            navMenu.classList.remove("active");
-
-            menuIcon.classList.remove("active");
-
-        });
-
-    });
-
-}
-
-
-// =========================================
-// HIGHLIGHT CLICK EFFECT
-// =========================================
-
-const highlights =
-    document.querySelectorAll(".highlight");
-
-highlights.forEach(item => {
-
-    item.addEventListener("click", () => {
-
-        highlights.forEach(highlight => {
-
-            highlight.classList.remove("selected");
-
-        });
-
-        item.classList.add("selected");
-
-    });
-
-});
-
-
-// =========================================
-// BUTTON CLICK EFFECT
-// =========================================
-
-const buttons =
-    document.querySelectorAll(
-        ".profile-buttons a, .contact-form button"
-    );
-
-buttons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        button.style.transform = "scale(0.96)";
-
-        setTimeout(() => {
-
-            button.style.transform = "";
-
-        }, 120);
-
-    });
-
-});
-
-
-// =========================================
-// PAGE LOADED EFFECT
-// =========================================
-
-window.addEventListener("load", () => {
-
-    document.body.classList.add("loaded");
-
-});
-// =========================================
-// JAVASCRIPT PART 4
-// FINAL POLISH + TYPING EFFECT
-// =========================================
-
-
-// =========================================
-// TYPING EFFECT
-// =========================================
-
-const profileTitle =
-    document.querySelector(".profile-title");
-
-if (profileTitle) {
-
-    const text = "Frontend Developer";
-
-    let index = 0;
-
-    profileTitle.textContent = "";
-
-    function typeText() {
-
-        if (index < text.length) {
-
-            profileTitle.textContent +=
-                text.charAt(index);
-
-            index++;
-
-            setTimeout(typeText, 80);
-
-        }
-
-    }
-
-    typeText();
-
-}
-
-
-// =========================================
-// PROFILE INTRO ANIMATION
-// =========================================
-
-const profile =
-    document.querySelector(".profile");
-
-if (profile) {
-
-    profile.style.opacity = "0";
-    profile.style.transform = "translateY(20px)";
-    profile.style.transition = "all 0.7s ease";
-
-    setTimeout(() => {
-
-        profile.style.opacity = "1";
-        profile.style.transform = "translateY(0)";
-
-    }, 150);
-
-}
-
-
-// =========================================
-// SOCIAL ICON HOVER EFFECT
-// =========================================
-
-const socialIcons =
-    document.querySelectorAll(
-        ".social-section a, .footer-social a"
-    );
-
-socialIcons.forEach(icon => {
-
-    icon.addEventListener("mouseenter", () => {
-
-        icon.style.transform =
-            "translateY(-4px) scale(1.08)";
-
-    });
-
-    icon.addEventListener("mouseleave", () => {
-
-        icon.style.transform = "";
-
-    });
-
-});
-
-
-// =========================================
-// CURRENT YEAR
-// =========================================
-
-const footerText =
-    document.querySelector(".footer p");
-
-if (footerText) {
-
-    const currentYear =
-        new Date().getFullYear();
-
-    footerText.innerHTML =
-        `© ${currentYear} Bablu Kumar. All Rights Reserved.`;
-
-}
-
-
-// =========================================
-// PAGE LOADED
-// =========================================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    document.body.classList.add("portfolio-ready");
-
-});
-// =========================================
-// BOTTOM NAVIGATION - ACTIVE SECTION
-// =========================================
-
-const bottomLinks = document.querySelectorAll(".bottom-link");
-const pageSections = document.querySelectorAll("section[id]");
-
-function updateBottomNavigation() {
-
-    let currentSection = "";
-
-    pageSections.forEach(section => {
-
-        const sectionTop = section.offsetTop - 180;
-        const sectionBottom =
-            sectionTop + section.offsetHeight;
-
-        if (
-            window.scrollY >= sectionTop &&
-            window.scrollY < sectionBottom
-        ) {
-            currentSection = section.id;
-        }
-
-    });
-
-    bottomLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (
-            link.getAttribute("href") ===
-            "#" + currentSection
-        ) {
-            link.classList.add("active");
-        }
-
-    });
-}
-
-
-// Scroll पर update
-window.addEventListener(
-    "scroll",
-    updateBottomNavigation
-);
-
-
-// Page load पर update
-window.addEventListener(
-    "load",
-    updateBottomNavigation
-);
-
-
-// =========================================
-// BOTTOM NAV CLICK
-// =========================================
-
-bottomLinks.forEach(link => {
-
-    link.addEventListener("click", function() {
-
-        bottomLinks.forEach(item => {
-            item.classList.remove("active");
-        });
-
-        this.classList.add("active");
-
-    });
-
-});
-// =========================================
-// PROJECT POPUP / MODAL
-// =========================================
-
-const projectCards =
-    document.querySelectorAll(".post-card");
-
-const projectModal =
-    document.getElementById("project-modal");
-
-const modalClose =
-    document.getElementById("modal-close");
-
-const modalImage =
-    document.getElementById("modal-project-image");
-
-const modalTitle =
-    document.getElementById("modal-project-title");
-
-const modalDescription =
-    document.getElementById("modal-project-description");
-
-const modalTags =
-    document.getElementById("modal-project-tags");
-
-const modalGithub =
-    document.getElementById("modal-github");
-
-
-// =========================================
-// PROJECT DATA
-// =========================================
-
-const projects = [
-
-    {
-        title: "Personal Portfolio",
-
-        image: "project1.jpg",
-
-        description:
-            "A modern responsive personal portfolio website created using HTML, CSS and JavaScript.",
-
-        tags: ["HTML", "CSS", "JavaScript"],
-
-        github:
-            "https://github.com/bablu7352"
-    },
-
-
-    {
-        title: "Calculator App",
-
-        image: "project2.jpg",
-
-        description:
-            "A clean and responsive calculator application with a simple modern interface.",
-
-        tags: ["HTML", "CSS", "JavaScript"],
-
-        github:
-            "https://github.com/bablu7352"
-    },
-
-
-    {
-        title: "To-Do App",
-
-        image: "project3.jpg",
-
-        description:
-            "A simple task management application for adding and managing daily tasks.",
-
-        tags: ["HTML", "CSS", "JavaScript"],
-
-        github:
-            "https://github.com/bablu7352"
-    },
-
-
-    {
-        title: "Web Design",
-
-        image: "project4.jpg",
-
-        description:
-            "A modern responsive web design project focused on clean user interface and mobile layout.",
-
-        tags: ["HTML", "CSS"],
-
-        github:
-            "https://github.com/bablu7352"
-    },
-
-
-    {
-        title: "JavaScript Project",
-
-        image: "project5.jpg",
-
-        description:
-            "An interactive JavaScript project with dynamic elements and user interaction.",
-
-        tags: ["HTML", "CSS", "JavaScript"],
-
-        github:
-            "https://github.com/bablu7352"
-    },
-
-
-    {
-        title: "Responsive Website",
-
-        image: "project6.jpg",
-
-        description:
-            "A responsive website designed to work smoothly on mobile, tablet and desktop screens.",
-
-        tags: ["HTML", "CSS", "JavaScript"],
-
-        github:
-            "https://github.com/bablu7352"
-    }
-
-];
-
-
-// =========================================
-// OPEN PROJECT
-// =========================================
-
-projectCards.forEach((card, index) => {
-
-    card.addEventListener("click", () => {
-
-        const project = projects[index];
-
-        if (!project) return;
-
-
-        modalImage.src = project.image;
-
-        modalTitle.textContent =
-            project.title;
-
-        modalDescription.textContent =
-            project.description;
-
-
-        // Tags create करना
-
-        modalTags.innerHTML = "";
-
-        project.tags.forEach(tag => {
-
-            const tagElement =
-                document.createElement("span");
-
-            tagElement.textContent = tag;
-
-            modalTags.appendChild(tagElement);
-
-        });
-
-
-        modalGithub.href =
-            project.github;
-
-
-        projectModal.classList.add("show");
-
-        document.body.style.overflow = "hidden";
-
-    });
-
-});
-
-
-// =========================================
-// CLOSE PROJECT
-// =========================================
-
-function closeProjectModal() {
-
-    projectModal.classList.remove("show");
-
-    document.body.style.overflow = "";
-
-}
-
-
-// Close button
-
-if (modalClose) {
-
-    modalClose.addEventListener(
-        "click",
-        closeProjectModal
-    );
-
-}
-
-
-// =========================================
-// CLOSE BY CLICKING OUTSIDE
-// =========================================
-
-if (projectModal) {
-
-    projectModal.addEventListener(
-        "click",
-        (event) => {
-
-            if (
-                event.target === projectModal
-            ) {
-
-                closeProjectModal();
-
-            }
-
-        }
-    );
-
-}
-
-
-// =========================================
-// CLOSE WITH ESC KEY
-// =========================================
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (
-            event.key === "Escape" &&
-            projectModal &&
-            projectModal.classList.contains("show")
-        ) {
-
-            closeProjectModal();
-
-        }
-
-    }
-);
-// =================================
-// INSTAGRAM LIKE BUTTON
-// =================================
-
-const likeButtons = document.querySelectorAll(".like-btn");
-
-likeButtons.forEach((button) => {
-
-    button.addEventListener("click", function () {
-
-        const icon = this.querySelector("i");
-        const post = this.closest(".insta-post");
-        const likeCount = post.querySelector(".like-count");
-
-        let currentLikes = parseInt(
-            likeCount.textContent
-        ) || 0;
-
-        if (this.classList.contains("liked")) {
-
-            // Unlike
-            this.classList.remove("liked");
-
-            icon.classList.remove("fa-solid");
-            icon.classList.add("fa-regular");
-
-            currentLikes--;
-
-        } else {
-
-            // Like
-            this.classList.add("liked");
-
-            icon.classList.remove("fa-regular");
-            icon.classList.add("fa-solid");
-
-            currentLikes++;
-
-        }
-
-        likeCount.textContent =
-            currentLikes + " likes";
-
-    });
-
-});
-// =================================
-// INSTAGRAM DOUBLE-TAP LIKE
-// =================================
-
-const postImages =
-    document.querySelectorAll(".insta-post-image");
-
-postImages.forEach((imageBox) => {
-
-    let lastTap = 0;
-
-    imageBox.addEventListener("click", function () {
-
-        const currentTime = new Date().getTime();
-
-        const tapGap = currentTime - lastTap;
-
-        if (tapGap < 300 && tapGap > 0) {
-
-            const post =
-                this.closest(".insta-post");
-
-            const likeButton =
-                post.querySelector(".like-btn");
-
-            const heart =
-                this.querySelector(".double-tap-heart");
-
-            // Like only if not already liked
-            if (!likeButton.classList.contains("liked")) {
-
-                likeButton.click();
-
-            }
-
-            // Heart animation
-            heart.classList.remove("show");
-
-            void heart.offsetWidth;
-
-            heart.classList.add("show");
-
-        }
-
-        lastTap = currentTime;
-
-    });
-
-});
-// =================================
-// SAVE BUTTON
-// =================================
-
-const saveButtons =
-    document.querySelectorAll(".save-btn");
-
-saveButtons.forEach((button) => {
-
-    button.addEventListener("click", function () {
-
-        const icon = this.querySelector("i");
-
-        if (this.classList.contains("saved")) {
-
-            this.classList.remove("saved");
-
-            icon.classList.remove("fa-solid");
-            icon.classList.add("fa-regular");
-
-        } else {
-
-            this.classList.add("saved");
-
-            icon.classList.remove("fa-regular");
-            icon.classList.add("fa-solid");
-
-        }
-
-    });
-
-});
-
-
-// =================================
-// SHARE BUTTON
-// =================================
-
-const shareButtons =
-    document.querySelectorAll(".share-btn");
-
-shareButtons.forEach((button) => {
-
-    button.addEventListener("click", async function () {
-
-        const post =
-            this.closest(".insta-post");
-
-        const title =
-            post.querySelector(".insta-user strong")
-            ?.textContent || "Bablu Kumar";
-
-        const text =
-            "Check out this project by " + title;
-
-        const shareData = {
-            title: "Bablu Kumar Portfolio",
-            text: text,
-            url: window.location.href
-        };
-
-        // Mobile Share
-        if (navigator.share) {
-
-            try {
-
-                await navigator.share(shareData);
-
-            } catch (error) {
-
-                // User cancelled share
-                console.log("Share cancelled");
-
-            }
-
-        } else {
-
-            // Desktop / unsupported browser
-            try {
-
-                await navigator.clipboard.writeText(
-                    window.location.href
-                );
-
-                alert("Portfolio link copied!");
-
-            } catch (error) {
-
-                alert("Share is not supported on this device.");
-
-            }
-
-        }
-
-    });
-
-});
-// =================================
-// INSTAGRAM COMMENT SYSTEM
-// =================================
-
-const commentButtons =
-    document.querySelectorAll(".comment-btn");
-
-commentButtons.forEach((button) => {
-
-    button.addEventListener("click", function () {
-
-        const post =
-            this.closest(".insta-post");
-
-        let commentBox =
-            post.querySelector(".comment-box");
-
-        // Already open है तो बंद करो
-        if (commentBox) {
-
-            commentBox.remove();
             return;
 
         }
 
-        // Comment box बनाना
-        commentBox =
+
+        /* Email validation */
+
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+        if (!emailPattern.test(email.value.trim())) {
+
+            showFormMessage(
+                "Please enter a valid email address.",
+                "error"
+            );
+
+            email.focus();
+
+            return;
+
+        }
+
+
+        /*
+         * Demo form:
+         * This does not send an email to a real inbox.
+         * A backend/email service can be connected later.
+         */
+
+        showFormMessage(
+            "Thank you! Your message is ready to be sent.",
+            "success"
+        );
+
+
+        contactForm.reset();
+
+    });
+
+}
+
+
+/* =========================================================
+   FORM MESSAGE
+   ========================================================= */
+
+function showFormMessage(text, type) {
+
+    let formMessage =
+        document.querySelector(".form-message");
+
+
+    /* Create message if it doesn't exist */
+
+    if (!formMessage) {
+
+        formMessage =
             document.createElement("div");
 
-        commentBox.className =
-            "comment-box";
+        formMessage.className =
+            "form-message";
 
-        commentBox.innerHTML = `
-            <input
-                type="text"
-                class="comment-input"
-                placeholder="Add a comment..."
-                maxlength="150"
-            >
+        contactForm.appendChild(formMessage);
 
-            <button class="comment-submit">
-                Post
-            </button>
-
-            <div class="comment-list"></div>
-        `;
-
-        post.appendChild(commentBox);
-
-        const input =
-            commentBox.querySelector(".comment-input");
-
-        const submit =
-            commentBox.querySelector(".comment-submit");
-
-        const list =
-            commentBox.querySelector(".comment-list");
+    }
 
 
-        // Post Comment
-        submit.addEventListener("click", function () {
+    formMessage.textContent = text;
 
-            const text =
-                input.value.trim();
-
-            if (text === "") {
-                return;
-            }
-
-            const comment =
-                document.createElement("div");
-
-            comment.className =
-                "user-comment";
-
-            comment.innerHTML = `
-                <strong>Bablu Kumar</strong>
-                <span>${escapeComment(text)}</span>
-            `;
-
-            list.appendChild(comment);
-
-            input.value = "";
-
-        });
+    formMessage.className =
+        "form-message " + type;
 
 
-        // Enter key से comment
-        input.addEventListener("keydown", function (event) {
+    /* Remove message automatically */
 
-            if (event.key === "Enter") {
+    setTimeout(() => {
 
-                submit.click();
+        formMessage.classList.remove(type);
 
-            }
+    }, 5000);
 
-        });
+}
 
 
-        input.focus();
+
+/* =========================================================
+   ADD FORM MESSAGE STYLING
+   ========================================================= */
+
+const formMessageStyle =
+    document.createElement("style");
+
+
+formMessageStyle.textContent = `
+
+    .form-message {
+
+        margin-top: 15px;
+
+        padding: 12px 15px;
+
+        border-radius: 10px;
+
+        font-size: 12px;
+
+        text-align: center;
+
+        opacity: 0;
+
+        transform: translateY(8px);
+
+        transition: 0.3s ease;
+
+    }
+
+
+    .form-message.success {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+        color: #7dd3fc;
+
+        background: rgba(22, 131, 255, 0.08);
+
+        border: 1px solid rgba(22, 131, 255, 0.20);
+
+    }
+
+
+    .form-message.error {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+        color: #ff9a9a;
+
+        background: rgba(255, 70, 70, 0.07);
+
+        border: 1px solid rgba(255, 70, 70, 0.15);
+
+    }
+
+`;
+
+
+document.head.appendChild(formMessageStyle);
+
+
+
+/* =========================================================
+   AUTOMATIC CURRENT YEAR
+   ========================================================= */
+
+const currentYear =
+    document.querySelector("#current-year");
+
+
+if (currentYear) {
+
+    currentYear.textContent =
+        new Date().getFullYear();
+
+}
+
+
+
+/* =========================================================
+   SCROLL REVEAL ANIMATION
+   ========================================================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".section-heading, " +
+        ".about-image, " +
+        ".about-content, " +
+        ".skill-card, " +
+        ".project-card, " +
+        ".education-item, " +
+        ".certificate-card, " +
+        ".contact-card, " +
+        ".contact-form-container, " +
+        ".faq-item"
+    );
+
+
+/* Add reveal class */
+
+revealElements.forEach(element => {
+
+    element.classList.add("reveal");
+
+});
+
+
+/* Add reveal CSS */
+
+const revealStyle =
+    document.createElement("style");
+
+
+revealStyle.textContent = `
+
+    .reveal {
+
+        opacity: 0;
+
+        transform: translateY(35px);
+
+        transition:
+            opacity 0.7s ease,
+            transform 0.7s ease;
+
+    }
+
+
+    .reveal.reveal-show {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+`;
+
+
+document.head.appendChild(revealStyle);
+
+
+
+/* =========================================================
+   REVEAL OBSERVER
+   ========================================================= */
+
+const revealObserver =
+    new IntersectionObserver(
+        (entries, observer) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "reveal-show"
+                    );
+
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+
+/* =========================================================
+   STAGGER CARD ANIMATION
+   ========================================================= */
+
+const cardGroups = [
+    ".skills-container .skill-card",
+    ".projects-container .project-card",
+    ".certificates-container .certificate-card",
+    ".faq-container .faq-item"
+];
+
+
+cardGroups.forEach(selector => {
+
+    const cards =
+        document.querySelectorAll(selector);
+
+
+    cards.forEach((card, index) => {
+
+        card.style.transitionDelay =
+            `${index * 0.08}s`;
 
     });
 
 });
 
 
-// =================================
-// SAFE COMMENT TEXT
-// =================================
 
-function escapeComment(text) {
+/* =========================================================
+   IMAGE LOADING EFFECT
+   ========================================================= */
 
-    const div =
-        document.createElement("div");
+const portfolioImages =
+    document.querySelectorAll("img");
 
-    div.textContent = text;
 
-    return div.innerHTML;
+portfolioImages.forEach(image => {
 
-}
+    image.addEventListener("load", () => {
+
+        image.classList.add("image-loaded");
+
+    });
+
+
+    /*
+     * If image is already cached,
+     * trigger the effect immediately.
+     */
+
+    if (image.complete) {
+
+        image.classList.add("image-loaded");
+
+    }
+
+});
+
+
+/* Image effect CSS */
+
+const imageStyle =
+    document.createElement("style");
+
+
+imageStyle.textContent = `
+
+    img {
+
+        transition:
+            opacity 0.5s ease,
+            transform 0.5s ease;
+
+    }
+
+
+    img.image-loaded {
+
+        opacity: 1;
+
+    }
+
+`;
+
+
+document.head.appendChild(imageStyle);
+
+
+
+/* =========================================================
+   PROJECT LINK SAFETY
+   ========================================================= */
+
+const projectLinks =
+    document.querySelectorAll(
+        ".project-overlay a, .certificate-link"
+    );
+
+
+projectLinks.forEach(link => {
+
+    link.addEventListener("click", event => {
+
+        const href =
+            link.getAttribute("href");
+
+
+        /*
+         * Prevent empty "#" links from
+         * jumping to the top.
+         */
+
+        if (!href || href === "#") {
+
+            event.preventDefault();
+
+        }
+
+    });
+
+});
+
+
+
+/* =========================================================
+   RESIZE HANDLING
+   ========================================================= */
+
+window.addEventListener("resize", () => {
+
+    /*
+     * Close mobile menu when switching
+     * to a larger screen.
+     */
+
+    if (window.innerWidth > 900) {
+
+        if (navbar) {
+
+            navbar.classList.remove("active");
+
+        }
+
+
+        if (menuIconElement) {
+
+            menuIconElement.classList.remove(
+                "fa-xmark"
+            );
+
+            menuIconElement.classList.add(
+                "fa-bars"
+            );
+
+        }
+
+    }
+
+});
+
+
+
+/* =========================================================
+   PORTFOLIO READY
+   ========================================================= */
+
+console.log(
+    "Bablu Kumar Portfolio V6.0 — Loaded Successfully 🚀"
+);
+
+
+/* =========================================================
+   JAVASCRIPT V6.0 COMPLETE
+   ========================================================= */
