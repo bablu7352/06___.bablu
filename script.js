@@ -3180,3 +3180,338 @@ console.log(
 /* =========================================================
    V6.2 JS PART 4 END
    ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.2
+   JS PART 5
+   FINAL POLISH
+   ========================================================= */
+
+
+/* =========================================================
+   SCROLL REVEAL ANIMATION
+   ========================================================= */
+
+(function () {
+
+    const revealElements =
+        document.querySelectorAll(
+            "section, .project-card, .skill-card, .education-card, .certificate-card, .contact-card, .faq-item"
+        );
+
+    if (!revealElements.length) return;
+
+
+    revealElements.forEach(function (element) {
+
+        element.classList.add(
+            "v62-reveal"
+        );
+
+    });
+
+
+    const observer =
+        new IntersectionObserver(
+            function (entries) {
+
+                entries.forEach(
+                    function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "v62-visible"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(
+        function (element) {
+
+            observer.observe(
+                element
+            );
+
+        }
+    );
+
+})();
+
+
+/* =========================================================
+   BACK TO TOP BUTTON
+   ========================================================= */
+
+(function () {
+
+    const backToTop =
+        document.querySelector(
+            ".back-to-top"
+        );
+
+    if (!backToTop) return;
+
+
+    function updateBackToTop() {
+
+        if (window.scrollY > 500) {
+
+            backToTop.classList.add(
+                "show"
+            );
+
+        } else {
+
+            backToTop.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateBackToTop,
+        { passive: true }
+    );
+
+
+    backToTop.addEventListener(
+        "click",
+        function (event) {
+
+            event.preventDefault();
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+
+    updateBackToTop();
+
+})();
+
+
+/* =========================================================
+   ACTIVE NAVIGATION ON SCROLL
+   ========================================================= */
+
+(function () {
+
+    const sections =
+        document.querySelectorAll(
+            "section[id]"
+        );
+
+    const navLinks =
+        document.querySelectorAll(
+            ".navbar a[href^='#']"
+        );
+
+
+    if (!sections.length || !navLinks.length) {
+        return;
+    }
+
+
+    function updateActiveNav() {
+
+        let currentSection = "";
+
+
+        sections.forEach(
+            function (section) {
+
+                const sectionTop =
+                    section.offsetTop - 180;
+
+
+                if (
+                    window.scrollY >=
+                    sectionTop
+                ) {
+
+                    currentSection =
+                        section.getAttribute(
+                            "id"
+                        );
+
+                }
+
+            }
+        );
+
+
+        navLinks.forEach(
+            function (link) {
+
+                link.classList.remove(
+                    "active"
+                );
+
+
+                const href =
+                    link.getAttribute(
+                        "href"
+                    );
+
+
+                if (
+                    href ===
+                    "#" + currentSection
+                ) {
+
+                    link.classList.add(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    window.addEventListener(
+        "scroll",
+        updateActiveNav,
+        { passive: true }
+    );
+
+
+    updateActiveNav();
+
+})();
+
+
+/* =========================================================
+   SMOOTH INTERNAL LINKS
+   ========================================================= */
+
+(function () {
+
+    const links =
+        document.querySelectorAll(
+            'a[href^="#"]'
+        );
+
+
+    links.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function (event) {
+
+                    const targetId =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+                        return;
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (!target) return;
+
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+            );
+
+        }
+    );
+
+})();
+
+
+/* =========================================================
+   IMAGE ERROR SAFETY
+   ========================================================= */
+
+(function () {
+
+    const images =
+        document.querySelectorAll(
+            "img"
+        );
+
+
+    images.forEach(
+        function (image) {
+
+            image.addEventListener(
+                "error",
+                function () {
+
+                    image.classList.add(
+                        "image-load-error"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+})();
+
+
+/* =========================================================
+   PAGE LOADED
+   ========================================================= */
+
+window.addEventListener(
+    "load",
+    function () {
+
+        document.body.classList.add(
+            "page-loaded"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   V6.2 JS PART 5 END
+   ========================================================= */
