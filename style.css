@@ -7405,3 +7405,631 @@ body.light-theme
 /* =========================================================
    V6.2 CSS PART 3 END
    ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.2
+   CSS PART 4
+   PROJECT CARD + PREVIEW BUTTON POLISH
+   ========================================================= */
+
+
+/* =========================================================
+   PROJECT CARD
+   ========================================================= */
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+
+    transition:
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.4s ease,
+        border-color 0.35s ease;
+}
+
+
+/* Animated glow */
+
+.project-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -100px;
+    right: -100px;
+
+    width: 200px;
+    height: 200px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(0, 114, 255, 0.08);
+
+    filter: blur(35px);
+
+    opacity: 0;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.5s ease;
+
+    pointer-events: none;
+}
+
+
+.project-card:hover::before {
+    opacity: 1;
+
+    transform:
+        scale(1.35);
+}
+
+
+/* Hover */
+
+.project-card:hover {
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 25px 55px rgba(0, 0, 0, 0.20),
+        0 0 30px rgba(0, 114, 255, 0.07);
+}
+
+
+/* =========================================================
+   PROJECT IMAGE
+   ========================================================= */
+
+.project-card img {
+    transition:
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.4s ease;
+}
+
+
+.project-card:hover img {
+    transform:
+        scale(1.045);
+
+    filter:
+        brightness(1.05);
+}
+
+
+/* =========================================================
+   PROJECT TAGS
+   ========================================================= */
+
+.project-tags {
+    display:
+        flex;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        6px;
+
+}
+
+
+.project-tags span {
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+
+.project-card:hover
+.project-tags span {
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   VIEW DETAILS BUTTON
+   ========================================================= */
+
+.project-preview-btn {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 12px;
+
+    padding:
+        9px 15px;
+
+    border:
+        1px solid
+        rgba(80, 170, 255, 0.25);
+
+    border-radius:
+        25px;
+
+    background:
+        rgba(0, 114, 255, 0.08);
+
+    color:
+        #55b7ff;
+
+    font-family:
+        "Poppins",
+        sans-serif;
+
+    font-size:
+        10px;
+
+    font-weight:
+        600;
+
+    cursor:
+        pointer;
+
+    overflow:
+        hidden;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        color 0.3s ease;
+
+}
+
+
+.project-preview-btn::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.20),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left 0.55s ease;
+
+}
+
+
+.project-preview-btn:hover::before {
+    left: 140%;
+}
+
+
+.project-preview-btn:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #0072ff,
+            #7c3aed
+        );
+
+    color:
+        #ffffff;
+
+    border-color:
+        transparent;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0, 114, 255, 0.25);
+
+}
+
+
+.project-preview-btn i {
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+.project-preview-btn:hover i {
+
+    transform:
+        scale(1.12)
+        rotate(-5deg);
+
+}
+
+
+/* =========================================================
+   PROJECT CARD HIDDEN STATE
+   ========================================================= */
+
+.project-card.filter-hidden {
+
+    opacity: 0;
+
+    transform:
+        scale(0.94);
+
+    pointer-events:
+        none;
+
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+body.light-theme
+.project-card {
+
+    box-shadow:
+        0 12px 35px
+        rgba(0, 0, 0, 0.07);
+
+}
+
+
+body.light-theme
+.project-preview-btn {
+
+    background:
+        rgba(0, 114, 255, 0.06);
+
+    color:
+        #0072ff;
+
+    border-color:
+        rgba(0, 114, 255, 0.18);
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .project-card:hover {
+
+        transform:
+            translateY(-5px);
+
+    }
+
+
+    .project-preview-btn {
+
+        padding:
+            8px 13px;
+
+        font-size:
+            9px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .project-card:hover {
+
+        transform:
+            translateY(-3px);
+
+    }
+
+
+    .project-preview-btn {
+
+        width:
+            100%;
+
+        margin-top:
+            10px;
+
+    }
+
+}
+
+
+/* =========================================================
+   V6.2 CSS PART 4 END
+   ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.2
+   CSS PART 5
+   FINAL POLISH
+   ========================================================= */
+
+
+/* =========================================================
+   THEME TRANSITION
+   ========================================================= */
+
+body,
+header,
+section,
+.project-card,
+.skill-card,
+.education-card,
+.certificate-card,
+.contact-card,
+.faq-item,
+.theme-toggle,
+.language-switcher,
+.project-filter {
+
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+
+}
+
+
+/* =========================================================
+   SECTION REVEAL
+   ========================================================= */
+
+.v62-reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+
+}
+
+
+.v62-reveal.v62-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================================
+   SKILL PROGRESS
+   ========================================================= */
+
+.skill-progress {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 6px;
+
+    margin-top: 10px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+}
+
+
+.skill-progress-bar {
+
+    width: 0;
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00c6ff,
+            #0072ff,
+            #7c3aed
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(0, 150, 255, 0.35);
+
+    transition:
+        width 1.4s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+
+}
+
+
+/* =========================================================
+   BETTER BUTTON FEEDBACK
+   ========================================================= */
+
+button,
+a {
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+}
+
+
+button:active,
+.btn:active {
+
+    transform:
+        scale(0.96);
+
+}
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+
+    outline:
+        2px solid
+        #00c6ff;
+
+    outline-offset:
+        3px;
+
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+body.light-theme
+.skill-progress {
+
+    background:
+        rgba(0, 0, 0, 0.08);
+
+}
+
+
+body.light-theme
+.v62-reveal {
+
+    color:
+        #172033;
+
+}
+
+
+/* =========================================================
+   MOBILE OPTIMIZATION
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    section {
+
+        scroll-margin-top:
+            75px;
+
+    }
+
+
+    .v62-reveal {
+
+        transform:
+            translateY(18px);
+
+    }
+
+
+    .skill-progress {
+
+        height:
+            5px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    section {
+
+        scroll-margin-top:
+            65px;
+
+    }
+
+
+    .skill-progress {
+
+        height:
+            4px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            0.01ms !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   V6.2 CSS PART 5 END
+   ========================================================= */
