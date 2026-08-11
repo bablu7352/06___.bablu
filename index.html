@@ -2,689 +2,152 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Bablu Kumar | Portfolio</title>
+    <title>Bablu Kumar | V6.0 Portfolio</title>
 
-    <!-- Font Awesome -->
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+    <!-- ================= HEADER ================= -->
 
-<header class="top-header">
+    <header class="header">
 
-    <h2>Bablu Kumar</h2>
-
-    <i class="fa-solid fa-bars menu-icon"></i>
-
-</header>
-
-
-<!-- ================= PROFILE ================= -->
-
-<section class="profile">
-
-    <div class="profile-photo">
-
-        <img src="profile.jpg" alt="Bablu Kumar">
-
-    </div>
-
-    <h1>I AM BABLU</h1>
-
-    <p class="profile-title">
-        Frontend Developer
-    </p>
-
-    <div class="profile-buttons">
-
-        <a href="#projects">
-            Projects
+        <a href="#home" class="logo">
+            <span>B</span>ablu<span>.</span>
         </a>
 
-        <a href="#contact">
-            Contact
-        </a>
+        <nav class="navbar">
 
-    </div>
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
 
-</section>
+        </nav>
 
-
-<!-- ================= ABOUT ME ================= -->
-
-<section class="about" id="about">
-
-    <h2>About Me</h2>
-
-    <p>
-        Hello! I'm <strong>Bablu Kumar</strong>, a passionate
-        Frontend Developer who enjoys creating modern,
-        responsive and user-friendly websites.
-    </p>
-
-    <p>
-        I work with HTML, CSS and JavaScript and I am
-        continuously improving my web development skills.
-    </p>
-
-</section>
-<!-- ================= PROFILE STATS ================= -->
-
-<section class="profile-stats">
-
-    <div class="stat">
-        <strong>03</strong>
-        <span>Projects</span>
-    </div>
-
-    <div class="stat">
-        <strong>06</strong>
-        <span>Skills</span>
-    </div>
-
-    <div class="stat">
-        <strong>03</strong>
-        <span>Certificates</span>
-    </div>
-
-</section>
-
-
-<!-- ================= SOCIAL LINKS ================= -->
-
-<section class="social-section">
-
-    <a href="https://www.instagram.com/06____.bablu?igsh=c2swY3oxYTVnaTJm"
-       target="_blank"
-       rel="noopener"
-       aria-label="Instagram">
-
-        <i class="fa-brands fa-instagram"></i>
-
-    </a>
-
-    <a href="https://www.facebook.com/share/19AsVc6xVk/"
-       target="_blank"
-       rel="noopener"
-       aria-label="Facebook">
-
-        <i class="fa-brands fa-facebook-f"></i>
-
-    </a>
-
-    <a href="https://wa.me/qr/J723ZNCBYENMK1"
-       target="_blank"
-       rel="noopener"
-       aria-label="WhatsApp">
-
-        <i class="fa-brands fa-whatsapp"></i>
-
-    </a>
-
-    <a href="https://github.com/bablu7352"
-       target="_blank"
-       rel="noopener"
-       aria-label="GitHub">
-
-        <i class="fa-brands fa-github"></i>
-
-    </a>
-
-</section>
-
-
-<!-- ================= HIGHLIGHTS ================= -->
-
-<section class="highlights">
-
-    <h2>Highlights</h2>
-
-    <div class="highlight-container">
-
-        <a href="#about" class="highlight">
-            <div class="highlight-circle">
-                <i class="fa-solid fa-user"></i>
-            </div>
-            <span>About</span>
-        </a>
-
-
-        <a href="#skills" class="highlight">
-            <div class="highlight-circle">
-                <i class="fa-solid fa-code"></i>
-            </div>
-            <span>Skills</span>
-        </a>
-
-
-        <a href="#education" class="highlight">
-            <div class="highlight-circle">
-                <i class="fa-solid fa-graduation-cap"></i>
-            </div>
-            <span>Education</span>
-        </a>
-
-
-        <a href="#projects" class="highlight">
-            <div class="highlight-circle">
-                <i class="fa-solid fa-laptop-code"></i>
-            </div>
-            <span>Projects</span>
-        </a>
-
-
-        <a href="#certificates" class="highlight">
-            <div class="highlight-circle">
-                <i class="fa-solid fa-award"></i>
-            </div>
-            <span>Certificates</span>
-        </a>
-
-    </div>
-
-</section>
-<!-- ================= SKILLS ================= -->
-
-<section class="content-section" id="skills">
-
-    <div class="section-title">
-        <h2>My Skills</h2>
-        <span>What I use</span>
-    </div>
-
-    <div class="skill-grid">
-
-        <div class="skill-card">
-            <i class="fa-brands fa-html5"></i>
-            <h3>HTML5</h3>
-            <p>Web Structure</p>
+        <div class="menu-icon">
+            <i class="fa-solid fa-bars"></i>
         </div>
 
-        <div class="skill-card">
-            <i class="fa-brands fa-css3-alt"></i>
-            <h3>CSS3</h3>
-            <p>Modern Styling</p>
-        </div>
+    </header>
 
-        <div class="skill-card">
-            <i class="fa-brands fa-js"></i>
-            <h3>JavaScript</h3>
-            <p>Web Interaction</p>
-        </div>
 
-        <div class="skill-card">
-            <i class="fa-brands fa-github"></i>
-            <h3>GitHub</h3>
-            <p>Version Control</p>
-        </div>
+    <!-- ================= HOME ================= -->
 
-        <div class="skill-card">
-            <i class="fa-solid fa-mobile-screen"></i>
-            <h3>Responsive</h3>
-            <p>Mobile Design</p>
-        </div>
+    <section class="home" id="home">
 
-        <div class="skill-card">
-            <i class="fa-solid fa-code"></i>
-            <h3>Web Development</h3>
-            <p>Frontend Development</p>
-        </div>
+        <div class="home-content">
 
-    </div>
-
-</section>
-
-
-<!-- ================= EDUCATION ================= -->
-
-<section class="content-section" id="education">
-
-    <div class="section-title">
-        <h2>Education</h2>
-        <span>My academic journey</span>
-    </div>
-
-    <div class="education-list">
-
-        <div class="education-card">
-
-            <div class="education-icon">
-                <i class="fa-solid fa-graduation-cap"></i>
-            </div>
-
-            <div>
-                <h3>10th (Matric)</h3>
-                <p>First Division</p>
-                <span>Passing Year: 2017</span>
-            </div>
-
-        </div>
-
-
-        <div class="education-card">
-
-            <div class="education-icon">
-                <i class="fa-solid fa-graduation-cap"></i>
-            </div>
-
-            <div>
-                <h3>12th (Intermediate)</h3>
-                <p>First Division</p>
-                <span>Passing Year: 2019</span>
-            </div>
-
-        </div>
-
-
-        <div class="education-card">
-
-            <div class="education-icon">
-                <i class="fa-solid fa-graduation-cap"></i>
-            </div>
-
-            <div>
-                <h3>Bachelor of Arts (B.A.)</h3>
-                <p>First Division</p>
-                <span>Passing Year: 2023</span>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= PROJECTS / POSTS ================= -->
-
-<section class="posts-section" id="projects">
-
-    <div class="section-title">
-        <h2>My Projects</h2>
-        <span>View all</span>
-    </div>
-
-    <div class="posts-grid">
-<!-- ================= INSTAGRAM STYLE POST 1 ================= -->
-
-<article class="insta-post" data-post="1">
-
-    <!-- Post Header -->
-    <div class="insta-post-header">
-
-        <div class="insta-user">
-            <img src="profile.jpg" alt="Bablu Kumar">
-
-            <div>
-                <strong>Bablu Kumar</strong>
-                <span>Frontend Developer</span>
-            </div>
-        </div>
-
-        <button class="post-menu" aria-label="More options">
-            <i class="fa-solid fa-ellipsis"></i>
-        </button>
-
-    </div>
-
-    <!-- Post Image -->
-    <div class="insta-post-image">
-
-        <img src="project1.jpg" alt="Personal Portfolio">
-
-        <!-- Double Tap Heart -->
-        <div class="double-tap-heart">
-            <i class="fa-solid fa-heart"></i>
-        </div>
-
-    </div>
-<!-- Post Actions -->
-<div class="insta-post-actions">
-
-    <div class="post-left-actions">
-
-        <!-- Like -->
-        <button class="like-btn" aria-label="Like">
-            <i class="fa-regular fa-heart"></i>
-        </button>
-
-        <!-- Comment -->
-        <button class="comment-btn" aria-label="Comment">
-            <i class="fa-regular fa-comment"></i>
-        </button>
-
-        <!-- Share -->
-        <button class="share-btn" aria-label="Share">
-            <i class="fa-regular fa-paper-plane"></i>
-        </button>
-
-    </div>
-
-    <!-- Save -->
-    <button class="save-btn" aria-label="Save">
-        <i class="fa-regular fa-bookmark"></i>
-    </button>
-
-</div>
-
-<!-- Like Count -->
-<div class="insta-post-info">
-
-    <strong class="like-count">128 likes</strong>
-
-    <p>
-        <strong>Bablu Kumar</strong>
-        My personal portfolio website 🚀
-    </p>
-
-    <button class="view-comments">
-        View all comments
-    </button>
-
-</div>
-</article>
-
-    </div>
-
-</section>
-<!-- ================= CERTIFICATES ================= -->
-
-<section class="content-section" id="certificates">
-
-    <div class="section-title">
-        <h2>My Certificates</h2>
-        <span>My achievements</span>
-    </div>
-
-    <div class="certificate-grid">
-
-        <div class="certificate-card">
-
-            <div class="certificate-icon">
-                <i class="fa-solid fa-award"></i>
-            </div>
-
-            <div class="certificate-info">
-
-                <h3>10th Certificate</h3>
-
-                <p>First Division</p>
-
-                <span>Passing Year: 2017</span>
-
-            </div>
-
-        </div>
-
-
-        <div class="certificate-card">
-
-            <div class="certificate-icon">
-                <i class="fa-solid fa-award"></i>
-            </div>
-
-            <div class="certificate-info">
-
-                <h3>12th Certificate</h3>
-
-                <p>First Division</p>
-
-                <span>Passing Year: 2019</span>
-
-            </div>
-
-        </div>
-
-
-        <div class="certificate-card">
-
-            <div class="certificate-icon">
-                <i class="fa-solid fa-award"></i>
-            </div>
-
-            <div class="certificate-info">
-
-                <h3>B.A. Degree</h3>
-
-                <p>First Division</p>
-
-                <span>Passing Year: 2023</span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= CONTACT ================= -->
-
-<section class="contact-section" id="contact">
-
-    <div class="section-title">
-
-        <h2>Contact Me</h2>
-
-        <span>Let's connect</span>
-
-    </div>
-
-
-    <div class="contact-container">
-
-        <div class="contact-info">
-
-            <h3>Let's Talk</h3>
-
-            <p>
-                Have a project idea or want to connect with me?
-                Feel free to send me a message.
+            <p class="welcome">
+                <i class="fa-solid fa-hand-sparkles"></i>
+                Welcome to my portfolio
             </p>
 
-            <a href="mailto:bablukumar8866bk@gmail.com"
-               class="contact-item">
+            <h1>
+                Hi, I'm <span>Bablu Kumar</span>
+            </h1>
 
-                <i class="fa-solid fa-envelope"></i>
-
-                <span>bablukumar8866bk@gmail.com</span>
-
-            </a>
-
-        </div>
-
-
-        <form id="contact-form" class="contact-form">
-
-            <input
-                type="text"
-                id="name"
-                placeholder="Your Name"
-                required
-            >
-
-            <input
-                type="email"
-                id="email"
-                placeholder="Your Email"
-                required
-            >
-
-            <textarea
-                id="message"
-                rows="6"
-                placeholder="Your Message"
-                required
-            ></textarea>
-
-            <button type="submit">
-                Send Message
-                <i class="fa-solid fa-paper-plane"></i>
-            </button>
-
-        </form>
-
-    </div>
-
-</section>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="footer">
-
-    <div class="footer-social">
-
-        <a href="https://www.instagram.com/06____.bablu?igsh=c2swY3oxYTVnaTJm"
-           target="_blank"
-           rel="noopener">
-
-            <i class="fa-brands fa-instagram"></i>
-
-        </a>
-
-        <a href="https://www.facebook.com/share/19AsVc6xVk/"
-           target="_blank"
-           rel="noopener">
-
-            <i class="fa-brands fa-facebook-f"></i>
-
-        </a>
-
-        <a href="https://wa.me/qr/J723ZNCBYENMK1"
-           target="_blank"
-           rel="noopener">
-
-            <i class="fa-brands fa-whatsapp"></i>
-
-        </a>
-
-        <a href="https://github.com/bablu7352"
-           target="_blank"
-           rel="noopener">
-
-            <i class="fa-brands fa-github"></i>
-
-        </a>
-
-    </div>
-
-
-    <p>
-        © 2026 Bablu Kumar. All Rights Reserved.
-    </p>
-
-</footer>
-
-
-<!-- ================= BACK TO TOP ================= -->
-
-<a href="#home" class="back-to-top">
-
-    <i class="fa-solid fa-arrow-up"></i>
-
-</a>
-
-<!-- ================= BOTTOM NAVIGATION ================= -->
-
-<nav class="bottom-nav">
-
-    <a href="#home" class="bottom-link active">
-        <i class="fa-solid fa-house"></i>
-        <span>Home</span>
-    </a>
-
-    <a href="#projects" class="bottom-link">
-        <i class="fa-solid fa-table-cells"></i>
-        <span>Projects</span>
-    </a>
-
-    <a href="#skills" class="bottom-link">
-        <i class="fa-solid fa-code"></i>
-        <span>Skills</span>
-    </a>
-
-    <a href="#education" class="bottom-link">
-        <i class="fa-solid fa-graduation-cap"></i>
-        <span>Education</span>
-    </a>
-
-    <a href="#about" class="bottom-link">
-        <i class="fa-solid fa-user"></i>
-        <span>Profile</span>
-    </a>
-
-</nav>
-    <!-- =================================
-     PROJECT POPUP / MODAL
-================================= -->
-
-<div class="project-modal" id="project-modal">
-
-    <div class="modal-box">
-
-        <!-- Close Button -->
-        <button class="modal-close" id="modal-close">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-
-        <!-- Project Image -->
-        <div class="modal-image">
-            <img id="modal-project-image"
-                 src=""
-                 alt="Project Preview">
-        </div>
-
-        <!-- Project Details -->
-        <div class="modal-content">
-
-            <h2 id="modal-project-title">
-                Project Name
+            <h2>
+                I'm a <span class="typing-text">Web Designer</span>
             </h2>
 
-            <p id="modal-project-description">
-                Project description
+            <p class="home-description">
+                I create modern, responsive and user-friendly websites
+                with clean design and creative ideas.
             </p>
 
-            <!-- Technology Tags -->
-            <div class="modal-tags" id="modal-project-tags">
+            <div class="home-buttons">
 
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
+                <a href="#projects" class="btn primary-btn">
+                    View My Work
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <a href="#contact" class="btn secondary-btn">
+                    Contact Me
+                    <i class="fa-regular fa-paper-plane"></i>
+                </a>
 
             </div>
 
-            <!-- GitHub Button -->
-            <a href="#"
-               target="_blank"
-               rel="noopener"
-               class="modal-github"
-               id="modal-github">
 
-                <i class="fa-brands fa-github"></i>
+            <!-- Social Icons -->
 
-                View on GitHub
+            <div class="social-icons">
 
-            </a>
+                <a href="#" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="#" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+
+                <a href="#" aria-label="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+
+                <a href="#" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+
+            </div>
 
         </div>
 
+
+        <!-- Profile Image -->
+
+        <div class="home-image">
+
+            <div class="image-circle">
+
+                <img src="profile.jpg"
+                    alt="Bablu Kumar">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SCROLL INDICATOR ================= -->
+
+    <div class="scroll-down">
+
+        <a href="#about">
+
+            <span>Scroll Down</span>
+
+            <i class="fa-solid fa-arrow-down"></i>
+
+        </a>
+
     </div>
 
-</div>
+
+    <!-- JavaScript -->
     <script src="script.js"></script>
-    
+
 </body>
+
 </html>
