@@ -1003,3 +1003,421 @@ console.log(
 /* =========================================================
    JAVASCRIPT V6.0 COMPLETE
    ========================================================= */
+/* =========================================================
+   BABLU KUMAR PORTFOLIO V6.1
+   JAVASCRIPT PART 1
+   ADVANCED NAVIGATION + SCROLL
+   ========================================================= */
+
+
+/* =========================================================
+   SELECT ELEMENTS
+   ========================================================= */
+
+const v61Header =
+    document.querySelector(".header");
+
+const v61Navbar =
+    document.querySelector(".navbar");
+
+const v61MenuIcon =
+    document.querySelector(".menu-icon");
+
+const v61MenuIconElement =
+    document.querySelector(".menu-icon i");
+
+const v61NavLinks =
+    document.querySelectorAll(".navbar a");
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+if (
+    v61MenuIcon &&
+    v61Navbar
+) {
+
+    v61MenuIcon.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                v61Navbar.classList.toggle(
+                    "active"
+                );
+
+
+            if (v61MenuIconElement) {
+
+                v61MenuIconElement.classList.toggle(
+                    "fa-bars",
+                    !isOpen
+                );
+
+                v61MenuIconElement.classList.toggle(
+                    "fa-xmark",
+                    isOpen
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CLOSE MENU WHEN NAV LINK IS CLICKED
+   ========================================================= */
+
+v61NavLinks.forEach(link => {
+
+    link.addEventListener(
+        "click",
+        () => {
+
+            if (!v61Navbar) return;
+
+
+            v61Navbar.classList.remove(
+                "active"
+            );
+
+
+            if (v61MenuIconElement) {
+
+                v61MenuIconElement.classList.remove(
+                    "fa-xmark"
+                );
+
+                v61MenuIconElement.classList.add(
+                    "fa-bars"
+                );
+
+            }
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   HEADER SCROLL STATE
+   ========================================================= */
+
+function v61UpdateHeader() {
+
+    if (!v61Header) return;
+
+
+    if (window.scrollY > 30) {
+
+        v61Header.classList.add(
+            "scrolled"
+        );
+
+    } else {
+
+        v61Header.classList.remove(
+            "scrolled"
+        );
+
+    }
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    v61UpdateHeader,
+    { passive: true }
+);
+
+
+v61UpdateHeader();
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+   ========================================================= */
+
+const v61Sections =
+    document.querySelectorAll(
+        "section[id]"
+    );
+
+
+function v61UpdateActiveLink() {
+
+    const currentPosition =
+        window.scrollY + 200;
+
+
+    let currentSection = "";
+
+
+    v61Sections.forEach(section => {
+
+        const sectionTop =
+            section.offsetTop;
+
+        const sectionHeight =
+            section.offsetHeight;
+
+
+        if (
+            currentPosition >= sectionTop &&
+            currentPosition <
+                sectionTop + sectionHeight
+        ) {
+
+            currentSection =
+                section.getAttribute("id");
+
+        }
+
+    });
+
+
+    v61NavLinks.forEach(link => {
+
+        link.classList.remove(
+            "active"
+        );
+
+
+        const href =
+            link.getAttribute("href");
+
+
+        if (
+            href ===
+            `#${currentSection}`
+        ) {
+
+            link.classList.add(
+                "active"
+            );
+
+        }
+
+    });
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    v61UpdateActiveLink,
+    { passive: true }
+);
+
+
+v61UpdateActiveLink();
+
+
+/* =========================================================
+   SMOOTH SCROLL
+   ========================================================= */
+
+v61NavLinks.forEach(link => {
+
+    link.addEventListener(
+        "click",
+        event => {
+
+            const targetId =
+                link.getAttribute("href");
+
+
+            if (
+                !targetId ||
+                targetId === "#"
+            ) {
+                return;
+            }
+
+
+            const target =
+                document.querySelector(
+                    targetId
+                );
+
+
+            if (!target) return;
+
+
+            event.preventDefault();
+
+
+            const headerHeight =
+                v61Header
+                    ? v61Header.offsetHeight
+                    : 0;
+
+
+            const targetPosition =
+                target.offsetTop -
+                headerHeight;
+
+
+            window.scrollTo({
+
+                top:
+                    targetPosition,
+
+                behavior:
+                    "smooth"
+
+            });
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   BACK TO TOP
+   ========================================================= */
+
+const v61BackToTop =
+    document.querySelector(
+        ".back-to-top"
+    );
+
+
+function v61UpdateBackToTop() {
+
+    if (!v61BackToTop) return;
+
+
+    if (window.scrollY > 450) {
+
+        v61BackToTop.classList.add(
+            "show"
+        );
+
+    } else {
+
+        v61BackToTop.classList.remove(
+            "show"
+        );
+
+    }
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    v61UpdateBackToTop,
+    { passive: true }
+);
+
+
+if (v61BackToTop) {
+
+    v61BackToTop.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        }
+    );
+
+}
+
+
+v61UpdateBackToTop();
+
+
+/* =========================================================
+   ESC KEY — CLOSE MOBILE MENU
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape" &&
+            v61Navbar
+        ) {
+
+            v61Navbar.classList.remove(
+                "active"
+            );
+
+
+            if (v61MenuIconElement) {
+
+                v61MenuIconElement.classList.remove(
+                    "fa-xmark"
+                );
+
+                v61MenuIconElement.classList.add(
+                    "fa-bars"
+                );
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   RESIZE FIX
+   ========================================================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if (
+            window.innerWidth > 900 &&
+            v61Navbar
+        ) {
+
+            v61Navbar.classList.remove(
+                "active"
+            );
+
+
+            if (v61MenuIconElement) {
+
+                v61MenuIconElement.classList.remove(
+                    "fa-xmark"
+                );
+
+                v61MenuIconElement.classList.add(
+                    "fa-bars"
+                );
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   V6.1 JS PART 1 END
+   ========================================================= */
