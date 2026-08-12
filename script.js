@@ -3515,3 +3515,998 @@ window.addEventListener(
 /* =========================================================
    V6.2 JS PART 5 END
    ========================================================= */
+/* =====================================================
+   BABLU KUMAR PORTFOLIO V6.3
+   JAVASCRIPT PART 1
+   SCROLL REVEAL + ACTIVE SECTION
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =================================================
+       V6.3 ELEMENTS
+       ================================================= */
+
+    const v63Sections = document.querySelectorAll(
+        ".v63-hero-enhancement, " +
+        ".v63-services, " +
+        ".v63-process, " +
+        ".v63-achievements, " +
+        ".v63-cta"
+    );
+
+
+    /* =================================================
+       SCROLL REVEAL
+       ================================================= */
+
+    const v63RevealItems = document.querySelectorAll(
+        ".v63-service-card, " +
+        ".v63-process-card, " +
+        ".v63-achievement-card, " +
+        ".v63-cta-content"
+    );
+
+
+    /* =================================================
+       INITIAL STATE
+       ================================================= */
+
+    v63RevealItems.forEach((item) => {
+
+        item.classList.add("v63-reveal");
+
+    });
+
+
+    /* =================================================
+       INTERSECTION OBSERVER
+       ================================================= */
+
+    const v63RevealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach((entry) => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    entry.target.classList.add(
+                        "v63-reveal-visible"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    v63RevealItems.forEach((item) => {
+
+        v63RevealObserver.observe(item);
+
+    });
+
+
+    /* =================================================
+       ACTIVE SECTION TRACKING
+       ================================================= */
+
+    const v63SectionObserver =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    const sectionId =
+                        entry.target.getAttribute("id");
+
+                    if (!sectionId) {
+                        return;
+                    }
+
+                    document
+                        .querySelectorAll(
+                            'a[href^="#"]'
+                        )
+                        .forEach((link) => {
+
+                            const href =
+                                link.getAttribute("href");
+
+                            link.classList.remove(
+                                "v63-active-link"
+                            );
+
+                            if (
+                                href ===
+                                `#${sectionId}`
+                            ) {
+
+                                link.classList.add(
+                                    "v63-active-link"
+                                );
+
+                            }
+
+                        });
+
+                });
+
+            },
+            {
+                threshold: 0.35
+            }
+        );
+
+
+    v63Sections.forEach((section) => {
+
+        v63SectionObserver.observe(section);
+
+    });
+
+
+    /* =================================================
+       SMOOTH SCROLL
+       ================================================= */
+
+    document
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
+        .forEach((link) => {
+
+            link.addEventListener(
+                "click",
+                (event) => {
+
+                    const targetId =
+                        link.getAttribute("href");
+
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+                        return;
+                    }
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+                    if (!target) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+            );
+
+        });
+
+
+    /* =================================================
+       V6.3 READY
+       ================================================= */
+
+    document.body.classList.add(
+        "v63-js-ready"
+    );
+
+});
+/* =====================================================
+   BABLU KUMAR PORTFOLIO V6.3
+   JAVASCRIPT PART 2
+   CARD ANIMATION + INTERACTION
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =================================================
+       CARD GROUPS
+       ================================================= */
+
+    const v63CardGroups = [
+        ".v63-service-card",
+        ".v63-process-card",
+        ".v63-achievement-card"
+    ];
+
+
+    /* =================================================
+       STAGGER DELAY
+       ================================================= */
+
+    v63CardGroups.forEach((selector) => {
+
+        const cards =
+            document.querySelectorAll(selector);
+
+        cards.forEach((card, index) => {
+
+            card.style.setProperty(
+                "--v63-delay",
+                `${index * 90}ms`
+            );
+
+        });
+
+    });
+
+
+    /* =================================================
+       CARD HOVER EFFECT
+       ================================================= */
+
+    const v63Cards =
+        document.querySelectorAll(
+            ".v63-service-card, " +
+            ".v63-process-card, " +
+            ".v63-achievement-card"
+        );
+
+
+    v63Cards.forEach((card) => {
+
+        card.addEventListener(
+            "mouseenter",
+            () => {
+
+                card.classList.add(
+                    "v63-card-active"
+                );
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                card.classList.remove(
+                    "v63-card-active"
+                );
+
+            }
+        );
+
+    });
+
+
+    /* =================================================
+       CTA BUTTON INTERACTION
+       ================================================= */
+
+    const v63CtaButtons =
+        document.querySelectorAll(
+            ".v63-cta-btn"
+        );
+
+
+    v63CtaButtons.forEach((button) => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                button.classList.add(
+                    "v63-button-clicked"
+                );
+
+
+                setTimeout(() => {
+
+                    button.classList.remove(
+                        "v63-button-clicked"
+                    );
+
+                }, 350);
+
+            }
+        );
+
+    });
+
+
+    /* =================================================
+       HERO BUTTON INTERACTION
+       ================================================= */
+
+    const v63HeroButtons =
+        document.querySelectorAll(
+            ".v63-hero-btn"
+        );
+
+
+    v63HeroButtons.forEach((button) => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                button.classList.add(
+                    "v63-button-clicked"
+                );
+
+
+                setTimeout(() => {
+
+                    button.classList.remove(
+                        "v63-button-clicked"
+                    );
+
+                }, 350);
+
+            }
+        );
+
+    });
+
+
+    /* =================================================
+       V6.3 INTERACTION READY
+       ================================================= */
+
+    document.body.classList.add(
+        "v63-interaction-ready"
+    );
+
+});
+/* =====================================================
+   BABLU KUMAR PORTFOLIO V6.3
+   JAVASCRIPT PART 3
+   COUNTER + CODE CARD ANIMATION
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =================================================
+       HERO STAT COUNTERS
+       ================================================= */
+
+    const v63Stats =
+        document.querySelectorAll(
+            ".v63-stat strong"
+        );
+
+
+    const v63AnimateCounter = (
+        element,
+        target,
+        duration = 1200
+    ) => {
+
+        const startTime =
+            performance.now();
+
+
+        const updateCounter = (
+            currentTime
+        ) => {
+
+            const elapsed =
+                currentTime - startTime;
+
+            const progress =
+                Math.min(
+                    elapsed / duration,
+                    1
+                );
+
+
+            const eased =
+                1 -
+                Math.pow(
+                    1 - progress,
+                    3
+                );
+
+
+            const value =
+                Math.floor(
+                    target * eased
+                );
+
+
+            element.textContent =
+                `${value}+`;
+
+
+            if (progress < 1) {
+
+                requestAnimationFrame(
+                    updateCounter
+                );
+
+            }
+
+        };
+
+
+        requestAnimationFrame(
+            updateCounter
+        );
+
+    };
+
+
+    /* =================================================
+       COUNTER OBSERVER
+       ================================================= */
+
+    let v63CounterStarted =
+        false;
+
+
+    const v63HeroSection =
+        document.querySelector(
+            "#v63-hero"
+        );
+
+
+    if (v63HeroSection) {
+
+        const v63CounterObserver =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach(
+                        (entry) => {
+
+                            if (
+                                !entry.isIntersecting ||
+                                v63CounterStarted
+                            ) {
+                                return;
+                            }
+
+
+                            v63CounterStarted =
+                                true;
+
+
+                            v63Stats.forEach(
+                                (stat) => {
+
+                                    const text =
+                                        stat.textContent
+                                        .trim();
+
+                                    const number =
+                                        parseInt(
+                                            text,
+                                            10
+                                        );
+
+
+                                    if (
+                                        !Number.isNaN(
+                                            number
+                                        )
+                                    ) {
+
+                                        v63AnimateCounter(
+                                            stat,
+                                            number
+                                        );
+
+                                    }
+
+                                }
+                            );
+
+
+                            v63CounterObserver.disconnect();
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.35
+                }
+            );
+
+
+        v63CounterObserver.observe(
+            v63HeroSection
+        );
+
+    }
+
+
+    /* =================================================
+       CODE CARD FLOATING EFFECT
+       ================================================= */
+
+    const v63CodeCard =
+        document.querySelector(
+            ".v63-code-card"
+        );
+
+
+    if (v63CodeCard) {
+
+        let v63FloatDirection =
+            1;
+
+        let v63FloatPosition =
+            0;
+
+
+        const v63FloatCard = () => {
+
+            v63FloatPosition +=
+                0.018 *
+                v63FloatDirection;
+
+
+            if (
+                v63FloatPosition > 4 ||
+                v63FloatPosition < -4
+            ) {
+
+                v63FloatDirection *=
+                    -1;
+
+            }
+
+
+            v63CodeCard.style.transform =
+                `translateY(${v63FloatPosition}px) rotate(2deg)`;
+
+
+            requestAnimationFrame(
+                v63FloatCard
+            );
+
+        };
+
+
+        v63FloatCard();
+
+    }
+
+
+    /* =================================================
+       CTA SOCIAL LINK FEEDBACK
+       ================================================= */
+
+    const v63SocialLinks =
+        document.querySelectorAll(
+            ".v63-cta-socials a"
+        );
+
+
+    v63SocialLinks.forEach(
+        (link) => {
+
+            link.addEventListener(
+                "click",
+                (event) => {
+
+                    const href =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        !href ||
+                        href === "#"
+                    ) {
+
+                        event.preventDefault();
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =================================================
+       V6.3 COUNTER READY
+       ================================================= */
+
+    document.body.classList.add(
+        "v63-counter-ready"
+    );
+
+});
+/* =====================================================
+   BABLU KUMAR PORTFOLIO V6.3
+   JAVASCRIPT PART 4
+   SCROLL PROGRESS + BACK TO TOP + YEAR
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =================================================
+       SCROLL PROGRESS
+       ================================================= */
+
+    let v63ProgressBar =
+        document.querySelector(".v63-scroll-progress");
+
+
+    if (!v63ProgressBar) {
+
+        v63ProgressBar =
+            document.createElement("div");
+
+        v63ProgressBar.className =
+            "v63-scroll-progress";
+
+        document.body.prepend(
+            v63ProgressBar
+        );
+
+    }
+
+
+    const v63UpdateProgress = () => {
+
+        const scrollTop =
+            window.scrollY;
+
+        const documentHeight =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
+
+
+        const progress =
+            documentHeight > 0
+                ? (scrollTop / documentHeight) * 100
+                : 0;
+
+
+        v63ProgressBar.style.width =
+            `${progress}%`;
+
+    };
+
+
+    window.addEventListener(
+        "scroll",
+        v63UpdateProgress,
+        { passive: true }
+    );
+
+
+    v63UpdateProgress();
+
+
+    /* =================================================
+       BACK TO TOP BUTTON
+       ================================================= */
+
+    let v63TopButton =
+        document.querySelector(
+            ".v63-back-to-top"
+        );
+
+
+    if (!v63TopButton) {
+
+        v63TopButton =
+            document.createElement("button");
+
+        v63TopButton.type =
+            "button";
+
+        v63TopButton.className =
+            "v63-back-to-top";
+
+        v63TopButton.setAttribute(
+            "aria-label",
+            "Back to top"
+        );
+
+        v63TopButton.innerHTML =
+            '<i class="fa-solid fa-arrow-up"></i>';
+
+        document.body.appendChild(
+            v63TopButton
+        );
+
+    }
+
+
+    const v63ToggleTopButton = () => {
+
+        if (window.scrollY > 450) {
+
+            v63TopButton.classList.add(
+                "v63-top-visible"
+            );
+
+        } else {
+
+            v63TopButton.classList.remove(
+                "v63-top-visible"
+            );
+
+        }
+
+    };
+
+
+    window.addEventListener(
+        "scroll",
+        v63ToggleTopButton,
+        { passive: true }
+    );
+
+
+    v63ToggleTopButton();
+
+
+    v63TopButton.addEventListener(
+        "click",
+        () => {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+    );
+
+
+    /* =================================================
+       CURRENT YEAR
+       ================================================= */
+
+    const v63YearElements =
+        document.querySelectorAll(
+            "[data-current-year]"
+        );
+
+
+    const v63CurrentYear =
+        new Date().getFullYear();
+
+
+    v63YearElements.forEach(
+        (element) => {
+
+            element.textContent =
+                v63CurrentYear;
+
+        }
+    );
+
+
+    /* =================================================
+       KEYBOARD ACCESSIBILITY
+       ================================================= */
+
+    v63TopButton.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+
+        }
+    );
+
+
+    /* =================================================
+       V6.3 SCROLL SYSTEM READY
+       ================================================= */
+
+    document.body.classList.add(
+        "v63-scroll-ready"
+    );
+
+});
+/* =====================================================
+   BABLU KUMAR PORTFOLIO V6.3
+   JAVASCRIPT PART 5
+   FINAL POLISH
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =================================================
+       MOBILE TOUCH FEEDBACK
+       ================================================= */
+
+    const v63InteractiveCards =
+        document.querySelectorAll(
+            ".v63-service-card, " +
+            ".v63-process-card, " +
+            ".v63-achievement-card"
+        );
+
+
+    v63InteractiveCards.forEach((card) => {
+
+        card.addEventListener(
+            "touchstart",
+            () => {
+
+                card.classList.add(
+                    "v63-touch-active"
+                );
+
+            },
+            { passive: true }
+        );
+
+
+        card.addEventListener(
+            "touchend",
+            () => {
+
+                setTimeout(() => {
+
+                    card.classList.remove(
+                        "v63-touch-active"
+                    );
+
+                }, 180);
+
+            },
+            { passive: true }
+        );
+
+    });
+
+
+    /* =================================================
+       HERO CODE CARD PAUSE ON TOUCH
+       ================================================= */
+
+    const v63CodeCard =
+        document.querySelector(
+            ".v63-code-card"
+        );
+
+
+    if (v63CodeCard) {
+
+        v63CodeCard.addEventListener(
+            "touchstart",
+            () => {
+
+                v63CodeCard.classList.add(
+                    "v63-code-touch"
+                );
+
+            },
+            { passive: true }
+        );
+
+
+        v63CodeCard.addEventListener(
+            "touchend",
+            () => {
+
+                v63CodeCard.classList.remove(
+                    "v63-code-touch"
+                );
+
+            },
+            { passive: true }
+        );
+
+    }
+
+
+    /* =================================================
+       PAGE LOAD
+       ================================================= */
+
+    window.addEventListener(
+        "load",
+        () => {
+
+            document.body.classList.add(
+                "v63-page-loaded"
+            );
+
+        }
+    );
+
+
+    /* =================================================
+       EXTERNAL LINK SAFETY
+       ================================================= */
+
+    document
+        .querySelectorAll(
+            'a[target="_blank"]'
+        )
+        .forEach((link) => {
+
+            link.setAttribute(
+                "rel",
+                "noopener noreferrer"
+            );
+
+        });
+
+
+    /* =================================================
+       PREVENT EMPTY CTA LINKS
+       ================================================= */
+
+    document
+        .querySelectorAll(
+            ".v63-cta-socials a"
+        )
+        .forEach((link) => {
+
+            link.addEventListener(
+                "click",
+                (event) => {
+
+                    const href =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        !href ||
+                        href.trim() === "#"
+                    ) {
+
+                        event.preventDefault();
+
+                    }
+
+                }
+            );
+
+        });
+
+
+    /* =================================================
+       FINAL READY STATE
+       ================================================= */
+
+    document.body.classList.add(
+        "v63-final-ready"
+    );
+
+});
