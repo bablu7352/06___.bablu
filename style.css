@@ -10825,7 +10825,7 @@ body.light-theme
    V6.3 CSS PART 5 END
    ===================================================== */
 /* =====================================================
-   VIP LOGO — PERFECT CIRCLE / NO CROP
+   VIP LOGO — PREMIUM CIRCLE
    ===================================================== */
 
 .experience-badge img {
@@ -10837,16 +10837,16 @@ body.light-theme
 
     display: block;
 
-    /* Logo पूरा दिखाई देगा */
+    /* Keep the complete logo visible */
     object-fit: contain;
 
-    /* Logo को थोड़ा breathing space */
+    /* Add space around the logo */
     padding: 5px;
 
-    /* गोल frame */
+    /* Make the logo frame perfectly circular */
     border-radius: 50%;
 
-    /* Premium glass background */
+    /* Glass effect */
     background:
         rgba(255, 255, 255, 0.08);
 
@@ -10863,7 +10863,7 @@ body.light-theme
         0 8px 22px
         rgba(0, 114, 255, 0.25);
 
-    /* Logo की original shape को preserve रखेगा */
+    /* Soft logo shadow */
     filter:
         drop-shadow(
             0 5px 10px
@@ -10877,7 +10877,7 @@ body.light-theme
 
 
 /* =====================================================
-   HOVER
+   HOVER EFFECT
    ===================================================== */
 
 .experience-badge:hover img {
@@ -10896,7 +10896,7 @@ body.light-theme
 
 
 /* =====================================================
-   MOBILE
+   MOBILE RESPONSIVE
    ===================================================== */
 
 @media (max-width: 600px) {
@@ -10907,12 +10907,11 @@ body.light-theme
         height: 46px;
 
         padding: 4px;
-
     }
 
 }
 
 
 /* =====================================================
-   VIP LOGO END
+   VIP LOGO STYLE END
    ===================================================== */
