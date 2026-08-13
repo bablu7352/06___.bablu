@@ -10884,3 +10884,97 @@ body.light-theme
 /* =====================================================
    BN LOGO STYLE END
    ===================================================== */
+/* =====================================================
+   EXPERIENCE BADGE — CLEAN BN LOGO
+   ===================================================== */
+
+.experience-badge {
+    width: auto;
+    min-height: auto;
+
+    padding: 0;
+    margin: 0;
+
+    background: transparent;
+    border: none;
+    border-radius: 0;
+
+    box-shadow: none;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    overflow: visible;
+
+    transform: none;
+}
+
+
+/* Remove decorative circle/glow */
+
+.experience-badge::before,
+.experience-badge::after {
+    content: none;
+    display: none;
+}
+
+
+/* BN Logo */
+
+.experience-badge img {
+    width: 75px;
+    height: 75px;
+
+    display: block;
+
+    object-fit: contain;
+
+    padding: 0;
+    margin: 0 auto 8px;
+
+    background: transparent;
+
+    border: none;
+    border-radius: 0;
+
+    box-shadow: none;
+    filter: none;
+}
+
+
+/* Keep the text */
+
+.experience-badge strong {
+    display: block;
+}
+
+.experience-badge span {
+    display: block;
+}
+
+
+/* Hover */
+
+.experience-badge:hover {
+    transform: none;
+
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.experience-badge:hover img {
+    transform: scale(1.06);
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .experience-badge img {
+        width: 60px;
+        height: 60px;
+    }
+
+}
