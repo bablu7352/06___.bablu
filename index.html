@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Bablu Kumar — Frontend Developer Portfolio">
+<title>Bablu Kumar | Frontend Developer</title>
 
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,sans-serif;background:#080808;color:#fff;line-height:1.6}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:16px 7%;background:#080808cc;backdrop-filter:blur(12px)}
+nav b{font-size:1.25rem}
+nav div{display:flex;gap:20px;font-size:.9rem}
+section{padding:90px 7%;max-width:1100px;margin:auto}
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding-top:100px}
+.hero img{width:145px;height:145px;border-radius:50%;object-fit:cover;border:3px solid #fff;margin-bottom:20px}
+.hero h1{font-size:clamp(2.5rem,8vw,5.5rem);line-height:1}
+.hero h1 span{opacity:.45}
+.hero p{margin:20px auto;max-width:600px;color:#aaa}
+.btn{display:inline-block;padding:11px 20px;border:1px solid #555;border-radius:30px;margin:5px;transition:.2s}
+.btn:hover{background:#fff;color:#000}
+h2{font-size:2rem;margin-bottom:25px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{border:1px solid #222;border-radius:18px;padding:22px;background:#101010}
+.card h3{margin-bottom:8px}
+.muted{color:#999}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{padding:7px 12px;border:1px solid #333;border-radius:20px;font-size:.85rem}
+.social{display:flex;gap:10px;flex-wrap:wrap}
+footer{text-align:center;padding:30px;color:#777;border-top:1px solid #222}
+
+@media(max-width:600px){
+nav div{display:none}
+section{padding:75px 5%}
+.hero img{width:120px;height:120px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <b>BK.</b>
+  <div>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+
+<section class="hero">
+  <div>
+    <img src="profile.jpg" alt="Bablu Kumar">
+    <p>HELLO, I'M</p>
+    <h1>Bablu <span>Kumar</span></h1>
+    <p>Frontend Developer • Web Designer • Creative Learner</p>
+
+    <a class="btn" href="#projects">View Projects</a>
+    <a class="btn" href="#contact">Contact Me</a>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>
+      I'm Bablu Kumar, a passionate learner and frontend developer
+      interested in creating clean, modern and responsive websites.
+      I enjoy learning new web technologies and turning ideas into
+      simple digital experiences.
+    </p>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>10th</h3>
+      <p class="muted">1st Division • 2017</p>
+    </div>
+    <div class="card">
+      <h3>12th</h3>
+      <p class="muted">1st Division • 2019</p>
+    </div>
+    <div class="card">
+      <h3>B.A.</h3>
+      <p class="muted">1st Division • 2023–2027</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="tags">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>Responsive Design</span>
+    <span>GitHub</span>
+    <span>Web Design</span>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Portfolio Website</h3>
+      <p class="muted">Modern responsive personal portfolio.</p>
+    </div>
+    <div class="card">
+      <h3>Web Designing Lab</h3>
+      <p class="muted">HTML, CSS and JavaScript based projects.</p>
+    </div>
+    <div class="card">
+      <h3>More Coming Soon</h3>
+      <p class="muted">New projects will be added here.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Let's Connect</h2>
+  <div class="social">
+    <a class="btn" href="#" target="_blank">Instagram</a>
+    <a class="btn" href="#" target="_blank">Facebook</a>
+    <a class="btn" href="#" target="_blank">WhatsApp</a>
+    <a class="btn" href="mailto:your@email.com">Email</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © <span id="year"></span> Bablu Kumar • Built with HTML, CSS & JS
+</footer>
+
+<script>
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>
