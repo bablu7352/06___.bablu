@@ -1,1 +1,234 @@
+/* =====================================================
+   PREMIUM EDUCATION / JOURNEY
+   ===================================================== */
 
+#education{
+    position:relative;
+}
+
+/* Section heading */
+#education .head{
+    margin-bottom:40px;
+}
+
+#education .head small{
+    color:var(--muted);
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:3px;
+}
+
+#education .head h2{
+    margin-top:8px;
+    font-size:clamp(2.7rem,5vw,4.8rem);
+    line-height:.9;
+    letter-spacing:-4px;
+}
+
+
+/* Timeline */
+#education .timeline{
+    position:relative;
+
+    max-width:850px;
+
+    margin:0 auto;
+
+    padding:10px 0 10px 38px;
+
+    border-left:1px solid var(--line);
+}
+
+
+/* Timeline item */
+#education .event{
+    position:relative;
+
+    margin-bottom:18px;
+    padding:24px 26px;
+
+    border:1px solid var(--line);
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--card),
+            rgba(255,255,255,.015)
+        );
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* Hover */
+#education .event:hover{
+    transform:translateX(7px);
+
+    border-color:
+        rgba(255,255,255,.28);
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,.25);
+}
+
+
+/* Timeline dot */
+#education .event::before{
+    content:"";
+
+    position:absolute;
+
+    left:-44px;
+    top:30px;
+
+    width:11px;
+    height:11px;
+
+    border-radius:50%;
+
+    background:var(--text);
+
+    border:4px solid var(--bg);
+
+    box-shadow:
+        0 0 0 1px var(--line),
+        0 0 18px var(--glow);
+
+    z-index:2;
+}
+
+
+/* Small year */
+#education .event small{
+    display:inline-block;
+
+    margin-bottom:6px;
+
+    color:var(--muted);
+
+    font-size:10px;
+    font-weight:700;
+
+    letter-spacing:2px;
+}
+
+
+/* Education title */
+#education .event h3{
+    margin:4px 0 6px;
+
+    font-size:20px;
+    font-weight:700;
+
+    letter-spacing:-.4px;
+}
+
+
+/* Description */
+#education .event p{
+    margin:0;
+
+    font-size:14px;
+}
+
+
+/* Status badge */
+#education .edu-status{
+    display:inline-flex;
+
+    margin-top:14px;
+
+    padding:5px 10px;
+
+    border:1px solid var(--line);
+
+    border-radius:30px;
+
+    background:var(--card2);
+
+    color:var(--muted);
+
+    font-size:9px;
+    font-weight:700;
+
+    letter-spacing:1.3px;
+}
+
+
+/* Current education highlight */
+#education .event:first-child{
+    border-color:
+        rgba(255,255,255,.22);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.18);
+}
+
+#education .event:first-child
+.edu-status{
+    color:var(--text);
+
+    border-color:
+        rgba(255,255,255,.25);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+
+    #education .timeline{
+        padding-left:28px;
+        margin-left:3px;
+    }
+
+    #education .event{
+        padding:20px;
+        border-radius:17px;
+    }
+
+    #education .event::before{
+        left:-34px;
+        top:27px;
+
+        width:9px;
+        height:9px;
+
+        border-width:3px;
+    }
+
+    #education .event:hover{
+        transform:translateY(-3px);
+    }
+
+}
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media(max-width:450px){
+
+    #education .head h2{
+        letter-spacing:-2.5px;
+    }
+
+    #education .event{
+        padding:18px;
+    }
+
+    #education .event h3{
+        font-size:18px;
+    }
+
+    #education .event p{
+        font-size:13px;
+    }
+
+}
