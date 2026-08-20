@@ -9,33 +9,115 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:system-ui,sans-serif;background:#080808;color:#fff;line-height:1.6}
-a{color:inherit;text-decoration:none}
-nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:16px 7%;background:#080808cc;backdrop-filter:blur(12px)}
-nav b{font-size:1.25rem}
-nav div{display:flex;gap:20px;font-size:.9rem}
-section{padding:90px 7%;max-width:1100px;margin:auto}
-.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding-top:100px}
-.hero img{width:145px;height:145px;border-radius:50%;object-fit:cover;border:3px solid #fff;margin-bottom:20px}
-.hero h1{font-size:clamp(2.5rem,8vw,5.5rem);line-height:1}
-.hero h1 span{opacity:.45}
-.hero p{margin:20px auto;max-width:600px;color:#aaa}
-.btn{display:inline-block;padding:11px 20px;border:1px solid #555;border-radius:30px;margin:5px;transition:.2s}
-.btn:hover{background:#fff;color:#000}
-h2{font-size:2rem;margin-bottom:25px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.card{border:1px solid #222;border-radius:18px;padding:22px;background:#101010}
-.card h3{margin-bottom:8px}
-.muted{color:#999}
-.tags{display:flex;flex-wrap:wrap;gap:8px}
-.tags span{padding:7px 12px;border:1px solid #333;border-radius:20px;font-size:.85rem}
-.social{display:flex;gap:10px;flex-wrap:wrap}
-footer{text-align:center;padding:30px;color:#777;border-top:1px solid #222}
+body{
+  font-family:system-ui,-apple-system,sans-serif;
+  background:#050505;color:#fff;line-height:1.6;
+  overflow-x:hidden
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-1;
+  background:
+  radial-gradient(circle at 15% 20%,#ffffff12,transparent 25%),
+  radial-gradient(circle at 85% 70%,#ffffff0d,transparent 25%)
+}
+a{text-decoration:none;color:inherit}
 
-@media(max-width:600px){
-nav div{display:none}
-section{padding:75px 5%}
-.hero img{width:120px;height:120px}
+nav{
+  position:fixed;top:15px;left:5%;right:5%;z-index:99;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:13px 20px;border:1px solid #ffffff18;
+  border-radius:18px;background:#0b0b0bcc;
+  backdrop-filter:blur(18px)
+}
+.logo{font-size:1.4rem;font-weight:800}
+.logo span{opacity:.4}
+nav ul{display:flex;gap:20px;list-style:none;font-size:.9rem}
+nav li a{color:#aaa;transition:.2s}
+nav li a:hover{color:#fff}
+.menu{display:none;font-size:1.4rem;cursor:pointer}
+
+section{max-width:1100px;margin:auto;padding:100px 6%}
+.hero{
+  min-height:100vh;display:grid;place-items:center;
+  text-align:center;padding-top:130px
+}
+.profile{
+  width:145px;height:145px;object-fit:cover;border-radius:50%;
+  border:2px solid #fff;padding:4px;
+  box-shadow:0 0 50px #fff2
+}
+.hero small{display:block;margin-top:25px;color:#999;letter-spacing:4px}
+.hero h1{
+  font-size:clamp(3rem,9vw,6.5rem);
+  line-height:.95;margin:12px 0
+}
+.hero h1 span{opacity:.35}
+.hero h2{font-size:clamp(1rem,3vw,1.5rem);font-weight:400;color:#aaa}
+.hero p{max-width:600px;margin:20px auto;color:#888}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:11px 19px;border:1px solid #333;border-radius:30px;
+  margin:5px;background:#0d0d0d;transition:.25s
+}
+.btn:hover{background:#fff;color:#000;transform:translateY(-3px)}
+
+h2.title{font-size:2.4rem;margin-bottom:25px}
+.line{width:50px;height:3px;background:#fff;margin-bottom:30px}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:16px
+}
+.card{
+  padding:24px;border:1px solid #1d1d1d;border-radius:20px;
+  background:linear-gradient(145deg,#111,#080808);
+  transition:.3s
+}
+.card:hover{
+  transform:translateY(-6px);
+  border-color:#444;
+  box-shadow:0 15px 40px #000
+}
+.card h3{margin-bottom:8px}
+.muted{color:#888}
+
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tags span{
+  padding:9px 15px;border:1px solid #292929;
+  border-radius:30px;color:#bbb;background:#0c0c0c
+}
+
+.project{
+  min-height:170px;display:flex;flex-direction:column;
+  justify-content:space-between
+}
+.project strong{font-size:2rem;opacity:.25}
+
+.social{display:flex;flex-wrap:wrap;gap:8px}
+
+.reveal{
+  opacity:0;transform:translateY(25px);
+  transition:.7s
+}
+.reveal.show{opacity:1;transform:none}
+
+footer{
+  text-align:center;padding:35px 15px;
+  border-top:1px solid #191919;color:#666
+}
+
+@media(max-width:650px){
+  nav ul{
+    display:none;position:absolute;top:60px;left:0;right:0;
+    padding:20px;flex-direction:column;text-align:center;
+    background:#0b0b0b;border:1px solid #222;border-radius:15px
+  }
+  nav ul.open{display:flex}
+  .menu{display:block}
+  section{padding:80px 5%}
+  .hero h1{font-size:3.5rem}
 }
 </style>
 </head>
@@ -43,93 +125,141 @@ section{padding:75px 5%}
 <body>
 
 <nav>
-  <b>BK.</b>
-  <div>
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
+  <a class="logo" href="#">BK<span>.</span></a>
+
+  <ul id="nav">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="menu" onclick="menu()">☰</div>
 </nav>
 
 <main>
 
 <section class="hero">
   <div>
-    <img src="profile.jpg" alt="Bablu Kumar">
-    <p>HELLO, I'M</p>
-    <h1>Bablu <span>Kumar</span></h1>
-    <p>Frontend Developer • Web Designer • Creative Learner</p>
+    <img class="profile" src="profile.jpg" alt="Bablu Kumar">
 
-    <a class="btn" href="#projects">View Projects</a>
-    <a class="btn" href="#contact">Contact Me</a>
+    <small>HELLO, I'M</small>
+
+    <h1>Bablu <span>Kumar</span></h1>
+
+    <h2><span id="typing"></span></h2>
+
+    <p>
+      I create clean, modern and responsive websites
+      with a focus on simple design and great user experience.
+    </p>
+
+    <a class="btn" href="#projects">View Projects ↗</a>
+    <a class="btn" href="#contact">Let's Connect</a>
   </div>
 </section>
 
-<section id="about">
-  <h2>About Me</h2>
+<section id="about" class="reveal">
+  <h2 class="title">About Me</h2>
+  <div class="line"></div>
+
   <div class="card">
-    <p>
-      I'm Bablu Kumar, a passionate learner and frontend developer
-      interested in creating clean, modern and responsive websites.
-      I enjoy learning new web technologies and turning ideas into
-      simple digital experiences.
+    <p class="muted">
+      I'm Bablu Kumar, a frontend developer and web design learner.
+      I enjoy creating responsive websites using modern web technologies.
+      My goal is to keep improving my skills and build useful digital
+      experiences.
     </p>
   </div>
 </section>
 
-<section id="education">
-  <h2>Education</h2>
+<section id="education" class="reveal">
+  <h2 class="title">Education</h2>
+  <div class="line"></div>
+
   <div class="grid">
     <div class="card">
       <h3>10th</h3>
       <p class="muted">1st Division • 2017</p>
     </div>
+
     <div class="card">
       <h3>12th</h3>
       <p class="muted">1st Division • 2019</p>
     </div>
+
     <div class="card">
       <h3>B.A.</h3>
-      <p class="muted">1st Division • 2023–2027</p>
+      <p class="muted">2023 – 2027</p>
     </div>
   </div>
 </section>
 
-<section id="skills">
-  <h2>Skills</h2>
+<section id="skills" class="reveal">
+  <h2 class="title">Skills</h2>
+  <div class="line"></div>
+
   <div class="tags">
-    <span>HTML</span>
-    <span>CSS</span>
+    <span>HTML5</span>
+    <span>CSS3</span>
     <span>JavaScript</span>
     <span>Responsive Design</span>
     <span>GitHub</span>
     <span>Web Design</span>
+    <span>UI Design</span>
   </div>
 </section>
 
-<section id="projects">
-  <h2>Projects</h2>
+<section id="projects" class="reveal">
+  <h2 class="title">Projects</h2>
+  <div class="line"></div>
+
   <div class="grid">
-    <div class="card">
-      <h3>Portfolio Website</h3>
-      <p class="muted">Modern responsive personal portfolio.</p>
+
+    <div class="card project">
+      <div>
+        <strong>01</strong>
+        <h3>Personal Portfolio</h3>
+        <p class="muted">
+          Modern responsive portfolio website.
+        </p>
+      </div>
+      <a class="btn" href="#">View ↗</a>
     </div>
-    <div class="card">
-      <h3>Web Designing Lab</h3>
-      <p class="muted">HTML, CSS and JavaScript based projects.</p>
+
+    <div class="card project">
+      <div>
+        <strong>02</strong>
+        <h3>Web Design Lab</h3>
+        <p class="muted">
+          HTML, CSS and JavaScript based project.
+        </p>
+      </div>
+      <a class="btn" href="#">View ↗</a>
     </div>
-    <div class="card">
-      <h3>More Coming Soon</h3>
-      <p class="muted">New projects will be added here.</p>
+
+    <div class="card project">
+      <div>
+        <strong>03</strong>
+        <h3>Coming Soon</h3>
+        <p class="muted">
+          More creative projects will be added.
+        </p>
+      </div>
+      <a class="btn" href="#">Soon</a>
     </div>
+
   </div>
 </section>
 
-<section id="contact">
-  <h2>Let's Connect</h2>
-  <div class="social">
+<section id="contact" class="reveal">
+  <h2 class="title">Let's Connect</h2>
+  <div class="line"></div>
+
+  <p class="muted">Have an idea or want to connect?</p>
+
+  <div class="social" style="margin-top:20px">
     <a class="btn" href="#" target="_blank">Instagram</a>
     <a class="btn" href="#" target="_blank">Facebook</a>
     <a class="btn" href="#" target="_blank">WhatsApp</a>
@@ -140,11 +270,46 @@ section{padding:75px 5%}
 </main>
 
 <footer>
-  © <span id="year"></span> Bablu Kumar • Built with HTML, CSS & JS
+  © <span id="year"></span> Bablu Kumar · All Rights Reserved
 </footer>
 
 <script>
+const text=["Frontend Developer","Web Designer","Creative Learner"];
+let i=0,j=0,del=false;
+
+function type(){
+  const el=document.getElementById("typing");
+  el.textContent=text[i].slice(0,j);
+
+  if(!del && j++===text[i].length){
+    del=true;setTimeout(type,1200);return
+  }
+
+  if(del && j--===0){
+    del=false;i=(i+1)%text.length
+  }
+
+  setTimeout(type,del?45:90)
+}
+type();
+
+function menu(){
+  document.getElementById("nav").classList.toggle("open")
+}
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add("show")
+  })
+},{threshold:.12});
+
+document.querySelectorAll(".reveal").forEach(e=>observer.observe(e));
+
 document.getElementById("year").textContent=new Date().getFullYear();
+
+document.querySelectorAll("nav a").forEach(a=>{
+  a.onclick=()=>document.getElementById("nav").classList.remove("open")
+});
 </script>
 
 </body>
