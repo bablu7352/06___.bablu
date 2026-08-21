@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>SocialHub - Login</title>
+
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <div class="auth-left">
+            <div class="auth-logo">SocialHub</div>
+
+            <h1>Connect with people.</h1>
+
+            <p>
+                Share moments, chat with friends,
+                and stay connected.
+            </p>
+        </div>
+
+
+        <div class="auth-card">
+
+            <h2>Login</h2>
+
+            <p class="auth-subtitle">
+                Welcome back to SocialHub
+            </p>
+
+            <form id="loginForm">
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Email address"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Password"
+                    required
+                >
+
+                <button type="submit" class="auth-btn">
+                    Login
+                </button>
+
+            </form>
+
+
+            <div id="loginMessage"></div>
+
+
+            <div class="auth-divider">
+                <span>OR</span>
+            </div>
+
+
+            <a href="signup.html" class="create-account">
+                Create New Account
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <script type="module" src="js/auth.js"></script>
+
+</body>
+</html>
