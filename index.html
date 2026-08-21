@@ -1,452 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Bablu Kumar | Frontend Developer">
+<title>Bablu Kumar — Portfolio 10.0</title>
 
-    <!-- Mobile Responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+font-family:Inter,system-ui,sans-serif;background:#070707;color:#fff;
+overflow-x:hidden
+}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
 
-    <title>Bablu Kumar | Frontend Developer</title>
+:root{
+--bg:#070707;
+--card:#101010;
+--line:#252525;
+--text:#fff;
+--muted:#8b8b8b;
+--soft:#161616;
+}
 
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
+body.light{
+--bg:#f5f5f5;--card:#fff;--line:#ddd;
+--text:#111;--muted:#666;--soft:#eee
+}
 
-    <!-- Font Awesome Icons -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    >
+body{background:var(--bg);color:var(--text)}
+body:before{
+content:"";position:fixed;inset:0;z-index:-2;
+background:
+radial-gradient(circle at 15% 15%,#fff1,transparent 23%),
+radial-gradient(circle at 85% 70%,#fff1,transparent 25%);
+}
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+.side{
+position:fixed;left:25px;top:50%;transform:translateY(-50%);
+z-index:20;width:62px;padding:12px 8px;
+border:1px solid var(--line);border-radius:30px;
+background:#0c0ceccc;backdrop-filter:blur(20px);
+display:flex;flex-direction:column;align-items:center;gap:8px
+}
+.side a,.side button{
+width:45px;height:45px;border:0;border-radius:50%;
+display:grid;place-items:center;background:transparent;
+color:var(--muted);cursor:pointer;font-size:17px
+}
+.side a:hover,.side button:hover{
+background:var(--text);color:var(--bg)
+}
+
+main{margin-left:100px}
+
+section{min-height:100vh;padding:100px 7%;max-width:1300px}
+
+.hero{
+display:flex;align-items:center;
+position:relative
+}
+
+.hero-content{max-width:850px}
+.badge{
+display:inline-block;padding:7px 14px;border:1px solid var(--line);
+border-radius:30px;color:var(--muted);font-size:13px;
+margin-bottom:25px
+}
+.hero h1{
+font-size:clamp(4rem,10vw,9rem);
+line-height:.82;letter-spacing:-7px
+}
+.hero h1 span{display:block;color:var(--muted)}
+.hero h2{
+font-size:clamp(1.2rem,3vw,2rem);
+margin:30px 0 10px;font-weight:400
+}
+.hero p{max-width:620px;color:var(--muted);font-size:17px}
+
+.buttons{margin-top:30px}
+.btn{
+display:inline-flex;padding:12px 20px;margin:4px;
+border:1px solid var(--line);border-radius:30px;
+background:var(--card);transition:.25s
+}
+.btn:hover{
+background:var(--text);color:var(--bg);
+transform:translateY(-4px)
+}
+
+.scroll{
+position:absolute;bottom:35px;left:0;
+color:var(--muted);font-size:12px;letter-spacing:3px
+}
+
+.title{
+font-size:clamp(2.5rem,6vw,5rem);
+letter-spacing:-3px;margin-bottom:10px
+}
+.sub{color:var(--muted);max-width:600px;margin-bottom:40px}
+
+.grid{
+display:grid;grid-template-columns:repeat(2,1fr);gap:18px
+}
+.card{
+background:var(--card);border:1px solid var(--line);
+border-radius:25px;padding:28px;transition:.3s
+}
+.card:hover{
+transform:translateY(-7px);
+border-color:#777
+}
+
+.number{font-size:12px;color:var(--muted)}
+.card h3{font-size:1.35rem;margin:10px 0}
+.muted{color:var(--muted)}
+
+.skills{display:grid;gap:20px;max-width:750px}
+.skill-head{display:flex;justify-content:space-between;margin-bottom:8px}
+.bar{
+height:6px;background:var(--soft);
+border-radius:10px;overflow:hidden
+}
+.bar i{
+display:block;height:100%;background:var(--text);
+border-radius:10px
+}
+
+.timeline{
+max-width:800px;border-left:1px solid var(--line);
+padding-left:30px
+}
+.event{position:relative;margin-bottom:35px}
+.event:before{
+content:"";position:absolute;left:-36px;top:5px;
+width:10px;height:10px;border-radius:50%;
+background:var(--text)
+}
+.year{font-size:13px;color:var(--muted)}
+
+.projects{
+display:grid;grid-template-columns:repeat(3,1fr);gap:18px
+}
+.project{
+min-height:280px;display:flex;flex-direction:column;
+justify-content:space-between
+}
+.project .big{
+font-size:5rem;font-weight:900;color:#ffffff12
+}
+
+.contact{
+display:grid;grid-template-columns:1fr 1fr;gap:30px
+}
+.contact-box{
+border:1px solid var(--line);border-radius:25px;
+padding:35px;background:var(--card)
+}
+.contact-box h3{font-size:2rem;margin-bottom:15px}
+
+footer{
+margin-left:100px;padding:35px 7%;
+border-top:1px solid var(--line);color:var(--muted)
+}
+
+.reveal{
+opacity:0;transform:translateY(30px);transition:.8s
+}
+.reveal.show{opacity:1;transform:none}
+
+@media(max-width:800px){
+.side{
+left:50%;top:auto;bottom:15px;
+transform:translateX(-50%);
+width:auto;height:58px;
+flex-direction:row;padding:6px 10px;
+border-radius:30px
+}
+.side a,.side button{width:43px;height:43px}
+main{margin-left:0}
+section{padding:90px 6%;min-height:auto}
+.hero{min-height:100vh}
+.hero h1{font-size:4rem;letter-spacing:-3px}
+.projects,.grid,.contact{grid-template-columns:1fr}
+footer{margin-left:0;padding-bottom:100px}
+}
+
+@media(max-width:450px){
+.hero h1{font-size:3.2rem}
+.title{font-size:2.7rem}
+}
+</style>
 </head>
 
 <body>
 
-    <!-- =========================
-         HEADER / NAVBAR
-    ========================== -->
+<nav class="side">
+<a href="#home" title="Home">⌂</a>
+<a href="#about" title="About">◉</a>
+<a href="#skills" title="Skills">✦</a>
+<a href="#work" title="Projects">▣</a>
+<a href="#contact" title="Contact">✉</a>
+<button onclick="theme()" id="theme">☼</button>
+</nav>
+
+<main>
+
+<section class="hero" id="home">
+<div class="hero-content">
+
+<div class="badge">AVAILABLE FOR CREATIVE WORK</div>
 
-    <header class="header">
+<h1>
+BABLU
+<span>KUMAR</span>
+</h1>
 
-        <div class="container nav-container">
+<h2>
+I'm a <b id="type"></b>
+</h2>
 
-            <!-- Logo -->
-            <a href="#home" class="logo">
-                <span>B</span>K
-            </a>
+<p>
+I build modern, responsive and user-focused web experiences
+with clean design and lightweight code.
+</p>
 
-            <!-- Navigation -->
-            <nav class="navbar" id="navbar">
+<div class="buttons">
+<a class="btn" href="#work">Explore My Work ↗</a>
+<a class="btn" href="#contact">Let's Talk</a>
+</div>
 
-                <a href="#home" class="nav-link active">
-                    Home
-                </a>
+</div>
 
-                <a href="#about" class="nav-link">
-                    About
-                </a>
+<div class="scroll">SCROLL ↓</div>
+</section>
 
-                <a href="#education" class="nav-link">
-                    Education
-                </a>
 
-                <a href="#skills" class="nav-link">
-                    Skills
-                </a>
+<section id="about" class="reveal">
 
-                <a href="#certificates" class="nav-link">
-                    Certificates
-                </a>
+<h2 class="title">About.</h2>
 
-                <a href="#projects" class="nav-link">
-                    Projects
-                </a>
+<p class="sub">
+A little about me, my journey and what I love building.
+</p>
 
-                <a href="#contact" class="nav-link">
-                    Contact
-                </a>
+<div class="grid">
 
-            </nav>
+<div class="card">
+<span class="number">01 / PROFILE</span>
+<h3>Frontend Developer</h3>
+<p class="muted">
+I'm Bablu Kumar, a frontend development learner passionate
+about creating clean interfaces and responsive websites.
+</p>
+</div>
 
-            <!-- Menu Button -->
-            <button
-                class="menu-btn"
-                id="menuBtn"
-                aria-label="Open Menu"
-            >
-                <i class="fa-solid fa-bars"></i>
-            </button>
+<div class="card">
+<span class="number">02 / EDUCATION</span>
+<h3>B.A. • 2023–2027</h3>
+<p class="muted">
+History Major with Political Science as Minor.
+</p>
+</div>
 
-        </div>
+</div>
+</section>
 
-    </header>
 
+<section class="reveal">
+
+<h2 class="title">Skills.</h2>
+
+<p class="sub">
+Technologies and skills I'm currently working with.
+</p>
+
+<div class="skills">
+
+<div>
+<div class="skill-head">
+<span>HTML</span><span>95%</span>
+</div>
+<div class="bar"><i style="width:95%"></i></div>
+</div>
+
+<div>
+<div class="skill-head">
+<span>CSS</span><span>90%</span>
+</div>
+<div class="bar"><i style="width:90%"></i></div>
+</div>
+
+<div>
+<div class="skill-head">
+<span>JavaScript</span><span>75%</span>
+</div>
+<div class="bar"><i style="width:75%"></i></div>
+</div>
+
+<div>
+<div class="skill-head">
+<span>Responsive Design</span><span>90%</span>
+</div>
+<div class="bar"><i style="width:90%"></i></div>
+</div>
+
+</div>
+</section>
+
+
+<section class="reveal">
+
+<h2 class="title">Journey.</h2>
+
+<p class="sub">
+My educational journey.
+</p>
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================== -->
+<div class="timeline">
 
-    <main>
+<div class="event">
+<div class="year">2023 — 2027</div>
+<h3>Bachelor of Arts</h3>
+<p class="muted">History Major • Political Science Minor</p>
+</div>
+
+<div class="event">
+<div class="year">2019</div>
+<h3>Higher Secondary</h3>
+<p class="muted">1st Division</p>
+</div>
 
-        <!-- =========================
-             HOME / HERO SECTION
-        ========================== -->
+<div class="event">
+<div class="year">2017</div>
+<h3>Secondary Education</h3>
+<p class="muted">1st Division</p>
+</div>
 
-        <section class="hero" id="home">
+</div>
+</section>
 
-            <div class="container hero-container">
 
-                <!-- Hero Text -->
-                <div class="hero-content">
+<section id="work" class="reveal">
 
-                    <p class="hero-small-text">
-                        Hello, I'm
-                    </p>
+<h2 class="title">Selected Work.</h2>
 
-                    <h1>
-                        Bablu <span>Kumar</span>
-                    </h1>
+<p class="sub">
+A few projects from my learning and development journey.
+</p>
 
-                    <h2>
-                        I AM A
-                        <span class="typing-text">
-                            Frontend Developer
-                        </span>
-                    </h2>
+<div class="projects">
 
-                    <p class="hero-description">
-                        I create modern, responsive and user-friendly
-                        websites with clean design and smooth
-                        experiences.
-                    </p>
+<div class="card project">
+<div>
+<div class="big">01</div>
+<h3>Personal Portfolio</h3>
+<p class="muted">
+Modern responsive personal website.
+</p>
+</div>
+<a class="btn" href="#">View Project ↗</a>
+</div>
 
-
-                    <!-- Buttons -->
-                    <div class="hero-buttons">
-
-                        <a href="#projects" class="btn primary-btn">
-                            <i class="fa-solid fa-code"></i>
-                            View Projects
-                        </a>
-
-                        <a href="#contact" class="btn secondary-btn">
-                            <i class="fa-regular fa-paper-plane"></i>
-                            Contact Me
-                        </a>
-
-                    </div>
-
-
-                    <!-- Social Icons -->
-                    <div class="social-links">
-
-                        <a
-                            href="#"
-                            aria-label="GitHub"
-                            target="_blank"
-                        >
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-
-                        <a
-                            href="#"
-                            aria-label="Instagram"
-                            target="_blank"
-                        >
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-
-                        <a
-                            href="#"
-                            aria-label="Facebook"
-                            target="_blank"
-                        >
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-
-                        <a
-                            href="#"
-                            aria-label="WhatsApp"
-                            target="_blank"
-                        >
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =========================
-                     PROFILE IMAGE
-                ========================== -->
-
-                <div class="hero-image-wrapper">
-
-                    <div class="image-glow"></div>
-
-                    <div class="profile-card">
-
-                        <div class="profile-image">
-                            <img
-                                src="profile.jpg"
-                                alt="Bablu Kumar"
-                            >
-                        </div>
-
-                    </div>
-
-                    <!-- Floating Badge -->
-                    <div class="floating-badge badge-one">
-                        <i class="fa-solid fa-code"></i>
-                        <span>Developer</span>
-                    </div>
-
-                    <div class="floating-badge badge-two">
-                        <i class="fa-solid fa-laptop-code"></i>
-                        <span>Creative</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Scroll Indicator -->
-            <a href="#about" class="scroll-down">
-
-                <span>Scroll Down</span>
-
-                <i class="fa-solid fa-arrow-down"></i>
-
-            </a>
-
-        </section>
-
-
-        <!-- =========================
-             ABOUT SECTION
-             Part 2 will be added here
-        ========================== -->
-
-        <section class="about" id="about">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-subtitle">
-                        GET TO KNOW ME
-                    </p>
-
-                    <h2>
-                        About <span>Me</span>
-                    </h2>
-
-                </div>
-
-                <div class="about-placeholder">
-
-                    <i class="fa-regular fa-user"></i>
-
-                    <p>
-                        About section coming in Part 2...
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             EDUCATION
-        ========================== -->
-
-        <section class="education" id="education">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-subtitle">
-                        MY JOURNEY
-                    </p>
-
-                    <h2>
-                        My <span>Education</span>
-                    </h2>
-
-                </div>
-
-                <div class="section-placeholder">
-                    Education section coming soon...
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             SKILLS
-        ========================== -->
-
-        <section class="skills" id="skills">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-subtitle">
-                        WHAT I CAN DO
-                    </p>
-
-                    <h2>
-                        My <span>Skills</span>
-                    </h2>
-
-                </div>
-
-                <div class="section-placeholder">
-                    Skills section coming soon...
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             CERTIFICATES
-        ========================== -->
-
-        <section class="certificates" id="certificates">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-subtitle">
-                        MY ACHIEVEMENTS
-                    </p>
-
-                    <h2>
-                        My <span>Certificates</span>
-                    </h2>
-
-                </div>
-
-                <div class="section-placeholder">
-                    Certificate section coming soon...
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             PROJECTS
-        ========================== -->
-
-        <section class="projects" id="projects">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-subtitle">
-                        MY WORK
-                    </p>
-
-                    <h2>
-                        My <span>Projects</span>
-                    </h2>
-
-                </div>
-
-                <div class="section-placeholder">
-                    Projects section coming soon...
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             CONTACT
-        ========================== -->
-
-        <section class="contact" id="contact">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-subtitle">
-                        GET IN TOUCH
-                    </p>
-
-                    <h2>
-                        Contact <span>Me</span>
-                    </h2>
-
-                </div>
-
-                <div class="section-placeholder">
-                    Contact section coming soon...
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer class="footer">
-
-        <div class="container">
-
-            <div class="footer-content">
-
-                <a href="#home" class="footer-logo">
-                    B<span>K</span>
-                </a>
-
-                <p>
-                    © 2026 Bablu Kumar. All Rights Reserved.
-                </p>
-
-                <a href="#home" class="back-to-top">
-                    <i class="fa-solid fa-arrow-up"></i>
-                </a>
-
-            </div>
-
-        </div>
-
-    </footer>
-
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-
-    <script src="script.js"></script>
+<div class="card project">
+<div>
+<div class="big">02</div>
+<h3>Web Design Lab</h3>
+<p class="muted">
+HTML, CSS and JavaScript experiments.
+</p>
+</div>
+<a class="btn" href="#">View Project ↗</a>
+</div>
+
+<div class="card project">
+<div>
+<div class="big">03</div>
+<h3>Form Validation</h3>
+<p class="muted">
+Interactive JavaScript validation project.
+</p>
+</div>
+<a class="btn" href="#">View Project ↗</a>
+</div>
+
+</div>
+</section>
+
+
+<section class="reveal">
+
+<h2 class="title">Certificates.</h2>
+
+<p class="sub">
+Learning milestones and completed areas.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<span class="number">CERTIFICATE 01</span>
+<h3>Web Designing</h3>
+<p class="muted">HTML • CSS • JavaScript</p>
+</div>
+
+<div class="card">
+<span class="number">CERTIFICATE 02</span>
+<h3>Frontend Development</h3>
+<p class="muted">Responsive Web Development</p>
+</div>
+
+</div>
+</section>
+
+
+<section id="contact" class="reveal">
+
+<div class="contact">
+
+<div>
+<h2 class="title">Let's<br>Connect.</h2>
+<p class="sub">
+Have a project, idea or simply want to say hello?
+</p>
+</div>
+
+<div class="contact-box">
+<h3>Find Me Online</h3>
+
+<a class="btn" href="#" target="_blank">Instagram</a>
+<a class="btn" href="#" target="_blank">Facebook</a>
+<a class="btn" href="#" target="_blank">WhatsApp</a>
+<a class="btn" href="mailto:your@email.com">Email</a>
+
+</div>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+© <span id="year"></span> Bablu Kumar — Portfolio 10.0
+</footer>
+
+
+<script>
+const words=[
+"Frontend Developer",
+"Web Designer",
+"Creative Learner"
+];
+
+let w=0,c=0,erase=false;
+
+function typing(){
+let e=document.getElementById("type");
+e.textContent=words[w].slice(0,c);
+
+if(!erase&&c<words[w].length){
+c++;setTimeout(typing,80)
+}else if(!erase){
+erase=true;setTimeout(typing,1100)
+}else if(c>0){
+c--;setTimeout(typing,40)
+}else{
+erase=false;w=(w+1)%words.length;
+setTimeout(typing,300)
+}
+}
+typing();
+
+function theme(){
+document.body.classList.toggle("light");
+let l=document.body.classList.contains("light");
+document.getElementById("theme").textContent=l?"☾":"☼";
+localStorage.setItem("theme",l?"light":"dark");
+}
+
+if(localStorage.getItem("theme")==="light"){
+document.body.classList.add("light");
+document.getElementById("theme").textContent="☾";
+}
+
+const io=new IntersectionObserver(x=>{
+x.forEach(e=>{
+if(e.isIntersecting)e.target.classList.add("show")
+})
+},{threshold:.12});
+
+document.querySelectorAll(".reveal").forEach(x=>io.observe(x));
+
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 
 </body>
 </html>
