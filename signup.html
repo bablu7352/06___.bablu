@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SocialHub - Sign Up</title>
+
+    <link rel="stylesheet" href="css/auth.css">
+
+</head>
+
+<body>
+
+    <div class="auth-container">
+
+        <div class="auth-left">
+
+            <div class="auth-logo">
+                SocialHub
+            </div>
+
+            <h1>Join SocialHub.</h1>
+
+            <p>
+                Create your account and connect
+                with your friends.
+            </p>
+
+        </div>
+
+
+        <div class="auth-card">
+
+            <h2>Create Account</h2>
+
+            <p class="auth-subtitle">
+                It's quick and easy.
+            </p>
+
+
+            <form id="signupForm">
+
+                <input
+                    type="text"
+                    id="signupName"
+                    placeholder="Full name"
+                    required
+                >
+
+
+                <input
+                    type="email"
+                    id="signupEmail"
+                    placeholder="Email address"
+                    required
+                >
+
+
+                <input
+                    type="password"
+                    id="signupPassword"
+                    placeholder="Password"
+                    minlength="6"
+                    required
+                >
+
+
+                <input
+                    type="password"
+                    id="signupConfirmPassword"
+                    placeholder="Confirm password"
+                    minlength="6"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="auth-btn"
+                >
+                    Sign Up
+                </button>
+
+            </form>
+
+
+            <div id="signupMessage"></div>
+
+
+            <div class="auth-divider">
+                <span>OR</span>
+            </div>
+
+
+            <a href="login.html" class="create-account">
+                Already have an account?
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <script type="module" src="js/auth.js"></script>
+
+</body>
+</html>
