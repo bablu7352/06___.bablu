@@ -1,18 +1,23 @@
 /* =========================================
-   SOCIALHUB - FIREBASE FEED
-   PART 5
+   SOCIALHUB
+   PART 6
+   IMAGE UPLOAD + PROFILE PHOTO
 ========================================= */
 
 import {
     auth,
-    db
+    db,
+    storage
 } from "./firebase.js";
+
 
 import {
     onAuthStateChanged,
-    signOut
+    signOut,
+    updateProfile
 } from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
 
 import {
     collection,
@@ -30,6 +35,14 @@ import {
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
+import {
+    ref,
+    uploadBytes,
+    getDownloadURL
+} from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
+
+
 let currentUser = null;
 
 
@@ -37,11 +50,13 @@ let currentUser = null;
    AUTH CHECK
 ========================================= */
 
-onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(auth, async user => {
 
     if (!user) {
 
-        window.location.href = "login.html";
+        window.location.href =
+            "login.html";
+
         return;
 
     }
@@ -54,24 +69,39 @@ onAuthStateChanged(auth, async (user) => {
 
     setupLogout();
 
+    setupCreatePost();
+
+    setupProfilePhoto();
+
 });
 
 
 /* =========================================
-   LOAD USER
+   LOAD USER INFO
 ========================================= */
 
 async function loadUserInfo() {
 
     const userRef =
-        doc(db, "users", currentUser.uid);
+        doc(
+            db,
+            "users",
+            currentUser.uid
+        );
+
 
     const userSnap =
         await getDoc(userRef);
 
 
     let name =
-        currentUser.displayName || "User";
+        currentUser.displayName ||
+        "User";
+
+
+    let photo =
+        currentUser.photoURL ||
+        "images/profile.jpg";
 
 
     if (userSnap.exists()) {
@@ -79,40 +109,84 @@ async function loadUserInfo() {
         const data =
             userSnap.data();
 
+
         name =
             data.name || name;
+
+
+        photo =
+            data.photoURL || photo;
 
     }
 
 
-    /* NAV PROFILE */
+    /* NAV */
 
     const navName =
         document.querySelector(
             ".nav-profile span"
         );
 
+
     if (navName) {
-        navName.textContent = name;
+
+        navName.textContent =
+            name;
+
+    }
+
+
+    const navImage =
+        document.querySelector(
+            ".nav-profile img"
+        );
+
+
+    if (navImage) {
+
+        navImage.src =
+            photo;
+
     }
 
 
     /* SIDEBAR */
 
-    const sidebarName =
+    const sideName =
         document.querySelector(
             ".sidebar-profile h3"
         );
 
-    if (sidebarName) {
-        sidebarName.textContent = name;
+
+    if (sideName) {
+
+        sideName.textContent =
+            name;
+
+    }
+
+
+    const sideImage =
+        document.querySelector(
+            ".sidebar-profile img"
+        );
+
+
+    if (sideImage) {
+
+        sideImage.src =
+            photo;
+
     }
 
 
     /* CREATE POST */
 
     const postInput =
-        document.querySelector(".post-input");
+        document.querySelector(
+            ".post-input"
+        );
+
 
     if (postInput) {
 
@@ -131,7 +205,9 @@ async function loadUserInfo() {
 function setupLogout() {
 
     const profile =
-        document.querySelector(".nav-profile");
+        document.querySelector(
+            ".nav-profile"
+        );
 
 
     if (!profile) return;
@@ -141,13 +217,13 @@ function setupLogout() {
         "click",
         async () => {
 
-            const confirmLogout =
+            const ok =
                 confirm(
                     "Do you want to logout?"
                 );
 
 
-            if (!confirmLogout) return;
+            if (!ok) return;
 
 
             try {
@@ -176,20 +252,20 @@ function setupLogout() {
 async function loadPosts() {
 
     const feed =
-        document.querySelector(".feed");
+        document.querySelector(
+            ".feed"
+        );
 
 
     if (!feed) return;
 
 
-    const oldPosts =
-        feed.querySelectorAll(
-            ".firebase-post"
-        );
+    feed.querySelectorAll(
+        ".firebase-post"
+    ).forEach(post => {
 
-
-    oldPosts.forEach(post => {
         post.remove();
+
     });
 
 
@@ -206,17 +282,15 @@ async function loadPosts() {
 
 
         const snapshot =
-            await getDocs(postsQuery);
+            await getDocs(
+                postsQuery
+            );
 
 
         snapshot.forEach(postDoc => {
 
-            const post =
-                postDoc.data();
-
-
             createPostElement(
-                post,
+                postDoc.data(),
                 postDoc.id
             );
 
@@ -226,7 +300,7 @@ async function loadPosts() {
     } catch (error) {
 
         console.error(
-            "Post loading error:",
+            "Posts error:",
             error
         );
 
@@ -236,13 +310,10 @@ async function loadPosts() {
 
 
 /* =========================================
-   CREATE POST IN FIRESTORE
+   CREATE POST
 ========================================= */
 
-async function savePost(text) {
-
-    if (!currentUser) return;
-
+function setupCreatePost() {
 
     const postInput =
         document.querySelector(
@@ -250,51 +321,342 @@ async function savePost(text) {
         );
 
 
-    const name =
-        currentUser.displayName ||
-        "User";
+    if (!postInput) return;
 
 
-    try {
+    postInput.addEventListener(
+        "click",
+        openCreatePost
+    );
 
-        await addDoc(
-            collection(db, "posts"),
-            {
+}
 
-                uid:
-                    currentUser.uid,
 
-                name:
-                    name,
+function openCreatePost() {
 
-                text:
-                    text,
+    const modal =
+        document.createElement(
+            "div"
+        );
 
-                likes:
-                    [],
 
-                comments:
-                    [],
+    modal.className =
+        "upload-modal";
 
-                createdAt:
-                    serverTimestamp()
+
+    modal.innerHTML = `
+
+        <div class="upload-box">
+
+            <div class="upload-header">
+
+                <h2>Create Post</h2>
+
+                <button
+                    id="closeUpload"
+                    class="close-upload"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="postText"
+                placeholder="What's on your mind?"
+            ></textarea>
+
+
+            <div
+                id="postPreview"
+                class="post-preview"
+            ></div>
+
+
+            <label
+                for="postFile"
+                class="image-select"
+            >
+
+                <i class="fa-solid fa-image"></i>
+
+                Add Photo
+
+            </label>
+
+
+            <input
+                type="file"
+                id="postFile"
+                accept="image/*"
+                hidden
+            >
+
+
+            <button
+                id="publishPost"
+                class="publish-btn"
+            >
+
+                Post
+
+            </button>
+
+        </div>
+
+    `;
+
+
+    document.body.appendChild(
+        modal
+    );
+
+
+    addUploadStyles();
+
+
+    /* CLOSE */
+
+    document
+        .getElementById(
+            "closeUpload"
+        )
+        .onclick = () => {
+
+            modal.remove();
+
+        };
+
+
+    /* IMAGE PREVIEW */
+
+    const fileInput =
+        document.getElementById(
+            "postFile"
+        );
+
+
+    const preview =
+        document.getElementById(
+            "postPreview"
+        );
+
+
+    let selectedFile = null;
+
+
+    fileInput.addEventListener(
+        "change",
+        event => {
+
+            selectedFile =
+                event.target.files[0];
+
+
+            if (!selectedFile) return;
+
+
+            if (
+                !selectedFile.type
+                    .startsWith("image/")
+            ) {
+
+                alert(
+                    "Please select an image."
+                );
+
+                return;
 
             }
-        );
 
 
-        await loadPosts();
+            if (
+                selectedFile.size >
+                5 * 1024 * 1024
+            ) {
+
+                alert(
+                    "Image should be smaller than 5 MB."
+                );
+
+                fileInput.value = "";
+
+                selectedFile = null;
+
+                return;
+
+            }
 
 
-    } catch (error) {
+            const reader =
+                new FileReader();
 
-        console.error(error);
 
-        alert(
-            "Post save nahi ho saka."
-        );
+            reader.onload = e => {
 
-    }
+                preview.innerHTML = `
+
+                    <img
+                        src="${e.target.result}"
+                        alt="Preview"
+                    >
+
+                `;
+
+            };
+
+
+            reader.readAsDataURL(
+                selectedFile
+            );
+
+        }
+    );
+
+
+    /* PUBLISH */
+
+    document
+        .getElementById(
+            "publishPost"
+        )
+        .onclick = async () => {
+
+            const text =
+                document
+                    .getElementById(
+                        "postText"
+                    )
+                    .value
+                    .trim();
+
+
+            if (
+                text === "" &&
+                !selectedFile
+            ) {
+
+                alert(
+                    "Write something or select an image."
+                );
+
+                return;
+
+            }
+
+
+            const button =
+                document.getElementById(
+                    "publishPost"
+                );
+
+
+            button.disabled = true;
+
+            button.textContent =
+                "Uploading...";
+
+
+            try {
+
+                let imageURL = "";
+
+
+                /* IMAGE UPLOAD */
+
+                if (selectedFile) {
+
+                    const fileName =
+                        Date.now() +
+                        "_" +
+                        selectedFile.name;
+
+
+                    const imageRef =
+                        ref(
+                            storage,
+                            `posts/${currentUser.uid}/${fileName}`
+                        );
+
+
+                    await uploadBytes(
+                        imageRef,
+                        selectedFile
+                    );
+
+
+                    imageURL =
+                        await getDownloadURL(
+                            imageRef
+                        );
+
+                }
+
+
+                /* SAVE POST */
+
+                await addDoc(
+                    collection(
+                        db,
+                        "posts"
+                    ),
+                    {
+
+                        uid:
+                            currentUser.uid,
+
+                        name:
+                            currentUser.displayName ||
+                            "User",
+
+                        text:
+                            text,
+
+                        imageURL:
+                            imageURL,
+
+                        likes:
+                            [],
+
+                        comments:
+                            [],
+
+                        createdAt:
+                            serverTimestamp()
+
+                    }
+                );
+
+
+                modal.remove();
+
+
+                await loadPosts();
+
+
+            } catch (error) {
+
+                console.error(
+                    error
+                );
+
+
+                alert(
+                    "Post upload failed."
+                );
+
+
+                button.disabled =
+                    false;
+
+
+                button.textContent =
+                    "Post";
+
+            }
+
+        };
 
 }
 
@@ -320,16 +682,6 @@ function createPostElement(
         );
 
 
-    const article =
-        document.createElement(
-            "article"
-        );
-
-
-    article.className =
-        "post-card firebase-post";
-
-
     const likes =
         post.likes || [];
 
@@ -344,6 +696,33 @@ function createPostElement(
         );
 
 
+    const article =
+        document.createElement(
+            "article"
+        );
+
+
+    article.className =
+        "post-card firebase-post";
+
+
+    const imageHTML =
+        post.imageURL
+        ? `
+
+            <div class="post-image">
+
+                <img
+                    src="${post.imageURL}"
+                    alt="Post image"
+                >
+
+            </div>
+
+        `
+        : "";
+
+
     article.innerHTML = `
 
         <div class="post-header">
@@ -351,7 +730,8 @@ function createPostElement(
             <div class="post-user">
 
                 <img
-                    src="images/profile.jpg"
+                    src="${post.photoURL ||
+                    "images/profile.jpg"}"
                     alt="User"
                 >
 
@@ -359,14 +739,18 @@ function createPostElement(
 
                     <h3>
                         ${escapeHTML(
-                            post.name || "User"
+                            post.name ||
+                            "User"
                         )}
                     </h3>
 
                     <p>
+
                         Just now ·
+
                         <i class="fa-solid
                         fa-earth-americas"></i>
+
                     </p>
 
                 </div>
@@ -384,15 +768,26 @@ function createPostElement(
         </div>
 
 
-        <div class="post-content">
+        ${
+            post.text
+            ? `
 
-            <p>
-                ${escapeHTML(
-                    post.text || ""
-                )}
-            </p>
+                <div class="post-content">
 
-        </div>
+                    <p>
+                        ${escapeHTML(
+                            post.text
+                        )}
+                    </p>
+
+                </div>
+
+            `
+            : ""
+        }
+
+
+        ${imageHTML}
 
 
         <div class="post-stats">
@@ -435,7 +830,7 @@ function createPostElement(
             </button>
 
 
-            <button class="comment-btn">
+            <button>
 
                 <i class="fa-regular
                 fa-comment"></i>
@@ -465,11 +860,16 @@ function createPostElement(
                 <div class="new-comment">
 
                     <img
-                        src="images/profile.jpg"
+                        src="${
+                            comment.photoURL ||
+                            "images/profile.jpg"
+                        }"
                         alt="User"
                     >
 
-                    <div class="comment-content">
+                    <div
+                        class="comment-content"
+                    >
 
                         <strong>
                             ${escapeHTML(
@@ -526,7 +926,9 @@ function createPostElement(
 
     } else {
 
-        feed.appendChild(article);
+        feed.appendChild(
+            article
+        );
 
     }
 
@@ -549,7 +951,6 @@ function setupPostEvents(
     postId,
     post
 ) {
-
 
     /* LIKE */
 
@@ -584,10 +985,12 @@ function setupPostEvents(
                 await updateDoc(
                     postRef,
                     {
+
                         likes:
                             arrayRemove(
                                 currentUser.uid
                             )
+
                     }
                 );
 
@@ -596,10 +999,12 @@ function setupPostEvents(
                 await updateDoc(
                     postRef,
                     {
+
                         likes:
                             arrayUnion(
                                 currentUser.uid
                             )
+
                     }
                 );
 
@@ -626,7 +1031,7 @@ function setupPostEvents(
         );
 
 
-    const sendButton =
+    const button =
         commentBox.querySelector(
             "button"
         );
@@ -658,40 +1063,38 @@ function setupPostEvents(
                 currentUser.displayName ||
                 "User",
 
+            photoURL:
+                currentUser.photoURL ||
+                "",
+
             text:
                 text
 
         };
 
 
-        try {
+        await updateDoc(
+            postRef,
+            {
 
-            await updateDoc(
-                postRef,
-                {
-                    comments:
-                        arrayUnion(
-                            comment
-                        )
-                }
-            );
+                comments:
+                    arrayUnion(
+                        comment
+                    )
 
-
-            input.value = "";
-
-            await loadPosts();
+            }
+        );
 
 
-        } catch (error) {
+        input.value = "";
 
-            console.error(error);
 
-        }
+        await loadPosts();
 
     }
 
 
-    sendButton.addEventListener(
+    button.addEventListener(
         "click",
         addComment
     );
@@ -725,26 +1128,21 @@ function setupPostEvents(
         "click",
         async () => {
 
-            const data = {
-
-                title:
-                    "SocialHub",
-
-                text:
-                    "Check out this post!"
-
-            };
-
-
             if (
                 navigator.share
             ) {
 
                 try {
 
-                    await navigator.share(
-                        data
-                    );
+                    await navigator.share({
+
+                        title:
+                            "SocialHub",
+
+                        text:
+                            "Check out this post!"
+
+                    });
 
                 } catch (error) {
 
@@ -757,7 +1155,7 @@ function setupPostEvents(
             } else {
 
                 alert(
-                    "Share feature is not supported."
+                    "Share is not supported."
                 );
 
             }
@@ -769,22 +1167,27 @@ function setupPostEvents(
 
 
 /* =========================================
-   CREATE POST MODAL
+   PROFILE PHOTO
 ========================================= */
 
-const postInput =
-    document.querySelector(
-        ".post-input"
-    );
+function setupProfilePhoto() {
+
+    const profile =
+        document.querySelector(
+            ".nav-profile"
+        );
 
 
-if (postInput) {
+    if (!profile) return;
 
-    postInput.addEventListener(
-        "click",
-        () => {
 
-            openCreatePost();
+    profile.addEventListener(
+        "contextmenu",
+        event => {
+
+            event.preventDefault();
+
+            openProfileUpload();
 
         }
     );
@@ -792,21 +1195,369 @@ if (postInput) {
 }
 
 
-function openCreatePost() {
+/* =========================================
+   PROFILE UPLOAD
+========================================= */
 
-    const text =
-        prompt(
-            "What's on your mind?"
+function openProfileUpload() {
+
+    const input =
+        document.createElement(
+            "input"
         );
 
 
-    if (!text) return;
+    input.type = "file";
+
+    input.accept =
+        "image/*";
 
 
-    savePost(text.trim());
+    input.onchange =
+        async event => {
+
+            const file =
+                event.target.files[0];
+
+
+            if (!file) return;
+
+
+            if (
+                !file.type
+                    .startsWith("image/")
+            ) {
+
+                alert(
+                    "Please select an image."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                file.size >
+                5 * 1024 * 1024
+            ) {
+
+                alert(
+                    "Image should be smaller than 5 MB."
+                );
+
+                return;
+
+            }
+
+
+            try {
+
+                alert(
+                    "Uploading profile photo..."
+                       );
+
+
+                const fileName =
+                    Date.now() +
+                    "_" +
+                    file.name;
+
+
+                const imageRef =
+                    ref(
+                        storage,
+                        `profiles/${currentUser.uid}/${fileName}`
+                    );
+
+
+                await uploadBytes(
+                    imageRef,
+                    file
+                );
+
+
+                const photoURL =
+                    await getDownloadURL(
+                        imageRef
+                    );
+
+
+                /* AUTH PROFILE */
+
+                await updateProfile(
+                    currentUser,
+                    {
+                        photoURL:
+                            photoURL
+                    }
+                );
+
+
+                /* FIRESTORE */
+
+                await updateDoc(
+                    doc(
+                        db,
+                        "users",
+                        currentUser.uid
+                    ),
+                    {
+
+                        photoURL:
+                            photoURL
+
+                    }
+                );
+
+
+                alert(
+                    "Profile photo updated!"
+                );
+
+
+                await loadUserInfo();
+
+
+            } catch (error) {
+
+                console.error(
+                    error
+                );
+
+
+                alert(
+                    "Profile upload failed."
+                );
+
+            }
+
+        };
+
+
+    input.click();
 
 }
 
+
+/* =========================================
+   UPLOAD MODAL CSS
+========================================= */
+
+function addUploadStyles() {
+
+    if (
+        document.getElementById(
+            "uploadStyles"
+        )
+    ) return;
+
+
+    const style =
+        document.createElement(
+            "style"
+        );
+
+
+    style.id =
+        "uploadStyles";
+
+
+    style.textContent = `
+
+        .upload-modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,.55);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 5000;
+
+        }
+
+
+        .upload-box {
+
+            width: 100%;
+
+            max-width: 500px;
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 10px 40px
+                rgba(0,0,0,.25);
+
+        }
+
+
+        .upload-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            border-bottom:
+                1px solid #e4e6eb;
+
+            padding-bottom: 12px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .upload-header h2 {
+
+            font-size: 20px;
+
+        }
+
+
+        .close-upload {
+
+            width: 35px;
+
+            height: 35px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background:
+                #f0f2f5;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+        }
+
+
+        #postText {
+
+            width: 100%;
+
+            height: 120px;
+
+            border: none;
+
+            outline: none;
+
+            resize: none;
+
+            font-size: 17px;
+
+            padding: 10px 0;
+
+        }
+
+
+        .post-preview {
+
+            max-height: 300px;
+
+            overflow: hidden;
+
+            border-radius: 10px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .post-preview img {
+
+            width: 100%;
+
+            max-height: 300px;
+
+            object-fit: contain;
+
+        }
+
+
+        .image-select {
+
+            display: block;
+
+            text-align: center;
+
+            border: 1px solid
+                #e4e6eb;
+
+            border-radius: 9px;
+
+            padding: 12px;
+
+            color: #45bd62;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        .publish-btn {
+
+            width: 100%;
+
+            height: 45px;
+
+            margin-top: 14px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #1877f2;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+        }
+
+
+        .publish-btn:disabled {
+
+            opacity: .6;
+
+            cursor: not-allowed;
+
+        }
+
+    `;
+
+
+    document.head.appendChild(
+        style
+    );
+
+}
 
 /* =========================================
    ESCAPE HTML
@@ -819,9 +1570,11 @@ function escapeHTML(text) {
             "div"
         );
 
+
     div.textContent =
         text;
 
+
     return div.innerHTML;
 
-           }
+}
