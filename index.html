@@ -2,103 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <!-- Mobile Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO -->
-    <meta name="description"
-        content="Bablu Kumar - Frontend Developer Portfolio. Explore my skills, education, projects and web development journey.">
-    <meta name="keywords"
-        content="Bablu Kumar, Frontend Developer, Web Developer, HTML, CSS, JavaScript, Portfolio">
-    <meta name="author" content="Bablu Kumar">
-
-    <!-- Theme -->
-    <meta name="theme-color" content="#0b0f19">
-
-    <title>Bablu Kumar | Frontend Developer</title>
+    <title>ConnectU - Social Network</title>
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    >
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
     <!-- =========================
-         PRELOADER
-    ========================== -->
-
-    <div id="preloader">
-        <div class="loader"></div>
-        <p>Loading Portfolio...</p>
-    </div>
-
-
-    <!-- =========================
          HEADER / NAVBAR
     ========================== -->
 
-    <header class="header" id="header">
+    <header class="top-header">
 
-        <div class="container nav-container">
+        <div class="header-left">
 
-            <!-- Logo -->
-            <a href="#home" class="logo">
-                <span>BK</span>
+            <a href="index.html" class="brand">
+                Connect<span>U</span>
             </a>
 
-            <!-- Navigation -->
-            <nav class="navbar" id="navbar">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search ConnectU..."
+                >
+            </div>
 
-                <a href="#home" class="nav-link active">Home</a>
+        </div>
 
-                <a href="#about" class="nav-link">About</a>
 
-                <a href="#skills" class="nav-link">Skills</a>
+        <nav class="main-nav">
 
-                <a href="#education" class="nav-link">Education</a>
+            <a href="index.html" class="nav-item active">
+                <span>🏠</span>
+                <small>Home</small>
+            </a>
 
-                <a href="#projects" class="nav-link">Projects</a>
+            <a href="friends.html" class="nav-item">
+                <span>👥</span>
+                <small>Friends</small>
+            </a>
 
-                <a href="#certificates" class="nav-link">Certificates</a>
+            <a href="chat.html" class="nav-item">
+                <span>💬</span>
+                <small>Messages</small>
+            </a>
 
-                <a href="#services" class="nav-link">Services</a>
+            <a href="notifications.html" class="nav-item">
+                <span>🔔</span>
+                <small>Notifications</small>
+            </a>
 
-                <a href="#contact" class="nav-link">Contact</a>
+        </nav>
 
-            </nav>
 
-            <!-- Header Actions -->
-            <div class="header-actions">
+        <div class="header-right">
 
-                <!-- Theme Button -->
-                <button
-                    class="theme-toggle"
-                    id="theme-toggle"
-                    aria-label="Toggle dark mode">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
+            <button class="icon-button" id="themeButton">
+                🌙
+            </button>
 
-                <!-- Menu Button -->
-                <button
-                    class="menu-toggle"
-                    id="menu-toggle"
-                    aria-label="Open menu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
+            <div class="user-menu">
+
+                <img
+                    src="assets/images/default-avatar.png"
+                    alt="Profile"
+                    class="header-avatar"
+                    id="headerAvatar"
+                >
+
+                <span id="headerUserName">
+                    Guest
+                </span>
 
             </div>
 
@@ -107,390 +95,182 @@
     </header>
 
 
+
     <!-- =========================
-         MAIN
+         MAIN WEBSITE
     ========================== -->
 
-    <main>
+    <main class="main-container">
 
 
-        <!-- =========================
-             HERO SECTION
-        ========================== -->
+        <!-- =====================
+             LEFT SIDEBAR
+        ====================== -->
 
-        <section class="hero section" id="home">
+        <aside class="left-sidebar">
 
-            <div class="container hero-container">
+            <div class="profile-mini">
 
-                <!-- Hero Content -->
-                <div class="hero-content">
+                <img
+                    src="assets/images/default-avatar.png"
+                    alt="Profile"
+                    id="sidebarAvatar"
+                >
 
-                    <p class="hero-small-title">
-                        <span></span>
-                        Hello, I'm
+                <div>
+                    <h3 id="sidebarUserName">
+                        Guest User
+                    </h3>
+
+                    <p>
+                        Welcome to ConnectU
                     </p>
-
-                    <h1>
-                        Bablu <span>Kumar</span>
-                    </h1>
-
-                    <h2>
-                        Frontend Developer
-                    </h2>
-
-                    <p class="hero-description">
-                        I create modern, responsive and user-friendly
-                        websites with clean design and powerful frontend
-                        technologies.
-                    </p>
-
-                    <!-- Hero Buttons -->
-                    <div class="hero-buttons">
-
-                        <a href="#projects" class="btn btn-primary">
-                            View My Work
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-
-                        <a href="#contact" class="btn btn-outline">
-                            Contact Me
-                        </a>
-
-                    </div>
-
-                    <!-- Social Icons -->
-                    <div class="hero-social">
-
-                        <a href="#" target="_blank"
-                            aria-label="GitHub">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-
-                        <a href="#" target="_blank"
-                            aria-label="Instagram">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-
-                        <a href="#" target="_blank"
-                            aria-label="Facebook">
-                            <i class="fa-brands fa-facebook"></i>
-                        </a>
-
-                        <a href="#" target="_blank"
-                            aria-label="WhatsApp">
-                            <i class="fa-brands fa-whatsapp"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Hero Image -->
-                <div class="hero-image-area">
-
-                    <div class="hero-image-border">
-
-                        <div class="hero-image">
-
-                            <img
-                                src="assets/profile.jpg"
-                                alt="Bablu Kumar - Frontend Developer">
-
-                        </div>
-
-                    </div>
-
-                    <!-- Floating Card -->
-                    <div class="floating-card floating-card-one">
-
-                        <i class="fa-solid fa-code"></i>
-
-                        <div>
-                            <strong>Frontend</strong>
-                            <small>Developer</small>
-                        </div>
-
-                    </div>
-
-                    <div class="floating-card floating-card-two">
-
-                        <i class="fa-solid fa-laptop-code"></i>
-
-                        <div>
-                            <strong>Modern</strong>
-                            <small>Web Design</small>
-                        </div>
-
-                    </div>
-
                 </div>
 
             </div>
 
-        </section>
+
+            <div class="sidebar-menu">
+
+                <a href="profile.html">
+                    <span>👤</span>
+                    My Profile
+                </a>
+
+                <a href="friends.html">
+                    <span>👥</span>
+                    Friends
+                </a>
+
+                <a href="chat.html">
+                    <span>💬</span>
+                    Messages
+                </a>
+
+                <a href="notifications.html">
+                    <span>🔔</span>
+                    Notifications
+                </a>
+
+                <a href="#">
+                    <span>📷</span>
+                    Photos
+                </a>
+
+                <a href="#">
+                    <span>⚙️</span>
+                    Settings
+                </a>
+
+            </div>
+
+        </aside>
 
 
-        <!-- =========================
-             ABOUT SECTION
-        ========================== -->
 
-        <section class="about section" id="about">
+        <!-- =====================
+             CENTER FEED
+        ====================== -->
 
-            <div class="container">
+        <section class="feed-container">
 
-                <div class="section-heading">
 
-                    <span>ABOUT ME</span>
+            <!-- STORIES -->
 
-                    <h2>
-                        Know More <strong>About Me</strong>
-                    </h2>
+            <div class="stories-card">
 
-                    <p>
-                        A little introduction about my journey,
-                        education and passion for web development.
-                    </p>
+                <div class="section-title">
+                    <h2>Stories</h2>
 
+                    <button class="see-all">
+                        See all
+                    </button>
                 </div>
 
 
-                <div class="about-grid">
+                <div class="stories-list">
 
-                    <!-- About Image -->
-                    <div class="about-image">
+
+                    <!-- Create Story -->
+
+                    <div class="story create-story">
 
                         <img
-                            src="assets/profile.jpg"
-                            alt="Bablu Kumar">
+                            src="assets/images/default-avatar.png"
+                            alt="Your Story"
+                        >
+
+                        <button class="add-story">
+                            +
+                        </button>
+
+                        <p>
+                            Create Story
+                        </p>
 
                     </div>
 
 
-                    <!-- About Content -->
-                    <div class="about-content">
+                    <!-- Story 1 -->
 
-                        <h3>
-                            I'm Bablu Kumar
-                        </h3>
+                    <div class="story">
 
-                        <h4>
-                            Frontend Developer & Web Designer
-                        </h4>
+                        <img
+                            src="assets/images/story-1.jpg"
+                            alt="Story"
+                        >
 
-                        <p>
-                            I am passionate about creating clean,
-                            modern and responsive websites. I enjoy
-                            learning new technologies and improving
-                            my skills through practical projects.
-                        </p>
-
-                        <p>
-                            My goal is to build websites that look
-                            professional, work smoothly and provide
-                            a great experience on every device.
-                        </p>
-
-
-                        <!-- Personal Information -->
-
-                        <div class="about-info">
-
-                            <div>
-                                <span>Name</span>
-                                <strong>Bablu Kumar</strong>
-                            </div>
-
-                            <div>
-                                <span>Profession</span>
-                                <strong>Frontend Developer</strong>
-                            </div>
-
-                            <div>
-                                <span>Location</span>
-                                <strong>India</strong>
-                            </div>
-
-                            <div>
-                                <span>Availability</span>
-                                <strong>Available</strong>
-                            </div>
-
+                        <div class="story-user">
+                            Rahul
                         </div>
-
-
-                        <a href="assets/cv.pdf"
-                            class="btn btn-primary"
-                            download>
-
-                            Download CV
-                            <i class="fa-solid fa-download"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             SKILLS SECTION
-        ========================== -->
-
-        <section class="skills section" id="skills">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <span>MY SKILLS</span>
-
-                    <h2>
-                        My <strong>Technical Skills</strong>
-                    </h2>
-
-                    <p>
-                        Technologies and tools I use to create
-                        modern websites.
-                    </p>
-
-                </div>
-
-
-                <div class="skills-grid">
-
-                    <!-- HTML -->
-                    <div class="skill-card">
-
-                        <div class="skill-icon">
-                            <i class="fa-brands fa-html5"></i>
-                        </div>
-
-                        <h3>HTML5</h3>
-
-                        <p>
-                            Semantic and structured web pages.
-                        </p>
-
-                        <div class="skill-bar">
-                            <span style="width: 90%;"></span>
-                        </div>
-
-                        <small>90%</small>
 
                     </div>
 
 
-                    <!-- CSS -->
-                    <div class="skill-card">
+                    <!-- Story 2 -->
 
-                        <div class="skill-icon">
-                            <i class="fa-brands fa-css3-alt"></i>
+                    <div class="story">
+
+                        <img
+                            src="assets/images/story-2.jpg"
+                            alt="Story"
+                        >
+
+                        <div class="story-user">
+                            Aman
                         </div>
-
-                        <h3>CSS3</h3>
-
-                        <p>
-                            Modern responsive website styling.
-                        </p>
-
-                        <div class="skill-bar">
-                            <span style="width: 85%;"></span>
-                        </div>
-
-                        <small>85%</small>
 
                     </div>
 
 
-                    <!-- JavaScript -->
-                    <div class="skill-card">
+                    <!-- Story 3 -->
 
-                        <div class="skill-icon">
-                            <i class="fa-brands fa-js"></i>
+                    <div class="story">
+
+                        <img
+                            src="assets/images/story-3.jpg"
+                            alt="Story"
+                        >
+
+                        <div class="story-user">
+                            Priya
                         </div>
-
-                        <h3>JavaScript</h3>
-
-                        <p>
-                            Interactive web functionality.
-                        </p>
-
-                        <div class="skill-bar">
-                            <span style="width: 75%;"></span>
-                        </div>
-
-                        <small>75%</small>
 
                     </div>
 
 
-                    <!-- GitHub -->
-                    <div class="skill-card">
+                    <!-- Story 4 -->
 
-                        <div class="skill-icon">
-                            <i class="fa-brands fa-github"></i>
+                    <div class="story">
+
+                        <img
+                            src="assets/images/story-4.jpg"
+                            alt="Story"
+                        >
+
+                        <div class="story-user">
+                            Neha
                         </div>
-
-                        <h3>Git & GitHub</h3>
-
-                        <p>
-                            Version control and project hosting.
-                        </p>
-
-                        <div class="skill-bar">
-                            <span style="width: 75%;"></span>
-                        </div>
-
-                        <small>75%</small>
-
-                    </div>
-
-
-                    <!-- Responsive -->
-                    <div class="skill-card">
-
-                        <div class="skill-icon">
-                            <i class="fa-solid fa-mobile-screen"></i>
-                        </div>
-
-                        <h3>Responsive Design</h3>
-
-                        <p>
-                            Mobile, tablet and desktop layouts.
-                        </p>
-
-                        <div class="skill-bar">
-                            <span style="width: 88%;"></span>
-                        </div>
-
-                        <small>88%</small>
-
-                    </div>
-
-
-                    <!-- UI Design -->
-                    <div class="skill-card">
-
-                        <div class="skill-icon">
-                            <i class="fa-solid fa-palette"></i>
-                        </div>
-
-                        <h3>UI Design</h3>
-
-                        <p>
-                            Clean and user-friendly interfaces.
-                        </p>
-
-                        <div class="skill-bar">
-                            <span style="width: 80%;"></span>
-                        </div>
-
-                        <small>80%</small>
 
                     </div>
 
@@ -498,1453 +278,514 @@
 
             </div>
 
-        </section>
 
 
-        <!-- =========================
-             EDUCATION SECTION
-        ========================== -->
+            <!-- CREATE POST -->
 
-        <section class="education section" id="education">
+            <div class="create-post-card">
 
-            <div class="container">
+                <div class="create-post-top">
 
-                <div class="section-heading">
+                    <img
+                        src="assets/images/default-avatar.png"
+                        alt="Profile"
+                        class="post-avatar"
+                        id="createPostAvatar"
+                    >
 
-                    <span>EDUCATION</span>
-
-                    <h2>
-                        My <strong>Education</strong>
-                    </h2>
-
-                    <p>
-                        My academic journey and qualifications.
-                    </p>
+                    <button
+                        class="post-input-button"
+                        id="openPostBox"
+                    >
+                        What's on your mind?
+                    </button>
 
                 </div>
 
 
-                <div class="timeline">
+                <div class="post-actions">
+
+                    <button class="post-action photo">
+                        📷
+                        <span>Photo</span>
+                    </button>
+
+                    <button class="post-action video">
+                        🎥
+                        <span>Video</span>
+                    </button>
+
+                    <button class="post-action feeling">
+                        😊
+                        <span>Feeling</span>
+                    </button>
+
+                </div>
+
+            </div>
 
 
-                    <!-- 10th -->
-                    <div class="timeline-item">
 
-                        <div class="timeline-dot">
-                            <i class="fa-solid fa-school"></i>
-                        </div>
+            <!-- =====================
+                 POST
+            ====================== -->
 
-                        <div class="timeline-content">
+            <article class="post-card">
 
-                            <span class="timeline-year">
-                                2017
-                            </span>
+
+                <!-- POST HEADER -->
+
+                <div class="post-header">
+
+                    <div class="post-user">
+
+                        <img
+                            src="assets/images/default-avatar.png"
+                            alt="User"
+                            class="post-avatar"
+                        >
+
+                        <div>
 
                             <h3>
-                                10th / Matriculation
+                                ConnectU User
                             </h3>
 
-                            <h4>
-                                Secondary Education
-                            </h4>
-
                             <p>
-                                Completed secondary education
-                                successfully.
+                                Just now · 🌎
                             </p>
 
-                            <strong>
-                                1st Division
-                            </strong>
-
                         </div>
 
                     </div>
 
 
-                    <!-- 12th -->
-                    <div class="timeline-item">
-
-                        <div class="timeline-dot">
-                            <i class="fa-solid fa-book"></i>
-                        </div>
-
-                        <div class="timeline-content">
-
-                            <span class="timeline-year">
-                                2019
-                            </span>
-
-                            <h3>
-                                12th / Intermediate
-                            </h3>
-
-                            <h4>
-                                Higher Secondary Education
-                            </h4>
-
-                            <p>
-                                Completed higher secondary
-                                education successfully.
-                            </p>
-
-                            <strong>
-                                1st Division
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Graduation -->
-                    <div class="timeline-item">
-
-                        <div class="timeline-dot">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </div>
-
-                        <div class="timeline-content">
-
-                            <span class="timeline-year">
-                                2023 - 2027
-                            </span>
-
-                            <h3>
-                                Bachelor of Arts (B.A.)
-                            </h3>
-
-                            <h4>
-                                Graduation
-                            </h4>
-
-                            <p>
-                                Currently pursuing Bachelor's
-                                degree with continuous academic
-                                growth.
-                            </p>
-
-                            <strong>
-                                Ongoing
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </section>
-<!-- =========================
-     PROJECTS SECTION
-========================== -->
-
-<section class="projects section" id="projects">
-
-    <div class="container">
-
-        <!-- Section Heading -->
-        <div class="section-heading">
-
-            <span>MY WORK</span>
-
-            <h2>
-                Featured <strong>Projects</strong>
-            </h2>
-
-            <p>
-                A collection of my recent web development
-                projects and creative work.
-            </p>
-
-        </div>
-
-
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-
-
-            <!-- =========================
-                 PROJECT 01
-            ========================== -->
-
-            <article class="project-card">
-
-                <div class="project-image">
-
-                    <!-- Add your project image here -->
-                    <img
-                        src="assets/project-1.jpg"
-                        alt="Personal Portfolio Website"
-                        loading="lazy">
-
-                    <div class="project-overlay">
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View Live Project">
-
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                        </a>
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View GitHub Repository">
-
-                            <i class="fa-brands fa-github"></i>
-
-                        </a>
-
-                    </div>
+                    <button class="more-button">
+                        ⋯
+                    </button>
 
                 </div>
 
 
-                <div class="project-content">
 
-                    <div class="project-top">
+                <!-- POST CONTENT -->
 
-                        <span class="project-number">
-                            01
-                        </span>
-
-                        <span class="project-type">
-                            Portfolio
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        Personal Portfolio
-                    </h3>
+                <div class="post-content">
 
                     <p>
-                        A modern, responsive and professional
-                        personal portfolio website built with
-                        clean frontend technologies.
+                        Welcome to ConnectU! 🎉
                     </p>
-
-
-                    <div class="project-tags">
-
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- =========================
-                 PROJECT 02
-            ========================== -->
-
-            <article class="project-card">
-
-                <div class="project-image">
-
-                    <img
-                        src="assets/project-2.jpg"
-                        alt="Modern Web Design"
-                        loading="lazy">
-
-                    <div class="project-overlay">
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View Live Project">
-
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                        </a>
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View GitHub Repository">
-
-                            <i class="fa-brands fa-github"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div class="project-content">
-
-                    <div class="project-top">
-
-                        <span class="project-number">
-                            02
-                        </span>
-
-                        <span class="project-type">
-                            Web Design
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        Modern Web Design
-                    </h3>
 
                     <p>
-                        A clean and attractive website interface
-                        focused on modern design, usability and
-                        responsive layouts.
+                        This is your new social network.
+                        Share posts, photos and connect
+                        with your friends.
                     </p>
 
-
-                    <div class="project-tags">
-
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>UI Design</span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- =========================
-                 PROJECT 03
-            ========================== -->
-
-            <article class="project-card">
-
-                <div class="project-image">
-
-                    <img
-                        src="assets/project-3.jpg"
-                        alt="Responsive Website"
-                        loading="lazy">
-
-                    <div class="project-overlay">
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View Live Project">
-
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                        </a>
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View GitHub Repository">
-
-                            <i class="fa-brands fa-github"></i>
-
-                        </a>
-
-                    </div>
-
                 </div>
 
 
-                <div class="project-content">
 
-                    <div class="project-top">
+                <!-- POST STATS -->
 
-                        <span class="project-number">
-                            03
-                        </span>
-
-                        <span class="project-type">
-                            Responsive
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        Responsive Website
-                    </h3>
-
-                    <p>
-                        A mobile-first responsive website designed
-                        to provide a smooth experience across
-                        phones, tablets and desktops.
-                    </p>
-
-
-                    <div class="project-tags">
-
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>Responsive</span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- =========================
-                 PROJECT 04
-            ========================== -->
-
-            <article class="project-card">
-
-                <div class="project-image">
-
-                    <img
-                        src="assets/project-4.jpg"
-                        alt="JavaScript Project"
-                        loading="lazy">
-
-                    <div class="project-overlay">
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View Live Project">
-
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                        </a>
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View GitHub Repository">
-
-                            <i class="fa-brands fa-github"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div class="project-content">
-
-                    <div class="project-top">
-
-                        <span class="project-number">
-                            04
-                        </span>
-
-                        <span class="project-type">
-                            JavaScript
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        Interactive Web App
-                    </h3>
-
-                    <p>
-                        An interactive frontend project with
-                        JavaScript functionality and dynamic
-                        user interactions.
-                    </p>
-
-
-                    <div class="project-tags">
-
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- =========================
-                 PROJECT 05
-            ========================== -->
-
-            <article class="project-card">
-
-                <div class="project-image">
-
-                    <img
-                        src="assets/project-5.jpg"
-                        alt="Landing Page"
-                        loading="lazy">
-
-                    <div class="project-overlay">
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View Live Project">
-
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                        </a>
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View GitHub Repository">
-
-                            <i class="fa-brands fa-github"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div class="project-content">
-
-                    <div class="project-top">
-
-                        <span class="project-number">
-                            05
-                        </span>
-
-                        <span class="project-type">
-                            Landing Page
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        Creative Landing Page
-                    </h3>
-
-                    <p>
-                        A visually attractive landing page
-                        created with a strong focus on layout,
-                        typography and user experience.
-                    </p>
-
-
-                    <div class="project-tags">
-
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>UI/UX</span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- =========================
-                 PROJECT 06
-            ========================== -->
-
-            <article class="project-card">
-
-                <div class="project-image">
-
-                    <img
-                        src="assets/project-6.jpg"
-                        alt="Future Project"
-                        loading="lazy">
-
-                    <div class="project-overlay">
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View Live Project">
-
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                        </a>
-
-                        <a
-                            href="#"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View GitHub Repository">
-
-                            <i class="fa-brands fa-github"></i>
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <div class="project-content">
-
-                    <div class="project-top">
-
-                        <span class="project-number">
-                            06
-                        </span>
-
-                        <span class="project-type">
-                            Coming Soon
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        New Project
-                    </h3>
-
-                    <p>
-                        More exciting projects will be added
-                        here as I continue learning and building.
-                    </p>
-
-
-                    <div class="project-tags">
-
-                        <span>Coming Soon</span>
-                        <span>Development</span>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-
-        <!-- All Projects Button -->
-
-        <div class="projects-button">
-
-            <a
-                href="#"
-                class="btn btn-outline"
-                target="_blank"
-                rel="noopener noreferrer">
-
-                View All Projects
-
-                <i class="fa-brands fa-github"></i>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-      
-<!-- =========================
-     CERTIFICATES SECTION
-========================== -->
-
-<section class="certificates section" id="certificates">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span>CERTIFICATES</span>
-
-            <h2>
-                My <strong>Certificates</strong>
-            </h2>
-
-            <p>
-                Courses, certifications and achievements.
-            </p>
-
-        </div>
-
-
-        <div class="certificate-grid">
-
-
-            <!-- Certificate 01 -->
-
-            <div class="certificate-card">
-
-                <div class="certificate-icon">
-                    <i class="fa-solid fa-certificate"></i>
-                </div>
-
-                <div class="certificate-content">
+                <div class="post-stats">
 
                     <span>
-                        Certificate 01
+                        👍 0 Likes
                     </span>
-
-                    <h3>
-                        Web Development
-                    </h3>
-
-                    <p>
-                        Web development certification will be
-                        added here.
-                    </p>
-
-                    <strong>
-                        Not Available
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-            <!-- Certificate 02 -->
-
-            <div class="certificate-card">
-
-                <div class="certificate-icon">
-                    <i class="fa-solid fa-award"></i>
-                </div>
-
-                <div class="certificate-content">
 
                     <span>
-                        Certificate 02
+                        0 Comments
                     </span>
 
-                    <h3>
-                        JavaScript
-                    </h3>
-
-                    <p>
-                        JavaScript certification will be
-                        added here.
-                    </p>
-
-                    <strong>
-                        Not Available
-                    </strong>
-
                 </div>
 
-            </div>
 
 
-            <!-- Certificate 03 -->
+                <!-- POST ACTIONS -->
 
-            <div class="certificate-card">
+                <div class="post-buttons">
 
-                <div class="certificate-icon">
-                    <i class="fa-solid fa-medal"></i>
-                </div>
+                    <button class="post-button like-button">
+                        👍
+                        <span>Like</span>
+                    </button>
 
-                <div class="certificate-content">
+                    <button class="post-button">
+                        💬
+                        <span>Comment</span>
+                    </button>
 
-                    <span>
-                        Certificate 03
-                    </span>
-
-                    <h3>
-                        Frontend Development
-                    </h3>
-
-                    <p>
-                        Frontend development certification
-                        will be added here.
-                    </p>
-
-                    <strong>
-                        Not Available
-                    </strong>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     SERVICES SECTION
-========================== -->
-
-<section class="services section" id="services">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span>WHAT I DO</span>
-
-            <h2>
-                My <strong>Services</strong>
-            </h2>
-
-            <p>
-                Professional web services and solutions.
-            </p>
-
-        </div>
-
-
-        <div class="services-grid">
-
-
-            <!-- Service 01 -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-                    <i class="fa-solid fa-code"></i>
-                </div>
-
-                <h3>
-                    Frontend Development
-                </h3>
-
-                <p>
-                    Building modern, clean and interactive
-                    frontend websites using HTML, CSS and
-                    JavaScript.
-                </p>
-
-            </div>
-
-
-            <!-- Service 02 -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-                    <i class="fa-solid fa-palette"></i>
-                </div>
-
-                <h3>
-                    Web Design
-                </h3>
-
-                <p>
-                    Creating attractive and user-friendly
-                    website interfaces with modern design.
-                </p>
-
-            </div>
-
-
-            <!-- Service 03 -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-                    <i class="fa-solid fa-mobile-screen-button"></i>
-                </div>
-
-                <h3>
-                    Responsive Design
-                </h3>
-
-                <p>
-                    Designing websites that work smoothly
-                    on mobile, tablet and desktop devices.
-                </p>
-
-            </div>
-
-
-            <!-- Service 04 -->
-
-            <div class="service-card">
-
-                <div class="service-icon">
-                    <i class="fa-solid fa-gauge-high"></i>
-                </div>
-
-                <h3>
-                    Website Optimization
-                </h3>
-
-                <p>
-                    Improving website layout, usability,
-                    performance and overall user experience.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     WHY CHOOSE ME SECTION
-========================== -->
-
-<section class="why-me section" id="why-me">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span>WHY ME</span>
-
-            <h2>
-                Why <strong>Choose Me?</strong>
-            </h2>
-
-            <p>
-                What I focus on while creating websites.
-            </p>
-
-        </div>
-
-
-        <div class="why-grid">
-
-
-            <!-- Reason 01 -->
-
-            <div class="why-card">
-
-                <div class="why-icon">
-                    <i class="fa-solid fa-mobile-screen-button"></i>
-                </div>
-
-                <h3>
-                    Fully Responsive
-                </h3>
-
-                <p>
-                    Websites designed to work beautifully
-                    across all screen sizes.
-                </p>
-
-            </div>
-
-
-            <!-- Reason 02 -->
-
-            <div class="why-card">
-
-                <div class="why-icon">
-                    <i class="fa-solid fa-bolt"></i>
-                </div>
-
-                <h3>
-                    Modern Design
-                </h3>
-
-                <p>
-                    Clean, modern and professional visual
-                    experience.
-                </p>
-
-            </div>
-
-
-            <!-- Reason 03 -->
-
-            <div class="why-card">
-
-                <div class="why-icon">
-                    <i class="fa-solid fa-code"></i>
-                </div>
-
-                <h3>
-                    Clean Code
-                </h3>
-
-                <p>
-                    Organized and easy-to-understand
-                    frontend code.
-                </p>
-
-            </div>
-
-
-            <!-- Reason 04 -->
-
-            <div class="why-card">
-
-                <div class="why-icon">
-                    <i class="fa-solid fa-heart"></i>
-                </div>
-
-                <h3>
-                    Passionate
-                </h3>
-
-                <p>
-                    Always learning and improving my web
-                    development skills.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================
-     CONTACT SECTION
-========================== -->
-
-<section class="contact section" id="contact">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <span>GET IN TOUCH</span>
-
-            <h2>
-                Let's <strong>Connect</strong>
-            </h2>
-
-            <p>
-                Have a project, idea or question?
-                Feel free to contact me.
-            </p>
-
-        </div>
-
-
-        <div class="contact-grid">
-
-
-            <!-- CONTACT INFORMATION -->
-
-            <div class="contact-info">
-
-
-                <!-- Email -->
-
-                <div class="contact-item">
-
-                    <div class="contact-icon">
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-
-                    <div>
-
-                        <span>
-                            Email
-                        </span>
-
-                        <a href="mailto:your@email.com">
-                            your@email.com
-                        </a>
-
-                    </div>
+                    <button class="post-button">
+                        ↗️
+                        <span>Share</span>
+                    </button>
 
                 </div>
 
 
-                <!-- WhatsApp -->
+                <!-- COMMENT BOX -->
 
-                <div class="contact-item">
+                <div class="comment-box">
 
-                    <div class="contact-icon">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-
-                    <div>
-
-                        <span>
-                            WhatsApp
-                        </span>
-
-                        <a href="#">
-                            Add WhatsApp Number
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Location -->
-
-                <div class="contact-item">
-
-                    <div class="contact-icon">
-                        <i class="fa-solid fa-location-dot"></i>
-                    </div>
-
-                    <div>
-
-                        <span>
-                            Location
-                        </span>
-
-                        <strong>
-                            India
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Social Media -->
-
-                <div class="contact-social">
-
-                    <a
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="GitHub">
-
-                        <i class="fa-brands fa-github"></i>
-
-                    </a>
-
-
-                    <a
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Instagram">
-
-                        <i class="fa-brands fa-instagram"></i>
-
-                    </a>
-
-
-                    <a
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Facebook">
-
-                        <i class="fa-brands fa-facebook"></i>
-
-                    </a>
-
-
-                    <a
-                        href="#"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="WhatsApp">
-
-                        <i class="fa-brands fa-whatsapp"></i>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CONTACT FORM -->
-
-            <form
-                class="contact-form"
-                id="contact-form">
-
-
-                <!-- Name + Email -->
-
-                <div class="form-row">
-
-
-                    <div class="form-group">
-
-                        <label for="name">
-                            Your Name
-                        </label>
-
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="Enter your name"
-                            autocomplete="name"
-                            required>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="email">
-                            Your Email
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Enter your email"
-                            autocomplete="email"
-                            required>
-
-                    </div>
-
-
-                </div>
-
-
-                <!-- Subject -->
-
-                <div class="form-group">
-
-                    <label for="subject">
-                        Subject
-                    </label>
+                    <img
+                        src="assets/images/default-avatar.png"
+                        alt="Profile"
+                    >
 
                     <input
                         type="text"
-                        id="subject"
-                        name="subject"
-                        placeholder="Enter subject"
-                        required>
+                        placeholder="Write a comment..."
+                    >
+
+                    <button>
+                        ➤
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- SECOND SAMPLE POST -->
+
+            <article class="post-card">
+
+                <div class="post-header">
+
+                    <div class="post-user">
+
+                        <img
+                            src="assets/images/default-avatar.png"
+                            alt="User"
+                            class="post-avatar"
+                        >
+
+                        <div>
+
+                            <h3>
+                                ConnectU Team
+                            </h3>
+
+                            <p>
+                                Today · 🌎
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <button class="more-button">
+                        ⋯
+                    </button>
 
                 </div>
 
 
-                <!-- Message -->
+                <div class="post-content">
 
-                <div class="form-group">
-
-                    <label for="message">
-                        Message
-                    </label>
-
-                    <textarea
-                        id="message"
-                        name="message"
-                        rows="6"
-                        placeholder="Write your message..."
-                        required></textarea>
+                    <p>
+                        Your feed will appear here.
+                    </p>
 
                 </div>
 
 
-                <!-- Submit -->
+                <div class="post-stats">
+
+                    <span>
+                        👍 0 Likes
+                    </span>
+
+                    <span>
+                        0 Comments
+                    </span>
+
+                </div>
+
+
+                <div class="post-buttons">
+
+                    <button class="post-button">
+                        👍
+                        <span>Like</span>
+                    </button>
+
+                    <button class="post-button">
+                        💬
+                        <span>Comment</span>
+                    </button>
+
+                    <button class="post-button">
+                        ↗️
+                        <span>Share</span>
+                    </button>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =====================
+             RIGHT SIDEBAR
+        ====================== -->
+
+        <aside class="right-sidebar">
+
+
+            <!-- ONLINE FRIENDS -->
+
+            <div class="sidebar-card">
+
+                <div class="card-heading">
+
+                    <h3>
+                        Contacts
+                    </h3>
+
+                    <button>
+                        ⋯
+                    </button>
+
+                </div>
+
+
+                <div class="contact">
+
+                    <div class="online-avatar">
+
+                        <img
+                            src="assets/images/default-avatar.png"
+                            alt="Friend"
+                        >
+
+                        <span></span>
+
+                    </div>
+
+                    <strong>
+                        Rahul
+                    </strong>
+
+                </div>
+
+
+                <div class="contact">
+
+                    <div class="online-avatar">
+
+                        <img
+                            src="assets/images/default-avatar.png"
+                            alt="Friend"
+                        >
+
+                        <span></span>
+
+                    </div>
+
+                    <strong>
+                        Aman
+                    </strong>
+
+                </div>
+
+
+                <div class="contact">
+
+                    <div class="online-avatar">
+
+                        <img
+                            src="assets/images/default-avatar.png"
+                            alt="Friend"
+                        >
+
+                        <span></span>
+
+                    </div>
+
+                    <strong>
+                        Priya
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- LOGIN / SIGNUP -->
+
+            <div class="auth-card">
+
+                <h3>
+                    Join ConnectU
+                </h3>
+
+                <p>
+                    Connect with friends and share
+                    your moments.
+                </p>
+
+                <a
+                    href="login.html"
+                    class="login-btn"
+                >
+                    Login
+                </a>
+
+                <a
+                    href="signup.html"
+                    class="signup-btn"
+                >
+                    Create New Account
+                </a>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+
+    <!-- =========================
+         MOBILE BOTTOM NAV
+    ========================== -->
+
+    <nav class="mobile-nav">
+
+        <a href="index.html" class="active">
+            🏠
+            <span>Home</span>
+        </a>
+
+        <a href="friends.html">
+            👥
+            <span>Friends</span>
+        </a>
+
+        <a href="chat.html">
+            💬
+            <span>Chat</span>
+        </a>
+
+        <a href="notifications.html">
+            🔔
+            <span>Alerts</span>
+        </a>
+
+        <a href="profile.html">
+            👤
+            <span>Profile</span>
+        </a>
+
+    </nav>
+
+
+
+    <!-- =========================
+         CREATE POST MODAL
+    ========================== -->
+
+    <div
+        class="modal"
+        id="postModal"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>
+                    Create Post
+                </h2>
 
                 <button
-                    type="submit"
-                    class="btn btn-primary">
-
-                    Send Message
-
-                    <i class="fa-solid fa-paper-plane"></i>
-
+                    id="closePostModal"
+                    class="close-modal"
+                >
+                    ×
                 </button>
 
+            </div>
 
-            </form>
+
+            <div class="modal-user">
+
+                <img
+                    src="assets/images/default-avatar.png"
+                    alt="Profile"
+                >
+
+                <div>
+
+                    <strong id="modalUserName">
+                        Guest User
+                    </strong>
+
+                    <small>
+                        🌎 Public
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <textarea
+                id="postText"
+                placeholder="What's on your mind?"
+                rows="6"
+            ></textarea>
+
+
+            <div class="upload-area">
+
+                <label for="postImage">
+
+                    📷
+                    <span>
+                        Add Photo
+                    </span>
+
+                </label>
+
+                <input
+                    type="file"
+                    id="postImage"
+                    accept="image/*"
+                    hidden
+                >
+
+            </div>
+
+
+            <div
+                class="image-preview"
+                id="imagePreview"
+            ></div>
+
+
+            <button
+                class="publish-button"
+                id="publishPost"
+            >
+                Post
+            </button>
 
         </div>
 
     </div>
 
-</section>
 
-</main>
 
+    <!-- Firebase will be connected in Part 2 -->
 
-
-<!-- =========================
-     FOOTER
-========================== -->
-
-<footer class="footer">
-
-    <div class="container footer-container">
-
-
-        <!-- Footer Brand -->
-
-        <div class="footer-brand">
-
-            <a
-                href="#home"
-                class="logo">
-
-                <span>BK</span>
-
-            </a>
-
-            <p>
-                Bablu Kumar
-                <br>
-                Frontend Developer
-            </p>
-
-        </div>
-
-
-        <!-- Footer Navigation -->
-
-        <div class="footer-links">
-
-            <a href="#home">
-                Home
-            </a>
-
-            <a href="#about">
-                About
-            </a>
-
-            <a href="#skills">
-                Skills
-            </a>
-
-            <a href="#projects">
-                Projects
-            </a>
-
-            <a href="#contact">
-                Contact
-            </a>
-
-        </div>
-
-
-        <!-- Footer Social -->
-
-        <div class="footer-social">
-
-            <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub">
-
-                <i class="fa-brands fa-github"></i>
-
-            </a>
-
-
-            <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram">
-
-                <i class="fa-brands fa-instagram"></i>
-
-            </a>
-
-
-            <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook">
-
-                <i class="fa-brands fa-facebook"></i>
-
-            </a>
-
-
-            <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WhatsApp">
-
-                <i class="fa-brands fa-whatsapp"></i>
-
-            </a>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- Footer Bottom -->
-
-    <div class="footer-bottom">
-
-        <p>
-
-            ©
-            <span id="current-year"></span>
-
-            Bablu Kumar.
-
-            All Rights Reserved.
-
-        </p>
-
-    </div>
-
-</footer>
-
-
-
-<!-- =========================
-     BACK TO TOP
-========================== -->
-
-<button
-    class="back-to-top"
-    id="back-to-top"
-    aria-label="Back to top">
-
-    <i class="fa-solid fa-arrow-up"></i>
-
-</button>
-
-
-
-<!-- =========================
-     JAVASCRIPT
-========================== -->
-
-<script src="script.js"></script>
+    <script type="module" src="js/app.js"></script>
 
 </body>
-  </html>
-      
+</html>
