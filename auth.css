@@ -1,0 +1,195 @@
+/* ======================================
+   SOCIALHUB AUTH CSS
+====================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: #f0f2f5;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    padding: 30px;
+}
+
+
+/* LEFT */
+
+.auth-left {
+    width: 430px;
+}
+
+.auth-logo {
+    font-size: 42px;
+    font-weight: 800;
+    color: #1877f2;
+    margin-bottom: 18px;
+}
+
+.auth-left h1 {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.auth-left p {
+    color: #65676b;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+
+/* CARD */
+
+.auth-card {
+    width: 390px;
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.12);
+}
+
+.auth-card h2 {
+    font-size: 27px;
+    margin-bottom: 5px;
+}
+
+.auth-subtitle {
+    color: #65676b;
+    margin-bottom: 22px;
+}
+
+
+/* INPUT */
+
+.auth-card input {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #ccd0d5;
+    border-radius: 8px;
+    padding: 0 14px;
+    margin-bottom: 12px;
+    outline: none;
+    font-size: 14px;
+}
+
+.auth-card input:focus {
+    border-color: #1877f2;
+    box-shadow: 0 0 0 2px rgba(24,119,242,.12);
+}
+
+
+/* BUTTON */
+
+.auth-btn {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    background: #1877f2;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.auth-btn:hover {
+    background: #166fe5;
+}
+
+
+/* MESSAGE */
+
+#loginMessage,
+#signupMessage {
+    margin-top: 12px;
+    font-size: 13px;
+    text-align: center;
+}
+
+
+/* DIVIDER */
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #65676b;
+    margin: 20px 0;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    height: 1px;
+    background: #ddd;
+    flex: 1;
+}
+
+.auth-divider span {
+    font-size: 12px;
+}
+
+
+/* CREATE ACCOUNT */
+
+.create-account {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #42b72a;
+    color: #ffffff;
+    padding: 13px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+.create-account:hover {
+    background: #36a420;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .auth-container {
+        flex-direction: column;
+        gap: 25px;
+        padding: 20px;
+    }
+
+    .auth-left {
+        width: 100%;
+        max-width: 390px;
+        text-align: center;
+    }
+
+    .auth-logo {
+        font-size: 34px;
+    }
+
+    .auth-left h1 {
+        font-size: 28px;
+    }
+
+    .auth-left p {
+        font-size: 15px;
+    }
+
+    .auth-card {
+        width: 100%;
+        max-width: 390px;
+    }
+
+}
