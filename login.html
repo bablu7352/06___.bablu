@@ -6,26 +6,35 @@
 
     <title>SocialHub - Login</title>
 
+    <!-- Login CSS -->
     <link rel="stylesheet" href="auth.css">
 </head>
 
 <body>
 
-    <div class="auth-container">
+    <main class="auth-container">
 
-        <div class="auth-left">
-            <div class="auth-logo">SocialHub</div>
+        <!-- LEFT SIDE -->
+        <section class="auth-left">
 
-            <h1>Connect with people.</h1>
+            <div class="auth-logo">
+                SocialHub
+            </div>
+
+            <h1>
+                Connect with people.
+            </h1>
 
             <p>
                 Share moments, chat with friends,
                 and stay connected.
             </p>
-        </div>
+
+        </section>
 
 
-        <div class="auth-card">
+        <!-- LOGIN CARD -->
+        <section class="auth-card">
 
             <h2>Login</h2>
 
@@ -33,12 +42,15 @@
                 Welcome back to SocialHub
             </p>
 
+
+            <!-- LOGIN FORM -->
             <form id="loginForm">
 
                 <input
                     type="email"
                     id="loginEmail"
                     placeholder="Email address"
+                    autocomplete="email"
                     required
                 >
 
@@ -46,34 +58,47 @@
                     type="password"
                     id="loginPassword"
                     placeholder="Password"
+                    autocomplete="current-password"
                     required
                 >
 
-                <button type="submit" class="auth-btn">
+                <button
+                    type="submit"
+                    class="auth-btn">
                     Login
                 </button>
 
             </form>
 
 
+            <!-- LOGIN MESSAGE -->
             <div id="loginMessage"></div>
 
 
+            <!-- DIVIDER -->
             <div class="auth-divider">
                 <span>OR</span>
             </div>
 
 
-            <a href="signup.html" class="create-account">
+            <!-- SIGNUP -->
+            <a
+                href="signup.html"
+                class="create-account">
                 Create New Account
             </a>
 
-        </div>
+        </section>
 
-    </div>
+    </main>
 
 
-    <script type="module" src="js/auth.js"></script>
+    <!-- IMPORTANT:
+         auth.js is in the ROOT folder -->
+    <script
+        type="module"
+        src="auth.js">
+    </script>
 
 </body>
 </html>
