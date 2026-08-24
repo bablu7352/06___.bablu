@@ -24,25 +24,24 @@ import {
 
 const firebaseConfig = {
 
-    apiKey: "YOUR_API_KEY",
+    apiKey: "AIzaSyACt56Oa6rxu62oHizYiE5JOacjpVL9mAo",
 
     authDomain:
-        "YOUR_PROJECT.firebaseapp.com",
+        "fb-project-7e3ce.firebaseapp.com",
 
     projectId:
-        "YOUR_PROJECT_ID",
+        "fb-project-7e3ce",
 
     storageBucket:
-        "YOUR_PROJECT.firebasestorage.app",
+        "fb-project-7e3ce.firebasestorage.app",
 
     messagingSenderId:
-        "YOUR_SENDER_ID",
+        "645075129450",
 
     appId:
-        "YOUR_APP_ID"
+        "1:645075129450:web:22f51c1c3be18c57986613"
 
 };
-
 
 const app =
     initializeApp(firebaseConfig);
